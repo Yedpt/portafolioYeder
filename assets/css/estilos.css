@@ -185,7 +185,7 @@ section {
   color: #fff;
   /* display: flex; */
   /* align-items: center; */
-  padding: 50px 20px;
+  padding:  50px 20px;
 }
 
 .skills .container-section{
@@ -196,7 +196,7 @@ section {
 
 .skills h2 {
   color: #fff;
-  padding: 20px 0;
+  padding: 20% 20px;
   text-align: center;
   font-family: "Montserrat", sans-serif;
   font-size: 38px;
@@ -576,7 +576,7 @@ footer .arriba{
 
   .skills .fila{
       display: block;
-      /* box-shadow: ;  */
+      
   }
   .skills .fila .col{
       width: 100%;
