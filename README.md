@@ -6,7 +6,7 @@ clonar el portofolio para tenerlo en repositorio local:
 
 **git clone https://github.com/Yedpt/portafolioYeder.git**
 
-figma del portafolio:
+figma del portafolio diseñada por Ana:
 
 **https://www.figma.com/design/zX7ACEM6yiIAyNy2uNVNTo/Portfolio-Yeder-Pimentel?node-id=1-2&t=4do2HG02FTSzQ8Ps-0**
 
@@ -18,6 +18,8 @@ figma del portafolio:
 5. [portafolio](#portafolio)
 6. [contacto](#contacto)
 7. [footer](#footer)
+8. [mediaQueries](#mediaQueries)
+
 
 ## Introduccion general:
 
@@ -32,7 +34,7 @@ En este portafolio presentaré los proyectos que he desarrollado, demostrando mi
 - tenemos la seccion de navegacion principal del portafolio en donde tenemos en una lista desordenada (ul) con los elementos del menu
 
 # CSS: 
--En ell contenerdor principal fijamos la posicion en la parte superior de la pantalla con position : fixed.
+-En el contenerdor principal fijamos la posicion en la parte superior de la pantalla con position : fixed.
 - con z-index definimos la superposicion con otros elementos asegurando que este por encima.
 - damos un ancho maximo con max-width , utilizamos flexbox para el diseño interno. asi como tambien usamos display flex en la parte del diseño de las listas ul.
 # JS : 
@@ -43,50 +45,55 @@ En este portafolio presentaré los proyectos que he desarrollado, demostrando mi
 - en la parte del else se obtiene el elemento con el id "nav"  y establece su propiedad "classlist" con el valor "responsive" aplicando esta clase al elemento , cambia el estado de la variable a true indicando que el menú está ahora visible.
 
 ## inicio
+
  # html:
+ en la parte de inicio como en las demas secciones lo divido en sections y procedo a colocar mi imagen/logo, profesion y enlaces a github y linkedin.
  # CSS:
+ de igual manera en la parte de inicio uso flexbox con display:flex, añadimos los estilos de color de letra , alineamos los items en el centro, a la foto/imagen añado un border radius y un border de color verde.
 
 
 ##  sobre-mi
 # html:
+en la parte de sobre mi de igual manera añado un section para trabajar en dicho elemento y añado el texto , el h2 etc.
+
  # CSS:
+ añado el color de letra de los textos , en el contenedor section un maximo de ancho y un margin auto , añado los estilos al h2 y bueno añado un br con estilos a cada seccion para diferenciar las secciones.
 
 ## skills 
 
 # html:
+lo mismo en la parte de skills he dividido las skills tecnicas y profesionales en 2 columnas creando un div para cada una y añadiendo la class col para despues con el css darle estilo y dividirlo en colummna 
+
  # CSS:
+ añado color de letra de los textos , el hr le añado los estilos correspondientes , al contenedor principal le doy un maximo de ancho , a la clase fila uso flexbox , como tengo un boton le añado los estilos , como añadir un border radius , un cursor pointer , un tamaño al boton con witdh etc.
 
 ## portafolio
 
-# html:
+# html: 
+en la seccion del portafolio añado divs con la class galeria en donde tendremos todas nuestras cards de proyectos, dentro de ella creamos divs con la clase proyecto para darle y cada una sera un card/imagen de nuestros proyectos
+
  # CSS:
+ em el contenedor principal le añado el maximo de ancho , luego añado color a los textos , estilos al hr , añado en el div de la clase galeria flexbox y flex-wrap para que los elementos hijos (div class proyecto)  sean obligados a permanecer en una misma línea o pueden fluir en varias líneas.
 
 ## contacto
 
-# html:
+# html: 
+en contacto he añadidos mis inputs en un div , en este caso no use el form , y añadi un boton para dirigir el mensaje que se quiere enviar, añadi un mapa en imagen
+
  # CSS:
+
+ lo mismo que en las demás secciones , en el contenedor principal añado un maximo de ancho, luego color a los textos , estilo al hr etc , en la clase fila añado flexbox 
 
 ## footer
 
 # html:
+en el footer añado imagenes de redes sociales importada desde una libreria llamada fontawesome
+ 
  # CSS:
-<!-- <header>:
 
-Esta es la sección de navegación principal del sitio. El atributo id="nav" puede ser usado para aplicar estilos específicos o para hacer referencia a este elemento en scripts.
-<ul>:
-
-Define una lista desordenada que contiene los elementos del menú de navegación.
-<li>:
-
-Cada elemento de la lista (<li>) contiene un enlace (<a>) que apunta a diferentes secciones de la página mediante identificadores (href="#inicio", href="#sobreMi", etc.).
-<li><a href="#inicio">home</a></li>: Enlace a la sección "inicio".
-<li><a href="#sobreMi">Sobre mi</a></li>: Enlace a la sección "Sobre mi".
-<li><a href="#skills">skills</a></li>: Enlace a la sección "skills".
-<li><a href="#portafolio">portafolio</a></li>: Enlace a la sección "portafolio".
-<li><a href="#contacto">contacto</a></li>: Enlace a la sección "contacto".
-<div class="nav-responsive" onclick="mostrarOcultarMenu()">:
-
-Este div es probablemente utilizado para la versión móvil del sitio web. El atributo onclick="mostrarOcultarMenu()" indica que se ejecutará una función de JavaScript llamada mostrarOcultarMenu() cuando se haga clic en este elemento.
-<i class="fa-solid fa-bars"></i>: Este es un elemento de icono (usando la biblioteca de Font Awesome). El icono de barras (fa-bars) suele representar un menú hamburguesa, común en las interfaces móviles para abrir o cerrar el menú de navegación. -->
+añadi un bgcolor , use tambien flexbox , de igual manera añadi a las clases flexbox y los diferentes estilos para estilar las imagenes que descargue de fontawesome
 
 
+## mediaQueries
+
+en la mediaqueries he usado 2 , una con un maximo de ancho e 980px y la otra con un maximo de ancho de 700px , he añadido a cada clase de tipo y cada clase flexbox
