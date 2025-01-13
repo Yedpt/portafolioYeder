@@ -9,3 +9,13 @@ function mostrarOcultarMenu(){
         menuVisible = true
     }
 }
+
+// menuvisivle = false
+
+// cons mostrarOcultarMenus = () => {
+//     if (condition) {
+//         document.getElementById("nav").classList = ""
+//     }else {
+//         document.getElementById("nav").classList = "responsive"
+//     }
+// }

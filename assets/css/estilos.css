@@ -198,6 +198,10 @@ section {
   font-size: 38px;
 }
 
+.skills .container-section a {
+  text-decoration: none;
+}
+
 .skills .fila {
   display: flex;
 }
@@ -230,6 +234,8 @@ section {
   z-index: 10;
   
 }
+
+
 
 .skills button .overlay {
   position: absolute;
@@ -497,7 +503,7 @@ footer .arriba{
   font-size: 18px;
 }
 
-/* seccion responsive */
+/* seccion mediaqueries */
 
 @media screen and (max-width:980px){
   nav{
