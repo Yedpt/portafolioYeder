@@ -10,6 +10,10 @@ function mostrarOcultarMenu(){
     }
 }
 
+function openInNewTab(url) {
+    window.open(url, '_blank');
+}
+
 // menuvisivle = false
 
 // cons mostrarOcultarMenus = () => {
