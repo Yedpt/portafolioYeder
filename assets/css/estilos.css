@@ -152,7 +152,7 @@ section {
 }
 
 .sobreMi .container-section p {
-  text-align: justify;
+  text-align: left;
   color: #fff;
   margin: auto;
   padding: 3px;
@@ -261,7 +261,7 @@ section {
 }
 
 .skills .fila .col p {
-  text-align: justify;
+  text-align: left;
   color: #fff;
   margin: auto;
   padding: 3px;
@@ -455,27 +455,30 @@ section {
  
  /* La parte del footer  */
 
-footer{
-  background-color: rgb(126, 13, 13);
+ footer {
+  /* background-color: rgb(126, 13, 13); */
+  background-color: #1e2326; 
   color: #fff;
-  padding: 50px 0 30px 0;
-  text-align: center;
-  position: relative;
+  padding: 20px 0;
+  text-align: center; /* Centrado del contenido dentro de cada elemento */
   width: 100%;
 }
 
-footer h2 {
-  color: #fff;
-  padding: 20px 0 0 0;
-  text-align: center;
-  font-family: "Montserrat", sans-serif;
-  font-size: 38px;
- }
-
-footer .redes{
-  margin-bottom: 20px;
+.footer-container {
+  display: flex;
+  justify-content: space-between; /* Alineación de los elementos extremos */
+  align-items: center; /* Centrar verticalmente los elementos */
+  max-width: 1200px; /* Ajusta el ancho del footer */
+  margin: 0 auto; /* Centrar el contenido del footer */
+  padding: 0 20px; /* Espaciado horizontal */
 }
-footer .redes a{
+
+footer .copyright {
+  font-size: 24px; /* Tamaño de letra */
+  margin: 0; /* Elimina margen extra */
+}
+
+footer .redes a {
   color: #fff;
   display: inline-block;
   text-decoration: none;
@@ -484,24 +487,20 @@ footer .redes a{
   width: 42px;
   height: 42px;
   line-height: 42px;
-  margin: 40px 5px;
+  margin: 0 10px; /* Reduce el margen entre iconos */
   font-size: 20px;
-  transition: .3s;
+  transition: 0.3s;
 }
-footer .arriba{
-  display: block;
-  width: 50px;
-  height: 50px;
-  background-color: #1CB698;
-  color: #fff;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 10px;
-  border-radius: 50%;
-  line-height: 50px;
-  font-size: 18px;
-}
+
+ footer hr {
+  
+    border: 1px solid #1CB698;
+    width: 90%;
+    text-align: left;
+    margin: auto;
+    margin-bottom: 40px;
+
+} 
 
 /* seccion mediaqueries */
 
@@ -528,10 +527,9 @@ footer .arriba{
       padding: 10px 0;
   }
 
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    box-shadow:inset;
+  footer .copyright {
+    font-size: 14px; /* Tamaño de letra */
+    margin: 0; /* Elimina margen extra */ 
 }
 
 .footer-section {
@@ -590,6 +588,8 @@ footer .arriba{
   .portafolio .galeria .proyecto img{
       width: 100%;
   }
+
+  
   .contacto .fila{
       display: block;
   }
@@ -597,10 +597,9 @@ footer .arriba{
       width: 100%;
   }
 
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    box-shadow:inset;
+  footer .copyright {
+    font-size: 14px; /* Tamaño de letra */
+    margin: 0; /* Elimina margen extra */ 
 }
 
 .footer-section {

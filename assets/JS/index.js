@@ -10,16 +10,6 @@ function mostrarOcultarMenu(){
     }
 }
 
-function openInNewTab(url) {
+function openInNewTab(url) { // al hacer click te abre otra pestaña re dirigiendote al sitio que indiques.
     window.open(url, '_blank');
 }
-
-// menuvisivle = false
-
-// cons mostrarOcultarMenus = () => {
-//     if (condition) {
-//         document.getElementById("nav").classList = ""
-//     }else {
-//         document.getElementById("nav").classList = "responsive"
-//     }
-// }
