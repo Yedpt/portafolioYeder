@@ -11,7 +11,6 @@ function mostrarOcultarMenu(){
         menuVisible = true
     }
 }
-
 /* dark theme and light theme */
 
 const OSTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
@@ -31,11 +30,6 @@ let getTheme = () => {
 switchBtn.addEventListener("click", getTheme)
 
 setTheme(localStorage.getItem("theme" ||OSTheme))
-
-// funcion que al hacer click te abre otra pestaña redirigiendote al link que indiques
-function openInNewTab(url) { 
-    window.open(url, '_blank');
-}
 
 /* funcion para cambiar de idioma */
 
@@ -60,3 +54,8 @@ function cambiarIdioma(idioma) {
 document.addEventListener('DOMContentLoaded', () => {
     cambiarIdioma('es'); // Idioma por defecto: español
 });
+
+// funcion que al hacer click te abre otra pestaña redirigiendote al link que indiques
+function openInNewTab(url) { 
+    window.open(url, '_blank');
+}
