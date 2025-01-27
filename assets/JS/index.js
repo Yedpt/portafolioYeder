@@ -1,3 +1,5 @@
+// codigo para ocultar y mostrar el menu 
+
 let menuVisible = false
 //funcion que oculta y muestra el menu
 function mostrarOcultarMenu(){
@@ -10,6 +12,51 @@ function mostrarOcultarMenu(){
     }
 }
 
-function openInNewTab(url) { // al hacer click te abre otra pestaña re dirigiendote al sitio que indiques.
+/* dark theme and light theme */
+
+const OSTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
+const switchBtn = document.getElementById("switch_btn")
+
+let setTheme = (theme) => {
+    localStorage.setItem("theme", theme)
+    document.documentElement.setAttribute("data-theme", theme)
+}
+
+let getTheme = () => {
+    let switchTheme = localStorage.getItem("theme") === 'dark' ? "light" : "dark"
+    setTheme(switchTheme)
+}
+
+switchBtn.addEventListener("click", getTheme)
+
+setTheme(localStorage.getItem("theme" ||OSTheme))
+
+// funcion que al hacer click te abre otra pestaña redirigiendote al link que indiques
+function openInNewTab(url) { 
     window.open(url, '_blank');
 }
+
+/* funcion para cambiar de idioma */
+
+// Función para cambiar el idioma
+function cambiarIdioma(idioma) {
+    // Selecciona todos los elementos con atributos `data-es` y `data-en`
+    const elementos = document.querySelectorAll('[data-es], [data-en]');
+
+    // Recorre cada elemento y cambia el texto según el idioma seleccionado
+    elementos.forEach(elemento => {
+        const texto = elemento.getAttribute(`data-${idioma}`); // Obtiene el texto para el idioma
+        if (texto) {
+            elemento.textContent = texto; // Cambia el texto visible
+        }
+    });
+
+    // Cambia el atributo `lang` del HTML para accesibilidad
+    document.documentElement.setAttribute('lang', idioma);
+}
+
+// Establecer el idioma predeterminado al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    cambiarIdioma('es'); // Idioma por defecto: español
+});

@@ -1,10 +1,85 @@
 /* la parte del menu-nav  */
-@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans:wght@100;300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+
+[data-theme="light"]{
+  --bgSwitch: #1569ca;
+  --boxShadowSwitch: inset 20px 20px 30px -5px rgba(255, 255, 255, 0.8);
+  --content: "\f185";
+  --contentColor: #ffe484;
+  --translate: 0%;
+  --background: rgba,255,5,0.8;
+  --text : #121212;
+  --filter: brightness() contrast();
+  --colorButton: #121212; 
+  --colorBanner: rgba(255,255,255,0.8);
+
+
+}
+
+[data-theme="dark"]{
+--background: #1e2326;
+--text: rgba(255,255,255,0.8);
+--colorButton: rgba(255,255,255,0.8);
+--colorBanner: #1e2326;
+--bgSwitch: #000;
+--boxShadowSwitch:inset 20px 20px 30px -10px rgba(250, 250, 250, 0.5);
+--content: "\f186";
+--contentColor: #fff;
+--translate: 100%;
+--filter: brightness(.8) contrast(1.2)
+
+}
+
+
+/* sigo en el menu pero esta parte es del boton dark and light theme */
+
+#switch_btn{
+  /* float: right; */
+  background-color: var(--bgSwitch) ;
+  box-shadow:  var(--boxShadowSwitch);
+  width: 60px;
+  height: 30px;
+  border: none;
+  border-radius: 50px;
+  display: flex;
+  transition: all 0.8s;
+}
+
+#switch_btn::before{
+content: var(--content);
+font-family: 'Font Awesome 6 free';
+font-size: 15px;
+color: var(--contentColor);
+width: 30px;
+height: 30px;
+line-height: 30px;
+transform: translateX(var(--translate));
+transition: transform 0.8s;
+}
+
+.btn-idioma {
+  display: flex;
+  align-items: center; /* Alinea la imagen y el texto verticalmente */
+  border: none;
+  background: none; /* Elimina el fondo y los bordes del botón */
+  cursor: pointer;
+  font-family: Arial, sans-serif; /* Fuente estándar, puedes cambiarla */
+  font-size: 16px; /* Ajusta el tamaño del texto */
+}
+
+.btn-idioma img {
+  width: 30px; /* Tamaño uniforme de la bandera */
+  height: 20px;
+  margin-right: 5px; /* Espacio entre la bandera y el texto */
+}
+
 *{
   box-sizing: border-box;
-  font-family: 'Work Sans';
+  font-family: "Lato", serif;
   margin: 0;
   padding: 0;
+  
 }
 
 html{
@@ -13,7 +88,9 @@ html{
 }
 
 body {
-  background-color: #1e2326; 
+  background-color: var(--background); 
+  color: var(--text);
+  transition: background-color, color 0.8s;
 }
 
 
@@ -23,7 +100,7 @@ section {
 /* MENU  */
 .container-header {
   background-color: #4e5155;
-  color: #fff;
+  /* color: #fff; */
   position: fixed;
   width: 100%;
   top: 0;
@@ -33,18 +110,20 @@ section {
 
 .container-header header {
   max-width: 1100px;
-  margin: auto;
+  margin: auto; 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 15px;
 }
 
-.container-header header .logo a {
-  font-family: "Montserrat", sans-serif;
-  font-size: 40px;
-  color: #1cb698;
-  text-decoration: none;
+.container-header header .logo img{
+  /* font-size: 40px; */
+  /* size: 10px; */
+  width: 50px;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 .container-header header ul {
   display: flex;
@@ -53,7 +132,7 @@ section {
 
 .container-header header nav ul li a {
   text-align: none;
-  color: #fff;
+  color: rgba(255,255,255,0.9);
   margin: 0 15px;
   padding: 3px;
   transition: 0.5s;
@@ -65,26 +144,28 @@ section {
 }
 .nav-responsive{
   background-color: #1CB698;
-  color:#fff;
+  /* color:#fff; */
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
   display: none;
 }
 
+
+
 /* la parte seccion inicio  */
 
 .inicio {
   background-size: cover;
   height: 100vh;
-  color: #fff;
+  /* color: #fff; */
   display: flex;
   align-items: center;
 }
 
 .inicio .container-banner{
   padding: 20px;
-  background-color: #1e2326;
+  background-color: var(--colorBanner);
   max-width: 500px;
   height: 80vh;
   margin: auto;
@@ -123,7 +204,7 @@ section {
 /* la parte de sobre mi */
 
 .sobreMi{
-  color: #fff;
+  /* color: #fff; */
   padding:  20px 20px;
 }
 
@@ -144,7 +225,7 @@ section {
 }
 
 .sobreMi .container-section h2 {
-  color: #fff;
+  /* color: #fff; */
   padding: 20px 20px;
   text-align: center;
   font-family: "Montserrat", sans-serif;
@@ -153,8 +234,9 @@ section {
 
 .sobreMi .container-section p {
   text-align: left;
-  color: #fff;
+  /* color: #fff; */
   margin: auto;
+  display: inline;
   padding: 3px;
   transition: 0.5s;
   font-size: 18px;
@@ -169,7 +251,7 @@ section {
 
 /* la parte de skills  */
 .skills {
-  color: #fff;
+  /* color: #fff; */
   padding:  20px 20px;
 }
 
@@ -191,7 +273,7 @@ section {
 }
 
 .skills .container-section h2 {
-  color: #fff;
+  /* color: #fff; */
   padding: 20px 20px;
   text-align: center;
   font-family: "Montserrat", sans-serif;
@@ -211,6 +293,11 @@ section {
   padding: 40px 20px 100px;
 }
 
+.skills .fila .col strong {
+  font-size: 20px;
+  font-weight: 800;
+}
+
 .skills .fila .col h3 {
   font-size: 28px;
   font-family: "Montserrat", sans-serif;
@@ -222,8 +309,8 @@ section {
   border-radius: 10px;
   cursor: pointer;
   background-color: transparent;
-  border: 2px solid #fff;
-  color: white;
+  border: 2px solid var(--colorButton);
+  color: var(--colorButton);
   line-height: 30px;
   width: 30%;
   font-size: 30px;
@@ -262,9 +349,10 @@ section {
 
 .skills .fila .col p {
   text-align: left;
-  color: #fff;
+  /* color: #fff; */
   margin: auto;
   padding: 3px;
+  display: inline;
   transition: 0.5s;
   font-size: 18px;
   text-decoration: none;
@@ -276,7 +364,7 @@ section {
 /* la parte de portafolio  */
 
 .portafolio {
-  color: #fff;
+  /* color: #fff; */
   padding: 20px 20px;
 }
 
@@ -291,7 +379,7 @@ section {
   font-family: "Montserrat", sans-serif;
   text-align: center;
   padding: 20px 0;
-  color: #fff;
+  /* color: #fff; */
 }
 
 .portafolio .container-section hr {
@@ -354,7 +442,7 @@ section {
 /* la parte de contacto */
 
 .contacto {
-  color: #fff;
+  /* color: #fff; */
   padding: 20px 20px;
 }
 
@@ -364,7 +452,7 @@ section {
 }
 
 .contacto .container-section h2 {
-  color: #fff;
+  /* color: #fff; */
   padding: 20px 0;
   text-align: center;
   font-family: "Montserrat", sans-serif;
@@ -396,20 +484,20 @@ section {
   border: none;
   margin-bottom: 0;
   background-color: #252A2E;
-  color: #fff;
+  /* color: #fff; */
   font-size: 18px;
 }
 .contacto .button {
     cursor: pointer;
     background-color: transparent;
-    border: 2px solid #fff;
+    border: 2px solid var(--colorButton);
     border-radius: 10px;
     width: fit-content;
     display: block;
     margin: 20px auto;
     padding: 10px 22px;
     font-size: 16px;
-    color: #fff;
+    color: var(--text);
     position: relative;
     z-index: 10;
     
@@ -456,9 +544,6 @@ section {
  /* La parte del footer  */
 
  footer {
-  /* background-color: rgb(126, 13, 13); */
-  background-color: #1e2326; 
-  color: #fff;
   padding: 20px 0;
   text-align: center; /* Centrado del contenido dentro de cada elemento */
   width: 100%;
@@ -479,7 +564,7 @@ footer .copyright {
 }
 
 footer .redes a {
-  color: #fff;
+  /* color: #fff; */
   display: inline-block;
   text-decoration: none;
   border: 1px solid #fff;
@@ -510,7 +595,13 @@ footer .redes a {
   }
   .nav-responsive{
       display: block;
-  }
+      order: 3; /* Mueve el menú al final */
+      position: absolute;
+      right: 10px; /* Alineado a la derecha */
+      top: 50%;
+      transform: translateY(-50%); /* Centrado verticalmente */
+      cursor: pointer;
+    }
   nav.responsive{
       display: block;
       position: absolute;
@@ -519,6 +610,25 @@ footer .redes a {
       background-color: #252A2E;
       width: 180px;
   }
+
+   /* Banderas y botón de tema centrados */
+   .idioma {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    gap: 10px; /* Espacio entre elementos */
+    order: 2; /* Ubicación en el centro */
+    flex: 0.7;
+  }
+
+  #switch_btn button {
+    border: none;
+    cursor: pointer;
+    /* left: auto; */
+  }
+
+  
+
   nav.responsive ul{
       display: block !important;
   }
@@ -565,7 +675,7 @@ footer .redes a {
   }
   .skills button {
         width: 100%;
-        font-size: 14px;
+        font-size: 22px;
   }
 
   .curriculum .fila{

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,24 +13,35 @@
     <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
-        <!-- menu encabezadoo -->
+        <!-- menu encabezado -->
         <div class="container-header">   
             <header> 
                 <div class="logo">
-                    <a href="#">Portfolio</a>
+                    <img src="assets/img/YP_logo.png" alt="">
                 </div>
                 <nav id="nav">
                             <ul>
-                                <li><a href="#inicio">Home</a></li> 
-                                <li><a href="#sobreMi">Sobre mi</a></li>
-                                <li><a href="#skills">Skills</a></li>
-                                <li><a href="#portafolio">Portfolio</a></li>
-                                <li><a href="#contacto">Contacto</a></li>
+                                <li><a href="#inicio" data-es="Home" data-en="Home">Home</a></li> 
+                                <li><a href="#sobreMi"data-es="Sobre mi" data-en="About me">Sobre mi</a></li>
+                                <li><a href="#skills" data-es="Skills" data-en="Skills">Skills</a></li>
+                                <li><a href="#portafolio" data-es="Portafolio" data-en="Portfolio">Portfolio</a></li>
+                                <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
                             </ul>
                 </nav>  
                 <div class="nav-responsive" onclick="mostrarOcultarMenu()">
                     <i class="fa-solid fa-bars"></i>
-                </div>        
+                </div>   
+                <button id="switch_btn"></button>   
+                <!-- Botones para cambiar de idioma -->
+                 <div class="idioma">
+                    <button class="btn-idioma" id="btn-espanol" onclick="cambiarIdioma('es')">
+                        <img src="https://flagcdn.com/w40/es.png" alt="España">
+                      </button>
+                      <button class="btn-idioma" id="btn-ingles" onclick="cambiarIdioma('en')">
+                        <img src="https://flagcdn.com/w40/us.png" alt="Estados Unidos">
+                      </button>
+                    
+            </div>
             </header>
         </div>
        
@@ -39,11 +50,11 @@
              <section class="inicio" id="inicio">
                 <div class="container-banner">
                     <div class="container-img">
-                        <img src="assets/img/imagenHome.jpg" alt="">
+                        <img src="assets/img/fotoYeder_in.jpeg" alt="">
                     </div>
                     <div>
                         <h1>Yeder Pimentel Tapia</h1>
-                        <h2>Desarrollador web full stack</h2>
+                        <h2 data-es="Desarrollador web full stack" data-en="Full stack web developer" >Desarrollador web full stack</h2>
                     </div>
     
                     <div class="container-redes">
@@ -53,64 +64,69 @@
                 </div>
                 
 
-             </section>
+            </section>
 
-             <!-- aqui empezamos el sobre mi  -->
-              <section  class="sobreMi" id="sobreMi">
+            <!-- aqui empezamos el sobre mi  -->
+            <section  class="sobreMi" id="sobreMi">
                 <div class="container-section">
-                    <h2>SOBRE MI</h2>
+                    <h2 data-es="Sobre mí" data-en="About Me">Sobre mí</h2>
                     <hr>
-                    <p><span>Hola, Soy Yeder Pimentel.</span>🚀 Apasionado por la creación de web dinámicas. Desarrollador web junior con enfoque en JavaScript, React, Angular, Node y Express, en constante búsqueda de nuevos desafíos y oportunidades para crecer en el mundo del desarrollo web.
+                    <p>
+                        <span data-es="Hola, Soy Yeder Pimentel." data-en="Hello, I am Yeder Pimentel."></span>
+                    </p>
+                    <p data-es="Desarrollador web junior con enfoque en JavaScript, TypeScript, React, Angular, Node, y Express, SQL, MySQL." data-en="Junior web developer focused on JavaScript, TypeScript, React, Angular, Node, Express, SQL, and MySQL."></p>
 
-                        💻 Habilidades en el desarrollo de aplicaciones web utilizando tecnologías como JavaScript, React, Angular y CSS3.
-                        
-                        🔧 Competente en el uso de frameworks modernos como Angular para la creación de interfaces de usuario robustas y escalables o librerias como React.
-                        
-                        💡 Apasionado por el aprendizaje continuo y la mejora constante. Siempre buscando estar al tanto de las últimas tendencias y mejores prácticas en el mundo del desarrollo web.
-                        
-                        🤝 Dispuesto a colaborar en equipos multidisciplinarios y contribuir con mis habilidades técnicas y creativas para alcanzar los objetivos del proyecto.
-                        
-                        ¡Conectemos y exploremos juntos nuevas oportunidades en el mundo del desarrollo web!</p>
+                    <p data-es="Actualmente estoy en busca de una nueva oportunidad laboral para seguir desarrollándome como profesional." data-en="I am currently seeking a new job opportunity to continue growing as a professional."></p>
+
+                    <p data-es="💻 Competente en el uso de librerias como React y el uso de Frameworks como Angular para la creación de interfaces de usuario robustas y escalables" data-en="💻Competent in using libraries such as React and frameworks like Angular to create robust and scalable user interfaces."></p>
+                    
+                    <p data-es="💡 Ilusionado por el aprendizaje continuo y la mejora constante." data-en="💡Excited about continuous learning and constant improvement."></p>
+                    
+                    <p data-es="Siempre buscando estar al tanto de las últimas tendencias y mejores prácticas en el mundo del desarrollo web." data-en="Always striving to stay up-to-date with the latest trends and best practices in the world of web development."></p>
+                    
+                    <p data-es="🤝 Dispuesto a colaborar en equipos multidisciplinarios y contribuir con mis habilidades técnicas y creativas para alcanzar los objetivos del proyecto." data-en="🤝 Willing to collaborate in multidisciplinary teams and contribute my technical and creative skills to achieve project goals."></p>
+                    
+                    <p data-es="¡Conectemos y exploremos juntos nuevas oportunidades en el mundo del desarrollo web!" data-en="Let’s connect and explore new opportunities together in the world of web development!"></p>
                 </div>
-              </section>
+            </section>
 
-              <!-- aqui empezamos la parte de skills -->
-               
-              <section  class="skills" id="skills">
+            <!-- aqui empezamos la parte de skills -->
+            
+            <section  class="skills" id="skills">
                     <div class="container-section">
-                        <h2>SKILLS</h2> 
+                        <h2 data-es="SKILLS" data-en="SKILLS"></h2> 
                         <hr>
                         <div class="fila">
                             <!-- skills tecnicos -->
                             <div class="col">
-                                <h3>Skills tecnicos</h3>
-                                <p>
-                                    <strong>Lenguajes de Programación:</strong> HTML5, CSS3, JavaScript, TypeScript, Java, SQL.<br>
-                                    <strong>Frontend:</strong> React, Angular, SASS, Tailwind, React Router, React Hook Form.<br>
-                                    <strong>Backend:</strong> NodeJS, ExpressJS, Express-Validator, JWT, Bcrypt.<br>
-                                    <strong>Bases de Datos:</strong> MySQL, MongoDB, Sequelize, Mongoose.<br>
-                                    <strong>Pruebas:</strong> Jest, Vitest, TDD, Supertest.<br>
-                                    <strong>Herramientas:</strong> Git, GitHub, Postman, VSCode, Trello, Figma, Jira.<br>
-                                    <strong>Metodologías y Principios:</strong> GitFlow, Scrum, Clean Code, MVC, SOLID, POO.
-                                  </p>
+                                <h3 data-es="Skills técnicos" data-en="Technical Skills"> Skills tecnicos</h3>
+                                <!-- <p> -->
+                                    <strong data-es="Lenguajes de Programación:" data-en="Programming Languages:"></strong><p data-es="HTML5, CSS3, JavaScript, TypeScript, Java, SQL.:" data-en="HTML5, CSS3, JavaScript, TypeScript, Java, SQL."></p><br>
+                                    <strong data-es="Frontend:" data-en="Frontend:"></strong><p data-es="React, Angular, SASS, Tailwind, React Router, React Hook Form.:" data-en="React, Angular, SASS, Tailwind, React Router, React Hook Form.:"></p><br>
+                                    <strong data-es="Backend:" data-en="Backend:"></strong><p data-es="NodeJS, ExpressJS, Express-Validator, JWT, Bcrypt.:" data-en="NodeJS, ExpressJS, Express-Validator, JWT, Bcrypt.:"></p><br>
+                                    <strong data-es="Bases de Datos:" data-en="DataBase"></strong><p data-es="MySQL, MongoDB, Sequelize, Mongoose.:" data-en="MySQL, MongoDB, Sequelize, Mongoose.:"></p><br>
+                                    <strong data-es="Pruebas:" data-en="Testing"></strong><p data-es="Jest, Vitest, TDD, Supertest.:" data-en="Jest, Vitest, TDD, Supertest.:"></p><br>
+                                    <strong data-es="Herramientas:" data-en="Tools:"></strong><p data-es="Git, GitHub, Postman, VSCode, Trello, Figma, Jira.:" data-en="Git, GitHub, Postman, VSCode, Trello, Figma, Jira.:"></p><br>
+                                    <strong data-es="Metodologías y Principios:" data-en="Methodologies and Principles:"></strong><p data-es="GitFlow, Scrum, Clean Code, MVC, SOLID, POO.:" data-en="GitFlow, Scrum, Clean Code, MVC, SOLID, POO.:">
+                                    <!-- </p> --></p>
                                   
                             </div>
                             <!-- skills profesionales -->
                             <div class="col">
-                                <h3>Skills profesionales</h3>
-                                <p>
-                                    <strong>Trabajo en Equipo:</strong> Experiencia en metodologías ágiles como Scrum y Kanban, resolución de problemas en equipo bajo presión.<br>
-                                    <strong>Gestión del Tiempo:</strong> Priorización de tareas para cumplir con fechas de entrega ajustadas.<br>
-                                    <strong>Adaptabilidad y Aprendizaje:</strong> Capacidad para aprender nuevas tecnologías y herramientas rápidamente, adaptación a cambios rápidos en requisitos de proyectos.<br>
-                                    <strong>Resolución de Problemas:</strong> Análisis lógico para identificar y solucionar errores en el código, implementación de soluciones escalables y eficientes.<br>
-                                    <strong>Creatividad:</strong> Innovación en el diseño de interfaces y flujos de usuario.
-                                  </p>
+                                <h3 data-es="Skills profesionales" data-en="Professional Skills">Skills profesionales</h3>
+                                
+                                <strong  data-es="Trabajo en equipo:" data-en="Teamwork:"></strong><p data-es="Experiencia en metodologías ágiles como Scrum y Kanban, resolución de problemas en equipo bajo presión.:" data-en="Experience with agile methodologies such as Scrum and Kanban, team problem-solving under pressure.:"></p><br>
+                                <strong  data-es="Gestión del Tiempo:" data-en="Time Management:"></strong> <p data-es="Priorización de tareas para cumplir con fechas de entrega ajustadas.:" data-en="Task prioritization to meet tight deadlines."></p><br>
+                                <strong  data-es="Adaptabilidad y Aprendizaje:" data-en="Adaptability and Learning:"></strong> <p data-es="Capacidad para aprender nuevas tecnologías y herramientas rápidamente, adaptación a cambios rápidos en requisitos de proyectos." data-en="Ability to quickly learn new technologies and tools, adapt to rapid project requirement changes."></p><br>
+                                <strong  data-es="Resolución de Problemas:" data-en="Problem Solving:" ></strong><p data-es="Análisis lógico para identificar y solucionar errores en el código, implementación de soluciones escalables y eficientes." data-en="Logical analysis to identify and fix code errors, implementing scalable and efficient solutions."></p><br>
+                                <strong  data-es="Creatividad:" data-en="Creativity:"></strong> <p data-es="Innovación en el diseño de interfaces y flujos de usuario." data-en="Innovation in designing user interfaces and workflows." ></p> 
+                    
                             </div>
                         </div>
-                            <a href="assets/Yeder_CV_def.pdf" download="Mi_CV">
+                            <a href="assets/Yeder_CV_def.pdf" download="YEDER_PIMENTEL_CV" >
                                 <button>
-                                    Descargar CV <i class="fa-solid fa-download"></i>
-                                    <span class="overlay"></span>
+                                    Download CV <i class="fa-solid fa-download"></i>
+                                    <span class="overlay" ></span>
                                 </button>
                             </a>
 
@@ -120,49 +136,50 @@
                 <!-- aqui la parte de parte de los proyectos del portafoilio -->
                 <section id="portafolio" class="portafolio">
                     <div class="container-section">
-                        <h2>PORTFOLIO</h2>
+                        <h2 data-es="PORTAFOLIO" data-en="PORTFOLIO"></h2>
                         <hr>
                         <div class="galeria">
                             <div class="proyecto" onclick="openInNewTab('https://github.com/Yedpt/musenion');">
                                 <img src="assets/img/musenion.png" alt="musenion">
                                 <div class="overlay">
                                     <h3>Musenion</h3>
-                                    <p>creative web platform where users can explore an interactive virtual gallery and upload memes for community engagement.</p>
+                                    <p data-es="Plataforma web creativa donde los usuarios pueden explorar una galería virtual interactiva y cargar memes para la participación de la comunidad.    " data-en="creative web platform where users can explore an interactive virtual gallery and upload memes for community engagement."></p>
                                 </div>
                             </div>
                             <div class="proyecto" onclick="openInNewTab('https://github.com/Wilder-Aguilar/gitGame?tab=readme-ov-file');">
                                 <img src="assets/img/gitGame.png" alt="gitgame">
                                 <div class="overlay">
                                     <h3>GitGame</h3>
-                                    <p>plataforma completa para los apasionados de los videojuegos. Aquí encontrarás noticias, videos, lanzamientos y reseñas de los títulos más actuales y relevantes. </p>
+                                    <p data-es="plataforma completa para los apasionados de los videojuegos. Aquí encontrarás noticias, videos, lanzamientos y reseñas de los títulos más actuales y relevantes. " data-en="Complete platform for video game enthusiasts. Here you will find news, videos, releases and reviews of the most current and relevant titles."></p>
                                 </div>
                             </div>
                             <div class="proyecto" onclick="openInNewTab('https://github.com/Yedpt/cleanCode');">
                                 <img src="assets/img/cleanCode.png" alt="cleanCode">
                                 <div class="overlay">
                                     <h3>Clean Code</h3>
-                                    <p>Plataforma para los apasionados de la Programación web. Aquí encontrarás noticias, videos, recursos de los lenguajes de programacion web más actuales.</p>
+                                    <p data-es="Plataforma para los apasionados de la Programación web. Aquí encontrarás noticias, videos, recursos de los lenguajes de programacion web más actuales." data-en="Platform for those passionate about web programming. Here you will find news, videos, resources on the most current web programming languages."></p>
                                 </div>
                             </div>
                             <div class="proyecto" onclick="openInNewTab('https://github.com/Yedpt/BeatSchool');">
                                 <img src="assets/img/beatSchool.png" alt="beatSchool">
                                 <div class="overlay">
                                     <h3>BeatSchool</h3>
-                                    <p>escuela de música online que ofrece lecciones flexibles con instrumentos virtuales, haciendo la educación musical accesible y asequible.</p>
+                                    <p data-es="escuela de música online que ofrece lecciones flexibles con instrumentos virtuales, haciendo la educación musical accesible y asequible." data-en="
+                                    online music school offering flexible lessons with virtual instruments, making music education accessible and affordable."></p>
                                 </div>
                             </div>
                             <div class="proyecto" onclick="openInNewTab('https://github.com/Yedpt/backCatArte')">
                                 <img src="assets/img/backCatArte.png" alt="backCatArte">
                                 <div class="overlay">
                                     <h3>BackCatArte</h3>
-                                    <p>proyecto desarrollado para "MeCat" el museo virtual dedicado a los memes de gatos más divertidos y virales, con el objetivo de centralizar y gestionar la información de toda su colección de memes felinos en una base de datos relacional.</p>
+                                    <p data-es="proyecto desarrollado para MeCat el museo virtual dedicado a los memes de gatos más divertidos y virales, con el objetivo de centralizar y gestionar la información de toda su colección de memes felinos en una base de datos relacional." data-en="project developed for MeCat, the virtual museum dedicated to the funniest and most viral cat memes, with the aim of centralizing and managing the information of its entire collection of feline memes in a relational database."></p>
                                 </div>
                             </div>
                             <div class="proyecto" onclick="openInNewTab('https://github.com/Yedpt/RSI_trade_project-Client')">
                                 <img src="assets/img/rsi_trade.png" alt="rsi_trade">
                                 <div class="overlay">
                                     <h3>Trade Project</h3>
-                                    <p>plataforma innovadora que combina las mejores herramientas de inversión y bolsa de valores con técnicas de gamificación para hacer que aprender y ganar en los mercados financieros sea más emocionante y accesible.</p>
+                                    <p data-es="plataforma innovadora que combina las mejores herramientas de inversión y bolsa de valores con técnicas de gamificación para hacer que aprender y ganar en los mercados financieros sea más emocionante y accesible." data-en="innovative platform that combines the best investment and stock market tools with gamification techniques to make learning and earning in the financial markets more exciting and accessible."></p>
                                 </div>
                             </div>
                         </div>
@@ -173,7 +190,7 @@
                 <!-- aqui la parte de contacto -->
                 <section  class="contacto" id="contacto">
                     <div class="container-section">
-                        <h2>CONTACTO</h2>
+                        <h2 data-es="CONTACTO" data-en="CONTACT"></h2>
                         <hr>
                         <div class="fila">
                             <!-- formulario -->
@@ -184,7 +201,7 @@
                                 <input type="text" placeholder="Tema">
                                 <textarea name="" id="" cols="30" rows="10" placeholder="Mensaje"></textarea>
                                 <button class="button">
-                                    Enviar Mensaje<i class="fa-solid fa-paper-plane"></i>
+                                    Send Message<i class="fa-solid fa-paper-plane"></i>
                                     <span class="overlay"></span>
                                 </button>
                             </div>
