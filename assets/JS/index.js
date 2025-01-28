@@ -13,23 +13,39 @@ function mostrarOcultarMenu(){
 }
 /* dark theme and light theme */
 
-const OSTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+// Detecta la preferencia del sistema operativo
+const OSTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
-const switchBtn = document.getElementById("switch_btn")
+// Selecciona el botón de cambio de tema
+const switchBtn = document.getElementById("switch_btn");
 
+// Función para establecer el tema
 let setTheme = (theme) => {
-    localStorage.setItem("theme", theme)
-    document.documentElement.setAttribute("data-theme", theme)
-}
+    localStorage.setItem("theme", theme); // Guarda el tema en localStorage
+    document.documentElement.setAttribute("data-theme", theme); // Aplica el tema al atributo data-theme
+};
 
+// Función para alternar el tema
 let getTheme = () => {
-    let switchTheme = localStorage.getItem("theme") === 'dark' ? "light" : "dark"
-    setTheme(switchTheme)
-}
+    let currentTheme = localStorage.getItem("theme") === 'dark' ? 'light' : 'dark';
+    setTheme(currentTheme);
+};
 
-switchBtn.addEventListener("click", getTheme)
+// Inicializa el tema al cargar la página
+let initializeTheme = () => {
+    let savedTheme = localStorage.getItem("theme"); // Recupera el tema guardado en localStorage
+    if (!savedTheme) {
+        savedTheme = 'dark'; // Si no hay tema guardado, establece "dark" por defecto
+    }
+    setTheme(savedTheme);
+};
 
-setTheme(localStorage.getItem("theme" ||OSTheme))
+// Escucha el clic en el botón para alternar el tema
+switchBtn.addEventListener("click", getTheme);
+
+// Llama a la función de inicialización
+initializeTheme();
+
 
 /* funcion para cambiar de idioma */
 
