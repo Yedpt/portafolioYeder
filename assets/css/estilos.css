@@ -188,7 +188,7 @@ section {
 }
 
 .inicio .container-banner h2 {
-  font-size: 25px;
+  font-size: 28px;
   margin-bottom: 15px;
 }
 
@@ -197,6 +197,7 @@ section {
 .container-redes .fa-brands {
   display: inline-block;
   font-size: 30px;
+  color: #1CB698;
   margin-right: 10px; 
   margin-left: 10px;
 }
@@ -484,7 +485,7 @@ section {
   border: none;
   margin-bottom: 0;
   background-color: #252A2E;
-  /* color: #fff; */
+  color: #1CB698;
   font-size: 18px;
 }
 .contacto .button {
@@ -540,12 +541,24 @@ section {
 }
 .contacto .col .info ul li{
   margin-bottom: 20px;
+  color: #1CB698
 }
 .contacto .col .info ul li i{
   color: #1CB698;
   display: inline-block;
   margin-right: 20px;
 }
+
+input::placeholder {
+  color: #D2D3D4; /* Cambia el color del texto del placeholder */
+  opacity: 1; /* Asegura que el color sea visible */
+}
+
+textarea::placeholder{
+  color:  #D2D3D4;
+  opacity: 1;
+}
+
  
  /* La parte del footer  */
 
@@ -593,28 +606,61 @@ footer .redes a {
 
 } 
 
+footer .fa-brands {
+  color: #1CB698;
+}
+
 /* seccion mediaqueries */
 
 @media screen and (max-width:980px){
-  nav{
-      display: none;
+  nav {
+    display: none;
   }
-  .nav-responsive{
-      display: block;
-      order: 3; /* Mueve el menú al final */
-      position: absolute;
-      right: 10px; /* Alineado a la derecha */
-      top: 50%;
-      transform: translateY(-50%); /* Centrado verticalmente */
-      cursor: pointer;
-    }
-  nav.responsive{
-      display: block;
-      position: absolute;
-      right: 0;
-      top: 75px;
-      background-color: #252A2E;
-      width: 180px;
+
+  .nav-responsive {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 100;
+  }
+
+  nav.responsive {
+    display: block;
+    position: fixed; /* Para que cubra toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa todo el ancho */
+    height: 100vh; /* Ocupa todo el alto */
+    background-color: #252A2E;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  nav.responsive ul {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    list-style: none;
+  }
+
+  nav.responsive ul li {
+    padding: 20px 0;
+    border-bottom: none !important;
+  }
+
+  nav.responsive ul li a {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    border-bottom: none;
+    display: block;
+    padding: 15px;
   }
 
    /* Banderas y botón de tema centrados */
@@ -651,6 +697,11 @@ footer .redes a {
     margin: 10px;
     text-align: center;
     border-radius: 40px;
+}
+
+.inicio .container-banner h2 {
+  font-size: 25px;
+  margin-bottom: 15px;
 }
   
 

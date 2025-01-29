@@ -75,3 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function openInNewTab(url) { 
     window.open(url, '_blank');
 }
+
+// Selecciona todos los enlaces dentro del menú
+document.querySelectorAll("#nav ul li a").forEach(enlace => {
+    enlace.addEventListener("click", function () {
+        document.getElementById("nav").classList = ""; // Cierra el menú
+        menuVisible = false; // Actualiza la variable de estado
+    });
+});
