@@ -93,10 +93,10 @@ body {
   transition: background-color, color 0.8s;
 }
 
-
+/* 
 section {
   margin: 10px 0;
-}
+} */
 /* MENU  */
 .container-header {
   background-color: #4e5155;
@@ -632,12 +632,21 @@ footer .redes a {
     cursor: pointer;
     /* left: auto; */
   }
+  
+  .inicio {
+    background-size: cover;
+    height: 90vh;
+    /* color: #fff; */
+    display: flex
+;
+    align-items: center;
+}
 
   .inicio .container-banner {
     padding: 20px;
     background-color: var(--colorBanner);
     max-width: 500px;
-    height: 80vh;
+    height: 65vh;
     margin: 10px;
     text-align: center;
     border-radius: 40px;
