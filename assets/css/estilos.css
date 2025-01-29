@@ -158,16 +158,16 @@ section {
 .inicio {
   background-size: cover;
   height: 100vh;
-  /* color: #fff; */
   display: flex;
   align-items: center;
+  margin-top: 80px; /* Ajusta este valor según la altura del menú */
 }
 
 .inicio .container-banner{
   padding: 20px;
   background-color: var(--colorBanner);
   max-width: 500px;
-  height: 80vh;
+  height: 90vh;
   margin: auto;
   text-align: center;
   border-radius: 40px;
@@ -635,9 +635,10 @@ footer .redes a {
   
   .inicio {
     background-size: cover;
-    height: 90vh;
+    height: 85vh;
     /* color: #fff; */
-    display: flex
+    display: flex;
+    margin-top: 80px
 ;
     align-items: center;
 }
@@ -646,7 +647,7 @@ footer .redes a {
     padding: 20px;
     background-color: var(--colorBanner);
     max-width: 500px;
-    height: 65vh;
+    height: 75vh;
     margin: 10px;
     text-align: center;
     border-radius: 40px;
@@ -667,7 +668,7 @@ footer .redes a {
 }
 
 .sobreMi {
-  padding: 0 0 0 0;
+  padding: 0 0 0 20px;
 }
 
 .sobreMi .container-section {
