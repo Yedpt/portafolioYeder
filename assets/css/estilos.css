@@ -517,6 +517,12 @@ section {
 .contacto button:hover .overlay{
   width: 100%;
 }
+
+.contacto .button i {
+  margin-left: 8px; /* Ajusta el valor según el espacio que quieras */
+}
+
+
 .contacto .col img{
   width: 100%;
 }
@@ -627,6 +633,15 @@ footer .redes a {
     /* left: auto; */
   }
 
+  .inicio .container-banner {
+    padding: 20px;
+    background-color: var(--colorBanner);
+    max-width: 500px;
+    height: 80vh;
+    margin: 10px;
+    text-align: center;
+    border-radius: 40px;
+}
   
 
   nav.responsive ul{
@@ -641,6 +656,24 @@ footer .redes a {
     font-size: 14px; /* Tamaño de letra */
     margin: 0; /* Elimina margen extra */ 
 }
+
+.sobreMi .container-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Espacio entre cada párrafo */
+}
+
+.skills .col {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;/* Espacio entre cada grupo */
+}
+
+.skills .fila .col {
+  width: 100%;
+  padding: 40px 0 30px;
+}
+
 
 .footer-section {
   display: inline-block;
