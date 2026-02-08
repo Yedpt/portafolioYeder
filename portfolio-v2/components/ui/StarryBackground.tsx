@@ -55,25 +55,25 @@ export const StarryBackground = () => {
   const isDark = theme === 'dark';
   const bgGradient = isDark 
     ? 'bg-linear-to-br from-[#0a0e1a] via-[#1a1f35] to-[#0a0e1a]'
-    : 'bg-linear-to-br from-gray-50 via-gray-100 to-gray-50';
+    : 'bg-linear-to-br from-white via-blue-50/30 to-white';
   
-  const orbColor1 = isDark ? 'bg-purple-500/10' : 'bg-purple-900/8';
-  const orbColor2 = isDark ? 'bg-cyan-500/10' : 'bg-cyan-900/8';
+  const orbColor1 = isDark ? 'bg-purple-500/10' : 'bg-blue-400/8';
+  const orbColor2 = isDark ? 'bg-cyan-500/10' : 'bg-cyan-400/8';
   
   const starGradient = isDark 
     ? 'from-cyan-400 to-purple-400' 
-    : 'from-cyan-900 to-purple-900';
+    : 'from-blue-500 to-cyan-500';
   
-  const starShadow = isDark ? 'shadow-cyan-400/50' : 'shadow-cyan-900/30';
+  const starShadow = isDark ? 'shadow-cyan-400/50' : 'shadow-blue-500/40';
   
   const shootingStarGradient = isDark
     ? 'from-cyan-400 to-transparent'
-    : 'from-cyan-900 to-transparent';
+    : 'from-blue-500 to-transparent';
   
-  const shootingStarShadow = isDark ? 'shadow-cyan-400/50' : 'shadow-cyan-900/30';
+  const shootingStarShadow = isDark ? 'shadow-cyan-400/50' : 'shadow-blue-500/40';
   
-  const gridColor = isDark ? '#06b6d4' : '#0a0e1a';
-  const gridOpacity = isDark ? 0.02 : 0.03;
+  const gridColor = isDark ? '#06b6d4' : '#3b82f6';
+  const gridOpacity = isDark ? 0.02 : 0.015;
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">

@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f5f7fa;
-  --foreground: #0a0e1a;
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --border-color: rgba(139, 92, 246, 0.15);
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --border-color: rgba(59, 130, 246, 0.2);
 }
 
 .dark {
@@ -53,7 +53,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0e1a;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {

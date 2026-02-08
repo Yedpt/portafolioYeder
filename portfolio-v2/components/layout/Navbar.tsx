@@ -49,7 +49,7 @@ export const Navbar = () => {
                 priority
               />
             </div>
-            <span className="text-cyan-400 font-semibold text-lg hidden sm:block group-hover:text-purple-400 transition-colors">Yeder Pimentel</span>
+            <span className="text-slate-700 dark:text-cyan-400 font-semibold text-lg hidden sm:block group-hover:text-blue-600 dark:group-hover:text-purple-400 transition-colors">Yeder Pimentel</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -58,7 +58,7 @@ export const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 relative group"
+                className="text-slate-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors duration-300 relative group font-medium"
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-cyan-400 to-purple-500 group-hover:w-full transition-all duration-300"></span>
@@ -71,7 +71,7 @@ export const Navbar = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 transition-colors duration-300 text-cyan-400"
+              className="p-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 transition-colors duration-300 text-blue-600 dark:text-cyan-400"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
@@ -80,7 +80,7 @@ export const Navbar = () => {
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
-              className="px-3 py-1.5 rounded-lg bg-linear-to-r from-cyan-500/10 to-purple-500/10 hover:from-cyan-500/20 hover:to-purple-500/20 transition-all duration-300 text-cyan-400 font-semibold border border-purple-500/20"
+              className="px-3 py-1.5 rounded-lg bg-linear-to-r from-cyan-500/10 to-purple-500/10 hover:from-cyan-500/20 hover:to-purple-500/20 transition-all duration-300 text-blue-600 dark:text-cyan-400 font-semibold border border-purple-500/20"
             >
               {lang.toUpperCase()}
             </button>
@@ -89,7 +89,7 @@ export const Navbar = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg text-cyan-400 hover:bg-purple-500/10 transition-colors"
+            className="md:hidden p-2 rounded-lg text-blue-600 dark:text-cyan-400 hover:bg-purple-500/10 transition-colors"
           >
             {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
@@ -109,7 +109,7 @@ export const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="block text-gray-300 hover:text-cyan-400 transition-colors duration-300 py-2"
+                className="block text-slate-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors duration-300 py-2 font-medium"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
@@ -118,13 +118,13 @@ export const Navbar = () => {
             <div className="flex items-center space-x-3 pt-3 border-t border-purple-500/20">
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 transition-colors text-cyan-400"
+                className="p-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 transition-colors text-blue-600 dark:text-cyan-400"
               >
                 {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
               </button>
               <button
                 onClick={toggleLanguage}
-                className="px-3 py-1.5 rounded-lg bg-linear-to-r from-cyan-500/10 to-purple-500/10 text-cyan-400 font-semibold"
+                className="px-3 py-1.5 rounded-lg bg-linear-to-r from-cyan-500/10 to-purple-500/10 text-blue-600 dark:text-cyan-400 font-semibold"
               >
                 {lang.toUpperCase()}
               </button>

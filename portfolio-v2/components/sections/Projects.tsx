@@ -24,118 +24,115 @@ interface Project {
   statusColor: string;
 }
 
-// Datos de ejemplo - Usuario debe reemplazar con sus proyectos reales
 const getProjects = (): Project[] => [
   {
     id: 1,
-    title: { es: 'Juntea - App de Eventos', en: 'Juntea - Events App' },
+    title: { es: 'Computer Vision - Detección de Logos', en: 'Computer Vision - Logo Detection' },
     description: { 
-      es: 'Aplicación móvil para gestión de eventos desarrollada con Flutter y Dart. Permite a los usuarios crear, gestionar y participar en eventos de manera intuitiva.', 
-      en: 'Mobile application for event management developed with Flutter and Dart. Allows users to create, manage and participate in events intuitively.' 
+      es: 'Sistema de detección de objetos utilizando Computer Vision y Deep Learning. Identifica y clasifica logos en imágenes con alta precisión mediante redes neuronales convolucionales.', 
+      en: 'Object detection system using Computer Vision and Deep Learning. Identifies and classifies logos in images with high precision using convolutional neural networks.' 
     },
-    image: '/images/projects/juntea.gif', // Usuario debe agregar esta imagen
+    image: '/images/projects/computer-vision.gif',
     technologies: [
-      { name: 'Flutter', icon: SiFlutter, color: '#02569B' },
-      { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
-      { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+      { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'TensorFlow', icon: SiPython, color: '#FF6F00' },
     ],
-    demoType: 'live',
-    demoUrl: 'https://juntea.vercel.app', // Ejemplo
-    githubUrl: 'https://github.com/Yedpt/juntea',
-    status: { es: 'Live', en: 'Live' },
-    statusColor: '#10B981',
+    demoType: 'video',
+    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
+    githubUrl: 'https://github.com/Yedpt/Proyecto-computer-vision--Deteccion-de-objetos',
+    status: { es: 'Proyecto', en: 'Project' },
+    statusColor: '#8B5CF6',
   },
   {
     id: 2,
-    title: { es: 'Academia Chapiri', en: 'Chapiri Academy' },
+    title: { es: 'LLM Generador de Contenido', en: 'LLM Content Generator' },
     description: { 
-      es: 'Plataforma educativa moderna para la Academia Chapiri. Diseñada con un sistema de gestión de cursos, recursos educativos interactivos y seguimiento del progreso del estudiante.', 
-      en: 'Modern educational platform for Chapiri Academy. Designed with a course management system, interactive educational resources and student progress tracking.' 
+      es: 'Aplicación de generación de contenido impulsada por Large Language Models. Crea textos contextualizados y coherentes para diversas aplicaciones usando IA avanzada.', 
+      en: 'Content generation application powered by Large Language Models. Creates contextualized and coherent texts for various applications using advanced AI.' 
     },
-    image: '/images/projects/chapiri.gif', // Usuario debe agregar esta imagen
+    image: '/images/projects/llm-generator.gif',
     technologies: [
-      { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'Next.js', icon: SiNextdotjs, color: '#FFFFFF' },
       { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
-      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
     ],
     demoType: 'video',
-    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID', // Usuario debe agregar video ID
-    githubUrl: 'https://github.com/Yedpt/academia-chapiri',
+    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
+    githubUrl: 'https://github.com/Yedpt/proyecto-LLMs-generador-de-contenido',
     status: { es: 'Proyecto', en: 'Project' },
     statusColor: '#8B5CF6',
   },
   {
     id: 3,
-    title: { es: 'El Ataque de los Goblins', en: 'Goblin Attack' },
+    title: { es: 'Petland F5 - Tienda de Mascotas', en: 'Petland F5 - Pet Store' },
     description: { 
-      es: 'Un emocionante juego Tower Defense desarrollado con Unity 3D y C#. Defiende tu reino de las hordas de goblins con estrategia y torres especializadas.', 
-      en: 'An exciting Tower Defense game developed with Unity 3D and C#. Defend your kingdom from goblin hordes with strategy and specialized towers.' 
+      es: 'E-commerce completo para tienda de mascotas con carrito de compras, gestión de productos, sistema de usuarios y panel de administración integrado.', 
+      en: 'Complete e-commerce for pet store with shopping cart, product management, user system and integrated admin panel.' 
     },
-    image: '/images/projects/goblins.gif', // Usuario debe agregar esta imagen
-    technologies: [
-      { name: 'Unity 3D', icon: SiUnity, color: '#FFFFFF' },
-      { name: 'C#', icon: SiSharp, color: '#239120' },
-    ],
-    demoType: 'live',
-    demoUrl: 'https://goblins-game.vercel.app', // Ejemplo
-    githubUrl: 'https://github.com/Yedpt/goblin-attack',
-    status: { es: 'Live', en: 'Live' },
-    statusColor: '#10B981',
-  },
-  {
-    id: 4,
-    title: { es: 'Portfolio Interactivo', en: 'Interactive Portfolio' },
-    description: { 
-      es: 'Portfolio personal desarrollado con Next.js 16 y Tailwind CSS. Diseño moderno con animaciones fluidas, modo oscuro/claro y soporte multiidioma.', 
-      en: 'Personal portfolio developed with Next.js 16 and Tailwind CSS. Modern design with smooth animations, dark/light mode and multi-language support.' 
-    },
-    image: '/images/projects/portfolio.gif', // Usuario debe agregar esta imagen
-    technologies: [
-      { name: 'Next.js', icon: SiNextdotjs, color: '#FFFFFF' },
-      { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
-      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
-    ],
-    demoType: 'live',
-    demoUrl: 'https://yeder-portfolio.vercel.app', // Ejemplo
-    githubUrl: 'https://github.com/Yedpt/portfolio-v2',
-    status: { es: 'Live', en: 'Live' },
-    statusColor: '#10B981',
-  },
-  {
-    id: 5,
-    title: { es: 'Sistema de Análisis IA', en: 'AI Analysis System' },
-    description: { 
-      es: 'Sistema de análisis de datos utilizando Machine Learning y Python. Incluye modelos predictivos, visualización de datos y procesamiento en tiempo real.', 
-      en: 'Data analysis system using Machine Learning and Python. Includes predictive models, data visualization and real-time processing.' 
-    },
-    image: '/images/projects/ai-system.gif', // Usuario debe agregar esta imagen
-    technologies: [
-      { name: 'Python', icon: SiPython, color: '#3776AB' },
-      { name: 'Next.js', icon: SiNextdotjs, color: '#FFFFFF' },
-      { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
-    ],
-    demoType: 'video',
-    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID', // Usuario debe agregar video ID
-    githubUrl: 'https://github.com/Yedpt/ai-analysis-system',
-    status: { es: 'Proyecto', en: 'Project' },
-    statusColor: '#8B5CF6',
-  },
-  {
-    id: 6,
-    title: { es: 'Dashboard Empresarial', en: 'Business Dashboard' },
-    description: { 
-      es: 'Panel de control empresarial con visualización de métricas en tiempo real. Gestión de equipos, proyectos y análisis de productividad.', 
-      en: 'Business control panel with real-time metrics visualization. Team management, projects and productivity analysis.' 
-    },
-    image: '/images/projects/dashboard.gif', // Usuario debe agregar esta imagen
+    image: '/images/projects/petland.gif',
     technologies: [
       { name: 'React', icon: SiReact, color: '#61DAFB' },
       { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
       { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
     ],
+    demoType: 'live',
+    demoUrl: 'https://petland-f5.vercel.app',
+    githubUrl: 'https://github.com/Yedpt/petland_f5',
+    status: { es: 'Live', en: 'Live' },
+    statusColor: '#10B981',
+  },
+  {
+    id: 4,
+    title: { es: 'CleanCode - Principios SOLID', en: 'CleanCode - SOLID Principles' },
+    description: { 
+      es: 'Proyecto educativo que demuestra la aplicación de principios de Clean Code y patrones SOLID. Implementa las mejores prácticas de desarrollo de software.', 
+      en: 'Educational project demonstrating the application of Clean Code principles and SOLID patterns. Implements software development best practices.' 
+    },
+    image: '/images/projects/cleancode.gif',
+    technologies: [
+      { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+      { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+    ],
     demoType: 'video',
-    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID', // Usuario debe agregar video ID
-    githubUrl: 'https://github.com/Yedpt/business-dashboard',
+    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
+    githubUrl: 'https://github.com/Yedpt/cleanCode',
+    status: { es: 'Proyecto', en: 'Project' },
+    statusColor: '#8B5CF6',
+  },
+  {
+    id: 5,
+    title: { es: 'GitGame - Aprender Git Jugando', en: 'GitGame - Learn Git by Playing' },
+    description: { 
+      es: 'Juego interactivo para aprender comandos de Git de forma divertida. Incluye desafíos progresivos y feedback en tiempo real para dominar el control de versiones.', 
+      en: 'Interactive game to learn Git commands in a fun way. Includes progressive challenges and real-time feedback to master version control.' 
+    },
+    image: '/images/projects/gitgame.gif',
+    technologies: [
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
+    ],
+    demoType: 'live',
+    demoUrl: 'https://gitgame.vercel.app',
+    githubUrl: 'https://github.com/Yedpt/GitGame',
+    status: { es: 'Live', en: 'Live' },
+    statusColor: '#10B981',
+  },
+  {
+    id: 6,
+    title: { es: 'Dog Breed Identifier - ML', en: 'Dog Breed Identifier - ML' },
+    description: { 
+      es: 'Identificador de razas de perros usando Machine Learning y redes neuronales. Clasifica más de 120 razas diferentes con alta precisión mediante visión artificial.', 
+      en: 'Dog breed identifier using Machine Learning and neural networks. Classifies over 120 different breeds with high accuracy using computer vision.' 
+    },
+    image: '/images/projects/dog-breed.gif',
+    technologies: [
+      { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
+    ],
+    demoType: 'video',
+    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
+    githubUrl: 'https://github.com/Yedpt/Dog_Breed_Identifier_ML',
     status: { es: 'Proyecto', en: 'Project' },
     statusColor: '#8B5CF6',
   },
@@ -190,7 +187,7 @@ export const Projects = () => {
             return (
               <motion.div
                 key={project.id}
-                className="group relative bg-white/80 dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-purple-500/20 rounded-xl overflow-hidden hover:border-purple-500/40 transition-all duration-300"
+                className="group relative bg-linear-to-br from-slate-700 to-slate-800 dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-400/30 dark:border-purple-500/20 rounded-xl overflow-hidden hover:border-blue-500/50 dark:hover:border-purple-500/40 transition-all duration-300 shadow-lg shadow-blue-900/20 dark:shadow-purple-900/20"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -233,12 +230,12 @@ export const Projects = () => {
                 {/* Contenido */}
                 <div className="p-6">
                   {/* Título */}
-                  <h3 className="text-xl font-bold mb-3 text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">
+                  <h3 className="text-xl font-bold mb-3 text-white dark:text-transparent dark:bg-clip-text dark:bg-linear-to-r dark:from-cyan-400 dark:to-purple-500">
                     {project.title[lang]}
                   </h3>
 
                   {/* Descripción */}
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 leading-relaxed">
+                  <p className="text-sm text-gray-200 dark:text-gray-400 mb-4 line-clamp-3 leading-relaxed">
                     {project.description[lang]}
                   </p>
 
@@ -249,11 +246,11 @@ export const Projects = () => {
                       return (
                         <div
                           key={tech.name}
-                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-[#1a1f35]/50 border border-purple-500/10"
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-600/50 dark:bg-[#1a1f35]/50 border border-blue-400/20 dark:border-purple-500/10"
                           title={tech.name}
                         >
                           <Icon style={{ color: tech.color }} className="text-sm" />
-                          <span className="text-xs text-gray-700 dark:text-gray-400 font-medium">{tech.name}</span>
+                          <span className="text-xs text-gray-100 dark:text-gray-400 font-medium">{tech.name}</span>
                         </div>
                       );
                     })}
