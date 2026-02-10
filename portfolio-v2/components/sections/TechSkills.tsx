@@ -127,7 +127,7 @@ export const TechSkills = () => {
           {techCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
-              className="bg-white/70 dark:bg-[#0a0e1a]/50 backdrop-blur-sm border border-purple-500/20 rounded-xl p-5 hover:border-purple-500/40 transition-all duration-300"
+              className="bg-white/70 dark:bg-[#0a0e1a]/50 backdrop-blur-sm border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300 min-h-70 flex flex-col"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -139,7 +139,7 @@ export const TechSkills = () => {
               </h3>
 
               {/* Grid de tecnologías */}
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-3 flex-1">
                 {category.techs.map((tech, techIndex) => {
                   const Icon = tech.icon;
                   return (

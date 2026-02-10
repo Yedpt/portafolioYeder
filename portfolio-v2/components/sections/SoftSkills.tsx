@@ -140,7 +140,7 @@ export const SoftSkills = () => {
               >
                 {/* Card con efecto neon */}
                 <div 
-                  className="relative bg-white/70 dark:bg-[#0a0e1a]/70 backdrop-blur-sm border rounded-xl p-5 h-full flex flex-col items-center justify-center text-center transition-all duration-300 group-hover:bg-white/90 dark:group-hover:bg-[#0f1729]"
+                  className="relative bg-white/70 dark:bg-[#0a0e1a]/70 backdrop-blur-sm border rounded-xl p-6 h-full min-h-45 flex flex-col items-center justify-center text-center transition-all duration-300 group-hover:bg-white/90 dark:group-hover:bg-[#0f1729]"
                   style={{
                     borderColor: `${skill.color}40`,
                     boxShadow: `0 0 20px ${skill.color}15`,
