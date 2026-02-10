@@ -1,20 +1,21 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { FiExternalLink, FiGithub, FiX, FiPlay } from 'react-icons/fi';
+import { FiExternalLink, FiGithub, FiX, FiPlay, FiMaximize2 } from 'react-icons/fi';
+import Image from 'next/image';
+import Lottie from 'lottie-react';
 import { 
   SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, 
-  SiNodedotjs, SiMongodb, SiPython, SiFlutter, 
-  SiUnity, SiSharp 
+  SiNodedotjs, SiMongodb, SiPython
 } from 'react-icons/si';
 
 interface Project {
   id: number;
   title: { es: string; en: string };
   description: { es: string; en: string };
-  image: string; // Ruta de la imagen o GIF
+  image: string; // Ruta de la imagen/GIF o archivo Lottie JSON
   technologies: Array<{ name: string; icon: React.ComponentType<{ style?: React.CSSProperties; className?: string; size?: number }>; color: string }>;
   demoType: 'live' | 'video'; // 'live' para link directo, 'video' para modal con video
   demoUrl?: string; // URL del demo en vivo
@@ -32,14 +33,14 @@ const getProjects = (): Project[] => [
       es: 'Sistema de detección de objetos utilizando Computer Vision y Deep Learning. Identifica y clasifica logos en imágenes con alta precisión mediante redes neuronales convolucionales.', 
       en: 'Object detection system using Computer Vision and Deep Learning. Identifies and classifies logos in images with high precision using convolutional neural networks.' 
     },
-    image: '/images/projects/computer-vision.gif',
+    image: '/images/projects/computer-vision.json',
     technologies: [
       { name: 'Python', icon: SiPython, color: '#3776AB' },
       { name: 'TensorFlow', icon: SiPython, color: '#FF6F00' },
     ],
     demoType: 'video',
-    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
-    githubUrl: 'https://github.com/Yedpt/Proyecto-computer-vision--Deteccion-de-objetos',
+    videoUrl: 'https://www.youtube.com/embed/XWhtPLFnb5A',
+    githubUrl: 'https://github.com/Yedpt/PROYECTO-COMPUTER-VISION---Deteccion-de-Objetos',
     status: { es: 'Proyecto', en: 'Project' },
     statusColor: '#8B5CF6',
   },
@@ -50,7 +51,7 @@ const getProjects = (): Project[] => [
       es: 'Aplicación de generación de contenido impulsada por Large Language Models. Crea textos contextualizados y coherentes para diversas aplicaciones usando IA avanzada.', 
       en: 'Content generation application powered by Large Language Models. Creates contextualized and coherent texts for various applications using advanced AI.' 
     },
-    image: '/images/projects/llm-generator.gif',
+    image: '/images/projects/llm-generator.json',
     technologies: [
       { name: 'Python', icon: SiPython, color: '#3776AB' },
       { name: 'Next.js', icon: SiNextdotjs, color: '#FFFFFF' },
@@ -69,7 +70,7 @@ const getProjects = (): Project[] => [
       es: 'E-commerce completo para tienda de mascotas con carrito de compras, gestión de productos, sistema de usuarios y panel de administración integrado.', 
       en: 'Complete e-commerce for pet store with shopping cart, product management, user system and integrated admin panel.' 
     },
-    image: '/images/projects/petland.gif',
+    image: '/images/projects/petland.json',
     technologies: [
       { name: 'React', icon: SiReact, color: '#61DAFB' },
       { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
@@ -77,7 +78,7 @@ const getProjects = (): Project[] => [
     ],
     demoType: 'live',
     demoUrl: 'https://petland-f5.vercel.app',
-    githubUrl: 'https://github.com/Yedpt/petland_f5',
+    githubUrl: 'https://github.com/Yedpt/Petland_F5',
     status: { es: 'Live', en: 'Live' },
     statusColor: '#10B981',
   },
@@ -88,7 +89,7 @@ const getProjects = (): Project[] => [
       es: 'Proyecto educativo que demuestra la aplicación de principios de Clean Code y patrones SOLID. Implementa las mejores prácticas de desarrollo de software.', 
       en: 'Educational project demonstrating the application of Clean Code principles and SOLID patterns. Implements software development best practices.' 
     },
-    image: '/images/projects/cleancode.gif',
+    image: '/images/projects/cleancode.json',
     technologies: [
       { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
       { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
@@ -106,7 +107,7 @@ const getProjects = (): Project[] => [
       es: 'Juego interactivo para aprender comandos de Git de forma divertida. Incluye desafíos progresivos y feedback en tiempo real para dominar el control de versiones.', 
       en: 'Interactive game to learn Git commands in a fun way. Includes progressive challenges and real-time feedback to master version control.' 
     },
-    image: '/images/projects/gitgame.gif',
+    image: '/images/projects/gitgame.json',
     technologies: [
       { name: 'React', icon: SiReact, color: '#61DAFB' },
       { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
@@ -114,7 +115,7 @@ const getProjects = (): Project[] => [
     ],
     demoType: 'live',
     demoUrl: 'https://gitgame.vercel.app',
-    githubUrl: 'https://github.com/Yedpt/GitGame',
+    githubUrl: 'https://github.com/Yedpt/gitGame',
     status: { es: 'Live', en: 'Live' },
     statusColor: '#10B981',
   },
@@ -125,22 +126,81 @@ const getProjects = (): Project[] => [
       es: 'Identificador de razas de perros usando Machine Learning y redes neuronales. Clasifica más de 120 razas diferentes con alta precisión mediante visión artificial.', 
       en: 'Dog breed identifier using Machine Learning and neural networks. Classifies over 120 different breeds with high accuracy using computer vision.' 
     },
-    image: '/images/projects/dog-breed.gif',
+    image: '/images/projects/dog-breed.json',
     technologies: [
       { name: 'Python', icon: SiPython, color: '#3776AB' },
       { name: 'React', icon: SiReact, color: '#61DAFB' },
     ],
     demoType: 'video',
-    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
+    videoUrl: 'https://www.youtube.com/embed/rsJhxqRUhTY',
     githubUrl: 'https://github.com/Yedpt/Dog_Breed_Identifier_ML',
     status: { es: 'Proyecto', en: 'Project' },
     statusColor: '#8B5CF6',
   },
 ];
 
+// Componente para renderizar imagen normal o Lottie JSON
+const ProjectMedia = ({ 
+  src, 
+  alt, 
+  className = '' 
+}: { 
+  src: string; 
+  alt: string; 
+  className?: string;
+}) => {
+  const isLottie = src.endsWith('.json');
+  const [lottieData, setLottieData] = useState<object | null>(null);
+
+  // Cargar Lottie si es JSON usando useEffect
+  useEffect(() => {
+    if (isLottie) {
+      fetch(src)
+        .then(res => res.json())
+        .then(data => setLottieData(data))
+        .catch(err => console.error('Error loading Lottie:', err));
+    }
+  }, [src, isLottie]);
+
+  if (isLottie) {
+    if (!lottieData) {
+      return (
+        <div className="absolute inset-0 flex items-center justify-center bg-[#1a1f35]">
+          <div className="text-cyan-400 text-sm">Cargando animación...</div>
+        </div>
+      );
+    }
+    return (
+      <div className="absolute inset-0">
+        <Lottie
+          animationData={lottieData}
+          loop
+          style={{ 
+            width: '100%', 
+            height: '100%'
+          }}
+        />
+      </div>
+    );
+  }
+
+  // Imagen normal o GIF
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      className={`object-cover ${className}`}
+      unoptimized
+    />
+  );
+};
+
 export const Projects = () => {
   const { t, lang } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [zoomedImage, setZoomedImage] = useState<{ image: string; title: string } | null>(null);
   
   const projects = getProjects();
 
@@ -206,22 +266,23 @@ export const Projects = () => {
                   {project.status[lang]}
                 </div>
 
-                {/* Imagen del proyecto */}
-                <div className="relative w-full h-48 overflow-hidden bg-[#1a1f35]">
-                  {/* Placeholder para la imagen - Usuario debe agregar sus imágenes */}
-                  <div 
-                    className="w-full h-full flex items-center justify-center text-gray-500 text-sm"
-                    style={{
-                      background: 'linear-gradient(135deg, #1a1f35 0%, #0a0e1a 100%)',
-                    }}
+                {/* Imagen del proyecto con botón de zoom */}
+                <div className="relative w-full h-48 overflow-hidden bg-[#1a1f35] group/image">
+                  {/* GIF/Imagen/Lottie del proyecto */}
+                  <ProjectMedia
+                    src={project.image}
+                    alt={project.title[lang]}
+                    className="transition-transform duration-500 group-hover/image:scale-110"
+                  />
+                  
+                  {/* Botón de zoom sobre la imagen */}
+                  <button
+                    onClick={() => setZoomedImage({ image: project.image, title: project.title[lang] })}
+                    className="absolute top-3 left-3 z-10 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white opacity-0 group-hover/image:opacity-100 hover:bg-black/70 hover:scale-110 transition-all duration-300"
+                    title={t({ es: 'Ver imagen completa', en: 'View full image' })}
                   >
-                    <div className="text-center p-4">
-                      <p className="text-cyan-400 font-bold mb-2">{project.title[lang]}</p>
-                      <p className="text-xs text-gray-400">
-                        {t({ es: 'Agregar imagen:', en: 'Add image:' })} {project.image}
-                      </p>
-                    </div>
-                  </div>
+                    <FiMaximize2 size={18} />
+                  </button>
                   
                   {/* Overlay con gradiente */}
                   <div className="absolute inset-0 bg-linear-to-t from-[#0a0e1a] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
@@ -374,6 +435,55 @@ export const Projects = () => {
                       {t({ es: 'Ver Código', en: 'View Code' })}
                     </a>
                   </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Modal de Zoom de Imagen/GIF */}
+        <AnimatePresence>
+          {zoomedImage && (
+            <motion.div
+              className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setZoomedImage(null)}
+            >
+              <motion.div
+                className="relative w-full max-w-5xl bg-white dark:bg-[#0a0e1a] rounded-2xl overflow-hidden border border-purple-500/30 shadow-2xl"
+                initial={{ scale: 0.8, y: 50 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.8, y: 50 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Header del modal */}
+                <div className="flex items-center justify-between p-6 border-b border-purple-500/20 bg-white/50 dark:bg-[#0a0e1a]/50 backdrop-blur-sm">
+                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">
+                    {zoomedImage.title}
+                  </h3>
+                  <button
+                    onClick={() => setZoomedImage(null)}
+                    className="p-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
+                  >
+                    <FiX size={24} />
+                  </button>
+                </div>
+
+                {/* Imagen/GIF/Lottie a pantalla completa */}
+                <div className="relative w-full aspect-video bg-[#1a1f35]">
+                  <ProjectMedia
+                    src={zoomedImage.image}
+                    alt={zoomedImage.title}
+                  />
+                </div>
+
+                {/* Footer del modal */}
+                <div className="p-4 border-t border-purple-500/20 bg-white/50 dark:bg-[#0a0e1a]/50 backdrop-blur-sm text-center">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {t({ es: 'Haz clic fuera de la imagen para cerrar', en: 'Click outside the image to close' })}
+                  </p>
                 </div>
               </motion.div>
             </motion.div>
