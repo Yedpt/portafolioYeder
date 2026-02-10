@@ -63,12 +63,12 @@ const getSoftSkills = (t: (translations: { es: string; en: string }) => string) 
     })
   },
   {
-    name: t({ es: 'Liderazgo', en: 'Leadership' }),
+    name: t({ es: 'Pensamiento Crítico', en: 'Critical Thinking' }),
     icon: FaBullseye,
     color: '#EF4444', // red
     description: t({ 
-      es: 'Guía y motivación', 
-      en: 'Guidance and motivation' 
+      es: 'Análisis y razonamiento lógico', 
+      en: 'Analysis and logical reasoning' 
     })
   },
   {
@@ -90,12 +90,12 @@ const getSoftSkills = (t: (translations: { es: string; en: string }) => string) 
     })
   },
   {
-    name: t({ es: 'Pensamiento Crítico', en: 'Critical Thinking' }),
+    name: t({ es: 'Proactividad', en: 'Proactivity' }),
     icon: FaChartLine,
     color: '#F97316', // orange
     description: t({ 
-      es: 'Análisis profundo y lógico', 
-      en: 'Deep and logical analysis' 
+      es: 'Iniciativa y anticipación', 
+      en: 'Initiative and anticipation' 
     })
   },
 ];

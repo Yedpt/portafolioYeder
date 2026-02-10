@@ -1,14 +1,16 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { FiExternalLink, FiGithub, FiX, FiPlay, FiMaximize2 } from 'react-icons/fi';
 import Image from 'next/image';
 import Lottie from 'lottie-react';
 import { 
-  SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, 
-  SiNodedotjs, SiMongodb, SiPython
+  SiReact, SiTailwindcss, 
+  SiPython, SiFastapi, 
+  SiPostgresql, SiDocker, SiMysql, 
+  SiExpress, SiPytorch, SiOpencv, SiJavascript, SiNodedotjs
 } from 'react-icons/si';
 
 interface Project {
@@ -23,94 +25,112 @@ interface Project {
   githubUrl: string;
   status: { es: string; en: string }; // "Live", "Proyecto", etc.
   statusColor: string;
+  category: 'web' | 'ai'; // 'web' para desarrollo web full stack, 'ai' para IA/ML/Computer Vision
 }
 
 const getProjects = (): Project[] => [
   {
     id: 1,
-    title: { es: 'Computer Vision - Detección de Logos', en: 'Computer Vision - Logo Detection' },
+    title: { es: 'Computer Vision - Detección de Objetos', en: 'Computer Vision - Object Detection' },
     description: { 
-      es: 'Sistema de detección de objetos utilizando Computer Vision y Deep Learning. Identifica y clasifica logos en imágenes con alta precisión mediante redes neuronales convolucionales.', 
-      en: 'Object detection system using Computer Vision and Deep Learning. Identifies and classifies logos in images with high precision using convolutional neural networks.' 
+      es: 'Sistema full-stack de detección de objetos con YOLOv8 personalizado. Backend FastAPI + frontend React, Base de datos PostgreSQL, tiempo real con WebSockets y despliegue Docker. Precisión de detección 90%+ (mAP@0.5: 0.94).', 
+      en: 'Full-stack object detection system with custom YOLOv8. FastAPI backend + React frontend, PostgreSQL database, real-time WebSockets and Docker deployment. Detection accuracy 90%+ (mAP@0.5: 0.94).' 
     },
     image: '/images/projects/computer-vision.json',
     technologies: [
       { name: 'Python', icon: SiPython, color: '#3776AB' },
-      { name: 'TensorFlow', icon: SiPython, color: '#FF6F00' },
+      { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+      { name: 'Docker', icon: SiDocker, color: '#2496ED' },
+      { name: 'OpenCV', icon: SiOpencv, color: '#5C3EE8' },
     ],
     demoType: 'video',
     videoUrl: 'https://www.youtube.com/embed/XWhtPLFnb5A',
     githubUrl: 'https://github.com/Yedpt/PROYECTO-COMPUTER-VISION---Deteccion-de-Objetos',
     status: { es: 'Proyecto', en: 'Project' },
     statusColor: '#8B5CF6',
+    category: 'ai',
   },
   {
     id: 2,
     title: { es: 'LLM Generador de Contenido', en: 'LLM Content Generator' },
     description: { 
-      es: 'Aplicación de generación de contenido impulsada por Large Language Models. Crea textos contextualizados y coherentes para diversas aplicaciones usando IA avanzada.', 
-      en: 'Content generation application powered by Large Language Models. Creates contextualized and coherent texts for various applications using advanced AI.' 
+      es: 'Sistema multiagente IA con FastAPI + React 19. Usa Groq API (LLaMA), LangChain y RAG científico con arXiv. Genera contenido, imágenes (HuggingFace) y análisis avanzados con arquitectura modular.', 
+      en: 'Multi-agent AI system with FastAPI + React 19. Uses Groq API (LLaMA), LangChain and scientific RAG with arXiv. Generates content, images (HuggingFace) and advanced analysis with modular architecture.' 
     },
     image: '/images/projects/llm-generator.json',
     technologies: [
       { name: 'Python', icon: SiPython, color: '#3776AB' },
-      { name: 'Next.js', icon: SiNextdotjs, color: '#FFFFFF' },
-      { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+      { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
     ],
     demoType: 'video',
-    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
+    videoUrl: 'https://www.youtube.com/embed/MyOb_GqMVaU',
     githubUrl: 'https://github.com/Yedpt/proyecto-LLMs-generador-de-contenido',
     status: { es: 'Proyecto', en: 'Project' },
     statusColor: '#8B5CF6',
+    category: 'ai',
   },
   {
     id: 3,
     title: { es: 'Petland F5 - Tienda de Mascotas', en: 'Petland F5 - Pet Store' },
     description: { 
-      es: 'E-commerce completo para tienda de mascotas con carrito de compras, gestión de productos, sistema de usuarios y panel de administración integrado.', 
-      en: 'Complete e-commerce for pet store with shopping cart, product management, user system and integrated admin panel.' 
+      es: 'E-commerce full-stack con React 18 + FastAPI. Base de datos PostgreSQL, autenticación JWT, caché Redis, WebSockets en tiempo real, migraciones Alembic y arquitectura MVC. Panel admin integrado.', 
+      en: 'Full-stack e-commerce with React 18 + FastAPI. PostgreSQL database, JWT authentication, Redis cache, real-time WebSockets, Alembic migrations and MVC architecture. Integrated admin panel.' 
     },
     image: '/images/projects/petland.json',
     technologies: [
       { name: 'React', icon: SiReact, color: '#61DAFB' },
-      { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
-      { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+      { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
     ],
     demoType: 'live',
     demoUrl: 'https://petland-f5.vercel.app',
     githubUrl: 'https://github.com/Yedpt/Petland_F5',
     status: { es: 'Live', en: 'Live' },
     statusColor: '#10B981',
+    category: 'web',
   },
   {
     id: 4,
     title: { es: 'CleanCode - Principios SOLID', en: 'CleanCode - SOLID Principles' },
     description: { 
-      es: 'Proyecto educativo que demuestra la aplicación de principios de Clean Code y patrones SOLID. Implementa las mejores prácticas de desarrollo de software.', 
-      en: 'Educational project demonstrating the application of Clean Code principles and SOLID patterns. Implements software development best practices.' 
+      es: 'Blog para programadores con React + Vite y backend TypeScript. Express + Node.js, MySQL con Sequelize ORM, autenticación JWT, Bcrypt para contraseñas, Multer para archivos y Tailwind CSS.', 
+      en: 'Blog platform for programmers with React + Vite and TypeScript backend. Express + Node.js, MySQL with Sequelize ORM, JWT authentication, Bcrypt for passwords, Multer for files and Tailwind CSS.' 
     },
     image: '/images/projects/cleancode.json',
     technologies: [
-      { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
       { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+      { name: 'Express', icon: SiExpress, color: '#FFFFFF' },
+      { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
     ],
     demoType: 'video',
     videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
     githubUrl: 'https://github.com/Yedpt/cleanCode',
     status: { es: 'Proyecto', en: 'Project' },
     statusColor: '#8B5CF6',
+    category: 'web',
   },
   {
     id: 5,
     title: { es: 'GitGame - Aprender Git Jugando', en: 'GitGame - Learn Git by Playing' },
     description: { 
-      es: 'Juego interactivo para aprender comandos de Git de forma divertida. Incluye desafíos progresivos y feedback en tiempo real para dominar el control de versiones.', 
-      en: 'Interactive game to learn Git commands in a fun way. Includes progressive challenges and real-time feedback to master version control.' 
+      es: 'Plataforma de noticias gaming con React + Vite y backend TypeScript. Express + Node.js, MySQL + Sequelize, autenticación JWT, sistema de roles (admin/usuario), noticias, videos, reviews y lanzamientos con Tailwind CSS.', 
+      en: 'Gaming news platform with React + Vite and TypeScript backend. Express + Node.js, MySQL + Sequelize, JWT authentication, role-based system (admin/user), news, videos, reviews and releases with Tailwind CSS.' 
     },
     image: '/images/projects/gitgame.json',
     technologies: [
       { name: 'React', icon: SiReact, color: '#61DAFB' },
-      { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+      { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+      { name: 'Express', icon: SiExpress, color: '#FFFFFF' },
+      { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
       { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
     ],
     demoType: 'live',
@@ -118,24 +138,29 @@ const getProjects = (): Project[] => [
     githubUrl: 'https://github.com/Yedpt/gitGame',
     status: { es: 'Live', en: 'Live' },
     statusColor: '#10B981',
+    category: 'web',
   },
   {
     id: 6,
     title: { es: 'Dog Breed Identifier - ML', en: 'Dog Breed Identifier - ML' },
     description: { 
-      es: 'Identificador de razas de perros usando Machine Learning y redes neuronales. Clasifica más de 120 razas diferentes con alta precisión mediante visión artificial.', 
-      en: 'Dog breed identifier using Machine Learning and neural networks. Classifies over 120 different breeds with high accuracy using computer vision.' 
+      es: 'Clasificador ML con PyTorch 2.10 + FastAPI + React 19. CNN EfficientNetV2-S con Transfer Learning, 90.22% precisión, 119 razas de perros, Stanford Dogs Dataset (20,580 imágenes), OpenCV y Tailwind CSS v4.', 
+      en: 'ML classifier with PyTorch 2.10 + FastAPI + React 19. EfficientNetV2-S CNN with Transfer Learning, 90.22% accuracy, 119 dog breeds, Stanford Dogs Dataset (20,580 images), OpenCV and Tailwind CSS v4.' 
     },
     image: '/images/projects/dog-breed.json',
     technologies: [
       { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'PyTorch', icon: SiPytorch, color: '#EE4C2C' },
+      { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
       { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'OpenCV', icon: SiOpencv, color: '#5C3EE8' },
     ],
     demoType: 'video',
     videoUrl: 'https://www.youtube.com/embed/rsJhxqRUhTY',
     githubUrl: 'https://github.com/Yedpt/Dog_Breed_Identifier_ML',
     status: { es: 'Proyecto', en: 'Project' },
     statusColor: '#8B5CF6',
+    category: 'ai',
   },
 ];
 
@@ -201,8 +226,37 @@ export const Projects = () => {
   const { t, lang } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [zoomedImage, setZoomedImage] = useState<{ image: string; title: string } | null>(null);
+  const [filterCategory, setFilterCategory] = useState<'all' | 'web' | 'ai'>('all');
+  const [showFilterDropdown, setShowFilterDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   
-  const projects = getProjects();
+  // Cerrar dropdown al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowFilterDropdown(false);
+      }
+    };
+    
+    if (showFilterDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showFilterDropdown]);
+  
+  const allProjects = getProjects();
+  const projects = filterCategory === 'all' 
+    ? allProjects 
+    : allProjects.filter(p => p.category === filterCategory);
+  
+  const filterOptions = [
+    { value: 'all', label: { es: 'Todos', en: 'All' } },
+    { value: 'web', label: { es: 'Desarrollo Web Full Stack', en: 'Full Stack Web Development' } },
+    { value: 'ai', label: { es: 'IA / Machine Learning', en: 'AI / Machine Learning' } },
+  ] as const;
 
   return (
     <section id="proyectos" className="py-20 px-6 relative">
@@ -229,15 +283,50 @@ export const Projects = () => {
           </p>
           <div className="w-24 h-1 bg-linear-to-r from-cyan-400 to-purple-500 mx-auto rounded-full"></div>
           
-          {/* Botón de filtro */}
-          <div className="mt-8 flex justify-center">
+          {/* Botón de filtro con dropdown */}
+          <div ref={dropdownRef} className="mt-8 flex justify-center relative">
             <button
+              onClick={() => setShowFilterDropdown(!showFilterDropdown)}
               className="px-6 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 transition-all duration-300 text-cyan-400 font-semibold border border-purple-500/20 flex items-center gap-2"
-              title={t({ es: 'Filtrar por Tech (Próximamente)', en: 'Filter by Tech (Coming Soon)' })}
             >
-              <span className="text-sm">{t({ es: 'Filtrar por Tech', en: 'Filter by Tech' })}</span>
-              <span className="text-xs text-gray-500">({t({ es: '7 de 7 proyectos', en: '7 of 7 projects' })})</span>
+              <span className="text-sm">{t({ es: 'Filtrar por Categoría', en: 'Filter by Category' })}</span>
+              <span className="text-xs text-gray-500">
+                ({projects.length} {t({ es: 'de', en: 'of' })} {allProjects.length} {t({ es: 'proyectos', en: 'projects' })})
+              </span>
+              <svg 
+                className={`w-4 h-4 transition-transform ${showFilterDropdown ? 'rotate-180' : ''}`} 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
             </button>
+            
+            {/* Dropdown menu */}
+            {showFilterDropdown && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="absolute top-full mt-2 bg-slate-800 dark:bg-[#0a0e1a] border border-purple-500/20 rounded-lg shadow-xl z-50 w-64"
+              >
+                {filterOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => {
+                      setFilterCategory(option.value);
+                      setShowFilterDropdown(false);
+                    }}
+                    className={`w-full px-4 py-3 text-left hover:bg-purple-500/10 transition-colors first:rounded-t-lg last:rounded-b-lg ${
+                      filterCategory === option.value ? 'bg-purple-500/20 text-cyan-400' : 'text-gray-300'
+                    }`}
+                  >
+                    {t(option.label)}
+                  </button>
+                ))}
+              </motion.div>
+            )}
           </div>
         </motion.div>
 
