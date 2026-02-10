@@ -7,6 +7,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.33-FF0080?style=for-the-badge&logo=framer)
+![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)
 
 **Portfolio personal Full Stack Developer con diseño neon, animaciones fluidas y sistema de proyectos avanzado** ✨
 
