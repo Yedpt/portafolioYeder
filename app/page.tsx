@@ -10,12 +10,12 @@ const About = dynamic(
 
 const TechSkills = dynamic(
   () => import("@/components/sections/TechSkills").then((m) => ({ default: m.TechSkills })),
-  { loading: () => <div className="min-h-[500px]" /> }
+  { loading: () => <div className="min-h-125" /> }
 );
 
 const SoftSkills = dynamic(
   () => import("@/components/sections/SoftSkills").then((m) => ({ default: m.SoftSkills })),
-  { loading: () => <div className="min-h-[500px]" /> }
+  { loading: () => <div className="min-h-125" /> }
 );
 
 const Projects = dynamic(
@@ -25,7 +25,7 @@ const Projects = dynamic(
 
 const Contact = dynamic(
   () => import("@/components/sections/Contact").then((m) => ({ default: m.Contact })),
-  { loading: () => <div className="min-h-[400px]" /> }
+  { loading: () => <div className="min-h-100" /> }
 );
 
 export default function Home() {
