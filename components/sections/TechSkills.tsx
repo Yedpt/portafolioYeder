@@ -140,17 +140,13 @@ export const TechSkills = () => {
 
               {/* Grid de tecnologías */}
               <div className="grid grid-cols-3 gap-3 flex-1">
-                {category.techs.map((tech, techIndex) => {
+                {category.techs.map((tech) => {
                   const Icon = tech.icon;
                   return (
                     <motion.div
                       key={tech.name}
                       className="flex flex-col items-center justify-center p-2 bg-white/60 dark:bg-[#1a1f35]/50 rounded-lg hover:bg-white/90 dark:hover:bg-[#1a1f35] transition-all duration-300 group cursor-pointer"
                       whileHover={{ scale: 1.1 }}
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: categoryIndex * 0.1 + techIndex * 0.05 }}
                     >
                       <Icon 
                         className="text-2xl mb-1.5 group-hover:scale-110 transition-transform" 

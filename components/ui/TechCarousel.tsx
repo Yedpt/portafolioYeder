@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { 
   SiReact, SiJavascript, SiTypescript, SiNextdotjs, SiAngular, 
   SiTailwindcss, SiNodedotjs, SiExpress, SiPython, SiFastapi, 
@@ -35,43 +34,23 @@ const technologies = [
   { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
 ];
 
-// Triplicamos el array para un loop infinito perfecto
-const triplicatedTechs = [...technologies, ...technologies, ...technologies];
+// Duplicamos el array: con translateX(-50%) CSS crea un loop infinito perfecto
+const duplicatedTechs = [...technologies, ...technologies];
 
 export const TechCarousel = () => {
-  // Calculamos el ancho total de un set de tecnologías (80px por tech + 48px gap)
-  const techWidth = 80 + 48; // min-w-20 = 80px + gap-12 = 48px
-  const totalWidth = technologies.length * techWidth;
-
   return (
     <section className="relative py-8 overflow-hidden border-y border-purple-500/20">
       <div className="absolute inset-0 bg-linear-to-r from-transparent via-purple-500/5 to-transparent"></div>
       
-      <motion.div 
-        className="flex gap-12 items-center"
-        animate={{
-          x: [-totalWidth, 0],
-        }}
-        transition={{
-          x: {
-            duration: 40,
-            repeat: Infinity,
-            ease: "linear",
-            repeatType: "loop",
-          },
-        }}
-      >
-        {triplicatedTechs.map((tech, index) => (
-          <motion.div
+      {/* Animación CSS pura: corre en el GPU compositor, no bloquea el JS thread */}
+      <div className="flex gap-12 items-center w-max animate-marquee">
+        {duplicatedTechs.map((tech, index) => (
+          <div
             key={`${tech.name}-${index}`}
-            className="shrink-0 flex flex-col items-center gap-2 min-w-20"
-            whileHover={{ 
-              scale: 1.2,
-              transition: { duration: 0.2 }
-            }}
+            className="shrink-0 flex flex-col items-center gap-2 min-w-20 group cursor-default"
           >
             <div 
-              className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#0f1729] border border-purple-500/20 hover:border-cyan-400/50 transition-all duration-300"
+              className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#0f1729] border border-purple-500/20 hover:border-cyan-400/50 transition-all duration-300 group-hover:scale-110"
               style={{
                 boxShadow: `0 0 20px ${tech.color}30`
               }}
@@ -84,9 +63,9 @@ export const TechCarousel = () => {
             <span className="text-xs text-gray-400 font-medium whitespace-nowrap">
               {tech.name}
             </span>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* Gradientes laterales para efecto fade */}
       <div className="absolute top-0 left-0 w-32 h-full bg-linear-to-r from-[#0a0e1a] to-transparent z-10 pointer-events-none"></div>

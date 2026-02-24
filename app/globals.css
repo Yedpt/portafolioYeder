@@ -42,6 +42,21 @@ body {
   animation: spin-slow 3s linear infinite;
 }
 
+/* Carrusel: animación CSS pura (GPU compositor, sin JS) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
