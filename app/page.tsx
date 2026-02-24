@@ -1,17 +1,6 @@
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
-
-// Fondo: carga lazy con ssr:false (usa APIs del browser)
-const StarryBackground = dynamic(
-  () => import("@/components/ui/StarryBackground").then((m) => ({ default: m.StarryBackground })),
-  { ssr: false, loading: () => null }
-);
-
-// Carrusel: carga lazy, no crítico para el LCP
-const TechCarousel = dynamic(
-  () => import("@/components/ui/TechCarousel").then((m) => ({ default: m.TechCarousel })),
-  { ssr: false, loading: () => null }
-);
+import { ClientBackground, ClientTechCarousel } from "@/components/ui/ClientBackground";
 
 // Secciones below-the-fold: se cargan a medida que el usuario scrollea
 const About = dynamic(
@@ -42,10 +31,10 @@ const Contact = dynamic(
 export default function Home() {
   return (
     <>
-      <StarryBackground />
+      <ClientBackground />
       <main>
         <Hero />
-        <TechCarousel />
+        <ClientTechCarousel />
         <About />
         <TechSkills />
         <SoftSkills />
