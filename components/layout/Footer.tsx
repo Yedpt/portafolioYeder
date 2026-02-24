@@ -19,7 +19,7 @@ export const Footer = () => {
             <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
               <div className="relative w-8 h-8">
                 <Image
-                  src="/images/YP_logo.png"
+                  src="/images/YP_logo.webp"
                   alt="YP Logo"
                   fill
                   className="object-contain"

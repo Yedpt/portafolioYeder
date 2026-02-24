@@ -42,7 +42,7 @@ export const Navbar = () => {
           <Link href="/" className="flex items-center space-x-3 group">
             <div className="relative w-10 h-10 transition-transform group-hover:scale-110 duration-300">
               <Image
-                src="/images/YP_logo.png"
+                src="/images/YP_logo.webp"
                 alt="YP Logo"
                 fill
                 className="object-contain"

@@ -24,7 +24,7 @@ export const Hero = () => {
             <div className="absolute inset-0 rounded-full bg-linear-to-r from-cyan-400 to-purple-500 animate-spin-slow"></div>
             <div className="absolute inset-2 rounded-full bg-[#0a0e1a] overflow-hidden">
               <Image
-                src="/images/fotoYeder_in.jpeg"
+                src="/images/fotoYeder_in.webp"
                 alt="Yeder Pimentel"
                 fill
                 className="object-cover"
