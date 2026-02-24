@@ -119,23 +119,20 @@ export const StarryBackground = () => {
             top: `${star.y}%`,
             width: `${star.size}px`,
             height: `${star.size}px`,
-            opacity: isDark ? star.opacity : star.opacity * 0.6,
           }}
           animate={{
-            y: [0, -30, 0],
             opacity: isDark 
-              ? [star.opacity, star.opacity * 0.3, star.opacity]
-              : [star.opacity * 0.6, star.opacity * 0.2, star.opacity * 0.6],
-            scale: [1, 1.5, 1],
+              ? [star.opacity, star.opacity * 0.2, star.opacity]
+              : [star.opacity * 0.6, star.opacity * 0.1, star.opacity * 0.6],
           }}
           transition={{
-            duration: star.duration,
+            duration: star.duration * 1.5,
             repeat: Infinity,
             delay: star.delay,
             ease: "easeInOut",
           }}
         >
-          <div className={`w-full h-full bg-linear-to-br ${starGradient} rounded-full shadow-lg ${starShadow}`} />
+          <div className={`w-full h-full bg-linear-to-br ${starGradient} rounded-full`} />
         </motion.div>
       ))}
 
