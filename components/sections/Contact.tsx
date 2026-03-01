@@ -6,6 +6,11 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { FiMail, FiMapPin, FiSend } from 'react-icons/fi';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
+// Para activar el formulario: crea una cuenta gratuita en https://formspree.io,
+// crea un form, y pon tu Form ID en .env.local -> NEXT_PUBLIC_FORMSPREE_ID=xxxxxxxx
+// En Vercel: Settings > Environment Variables
+const FORMSPREE_URL = `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`;
+
 export const Contact = () => {
   const { t } = useLanguage();
   const [formData, setFormData] = useState({
@@ -15,23 +20,32 @@ export const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Aquí puedes integrar un servicio como EmailJS, FormSpree, etc.
-    console.log('Form submitted:', formData);
-    
-    // Simular envío
-    setTimeout(() => {
-      alert(t({ 
-        es: '¡Mensaje enviado! Te contactaré pronto.', 
-        en: 'Message sent! I will contact you soon.' 
-      }));
+    setSubmitError(false);
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitError(true);
+      }
+    } catch {
+      setSubmitError(true);
+    } finally {
       setIsSubmitting(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 1500);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -81,7 +95,35 @@ export const Contact = () => {
               {t({ es: 'Envíame un mensaje', en: 'Send me a message' })}
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Mensaje de éxito */}
+            {submitted && (
+              <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
+                <div className="w-16 h-16 rounded-full bg-linear-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/50 flex items-center justify-center text-3xl">
+                  ✓
+                </div>
+                <p className="text-xl font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">
+                  {t({ es: '¡Mensaje enviado!', en: 'Message sent!' })}
+                </p>
+                <p className="text-gray-400">
+                  {t({ es: 'Te contactaré lo antes posible.', en: "I'll get back to you as soon as possible." })}
+                </p>
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="text-sm text-cyan-400 hover:underline mt-2"
+                >
+                  {t({ es: 'Enviar otro mensaje', en: 'Send another message' })}
+                </button>
+              </div>
+            )}
+
+            {/* Mensaje de error */}
+            {submitError && (
+              <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm text-center mb-4">
+                {t({ es: 'Error al enviar. Inténtalo de nuevo o escríbeme directamente.', en: 'Error sending. Try again or email me directly.' })}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className={`space-y-6 ${submitted ? 'hidden' : ''}`}>
               {/* Nombre */}
               <div>
                 <label 
@@ -173,7 +215,7 @@ export const Contact = () => {
                 <FiSend size={20} />
                 {isSubmitting 
                   ? t({ es: 'Enviando...', en: 'Sending...' })
-                  : t({ es: 'Send Message', en: 'Send Message' })
+                  : t({ es: 'Enviar mensaje', en: 'Send Message' })
                 }
               </motion.button>
             </form>
@@ -187,19 +229,47 @@ export const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {/* Mapa de Google Maps */}
-            <div className="bg-white/80 dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-400/30 dark:border-purple-500/20 rounded-2xl overflow-hidden shadow-xl h-100">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194347.97374207795!2d-3.87936685!3d40.4378698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2sMadrid%2C%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1650000000000!5m2!1ses!2ses"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Location Madrid"
-              />
-            </div>
+            {/* Tarjeta de ubicación — sin iframe pesado de Google Maps */}
+            <a
+              href="https://www.google.com/maps/place/Madrid,+Spain"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block bg-white/80 dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-400/30 dark:border-purple-500/20 rounded-2xl overflow-hidden shadow-xl hover:border-cyan-400/50 transition-all duration-300"
+            >
+              {/* Pseudo-mapa visual con CSS */}
+              <div className="relative h-44 bg-linear-to-br from-slate-800 to-slate-900 overflow-hidden">
+                {/* Grid de calles simulado */}
+                <div className="absolute inset-0 opacity-20"
+                  style={{
+                    backgroundImage: 'linear-gradient(#06b6d4 1px, transparent 1px), linear-gradient(90deg, #06b6d4 1px, transparent 1px)',
+                    backgroundSize: '40px 40px'
+                  }}
+                />
+                {/* Calles diagonales */}
+                <div className="absolute inset-0 opacity-10"
+                  style={{
+                    backgroundImage: 'linear-gradient(45deg, #8b5cf6 1px, transparent 1px), linear-gradient(-45deg, #8b5cf6 1px, transparent 1px)',
+                    backgroundSize: '80px 80px'
+                  }}
+                />
+                {/* Pin central */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative">
+                    <div className="w-8 h-8 rounded-full bg-linear-to-br from-cyan-400 to-purple-500 flex items-center justify-center shadow-lg shadow-cyan-500/50">
+                      <FiMapPin className="text-white" size={16} />
+                    </div>
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-purple-500 rotate-45" />
+                  </div>
+                </div>
+                {/* Overlay con texto */}
+                <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-slate-900/80 to-transparent p-3 flex items-center justify-between">
+                  <span className="text-white text-sm font-semibold">Madrid, España</span>
+                  <span className="text-cyan-400 text-xs group-hover:underline">
+                    {t({ es: 'Ver en Maps →', en: 'View on Maps →' })}
+                  </span>
+                </div>
+              </div>
+            </a>
 
             {/* Info de contacto */}
             <div className="bg-white/80 dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-400/30 dark:border-purple-500/20 rounded-2xl p-6 shadow-xl space-y-4">

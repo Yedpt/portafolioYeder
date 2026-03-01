@@ -40,6 +40,7 @@ body {
 
 .animate-spin-slow {
   animation: spin-slow 3s linear infinite;
+  will-change: transform;
 }
 
 /* Carrusel: animación CSS pura (GPU compositor, sin JS) */
