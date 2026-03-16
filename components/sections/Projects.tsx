@@ -275,7 +275,7 @@ export const Projects = () => {
               {t({ es: 'Mis Proyectos', en: 'My Projects' })}
             </span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-4">
+          <p className="text-slate-800 dark:text-gray-400 max-w-2xl mx-auto mb-4">
             {t({ 
               es: 'Una colección de mi trabajo reciente y proyectos personales', 
               en: 'A collection of my recent work and personal projects' 
@@ -309,7 +309,7 @@ export const Projects = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="absolute top-full mt-2 bg-white dark:bg-[#0a0e1a] border border-blue-200 dark:border-purple-500/20 rounded-lg shadow-xl z-50 w-64"
+                className="absolute top-full mt-2 bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-lg shadow-xl z-50 w-64"
               >
                 {filterOptions.map((option) => (
                   <button
@@ -319,7 +319,7 @@ export const Projects = () => {
                       setShowFilterDropdown(false);
                     }}
                     className={`w-full px-4 py-3 text-left hover:bg-purple-500/10 transition-colors first:rounded-t-lg last:rounded-b-lg ${
-                      filterCategory === option.value ? 'bg-purple-500/20 text-cyan-500 dark:text-cyan-400' : 'text-slate-700 dark:text-gray-300'
+                      filterCategory === option.value ? 'bg-purple-500/20 text-cyan-400' : 'text-gray-300'
                     }`}
                   >
                     {t(option.label)}
@@ -336,7 +336,7 @@ export const Projects = () => {
             return (
               <motion.div
                 key={project.id}
-                className="group relative bg-linear-to-br from-white to-slate-50 dark:from-[#0a0e1a] dark:to-[#121933] backdrop-blur-sm border border-blue-200 dark:border-purple-500/20 rounded-xl overflow-hidden hover:border-blue-400/60 dark:hover:border-purple-500/40 transition-all duration-300 shadow-lg shadow-blue-200/50 dark:shadow-purple-900/20"
+                className="group relative bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all duration-300 shadow-lg shadow-black/30"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -356,7 +356,7 @@ export const Projects = () => {
                 </div>
 
                 {/* Imagen del proyecto con botón de zoom */}
-                <div className="relative w-full h-48 overflow-hidden bg-slate-100 dark:bg-[#1a1f35] group/image">
+                <div className="relative w-full h-48 overflow-hidden bg-[#162040] group/image">
                   {/* GIF/Imagen/Lottie del proyecto */}
                   <ProjectMedia
                     src={project.image}
@@ -380,12 +380,12 @@ export const Projects = () => {
                 {/* Contenido */}
                 <div className="p-6">
                   {/* Título */}
-                  <h3 className="text-xl font-bold mb-3 text-slate-800 dark:text-transparent dark:bg-clip-text dark:bg-linear-to-r dark:from-cyan-400 dark:to-purple-500">
+                  <h3 className="text-xl font-bold mb-3 text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">
                     {project.title[lang]}
                   </h3>
 
                   {/* Descripción */}
-                  <p className="text-sm text-slate-600 dark:text-gray-400 mb-4 line-clamp-3 leading-relaxed">
+                  <p className="text-sm text-gray-300 mb-4 line-clamp-3 leading-relaxed">
                     {project.description[lang]}
                   </p>
 
@@ -396,11 +396,11 @@ export const Projects = () => {
                       return (
                         <div
                           key={tech.name}
-                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white dark:bg-[#1a1f35]/50 border border-blue-200 dark:border-purple-500/10"
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#162040] border border-[#1e3a5f]/40"
                           title={tech.name}
                         >
                           <Icon style={{ color: tech.color }} className="text-sm" />
-                          <span className="text-xs text-slate-700 dark:text-gray-400 font-medium">{tech.name}</span>
+                          <span className="text-xs text-gray-300 font-medium">{tech.name}</span>
                         </div>
                       );
                     })}
@@ -462,7 +462,7 @@ export const Projects = () => {
               onClick={() => setSelectedProject(null)}
             >
               <motion.div
-                className="relative w-full max-w-4xl bg-white dark:bg-[#0a0e1a] rounded-2xl overflow-hidden border border-purple-500/30 shadow-2xl"
+                className="relative w-full max-w-4xl bg-[#0d1b2e] rounded-2xl overflow-hidden border border-[#1e3a5f]/50 shadow-2xl"
                 initial={{ scale: 0.9, y: 20 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 20 }}
@@ -474,7 +474,7 @@ export const Projects = () => {
                     <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">
                       {selectedProject.title[lang]}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    <p className="text-sm text-gray-400 mt-1">
                       {selectedProject.description[lang]}
                     </p>
                   </div>
@@ -506,10 +506,10 @@ export const Projects = () => {
                         return (
                           <div
                             key={tech.name}
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-[#1a1f35]/50 border border-purple-500/10"
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#162040] border border-[#1e3a5f]/40"
                           >
                             <Icon style={{ color: tech.color }} />
-                            <span className="text-xs text-gray-700 dark:text-gray-400 font-medium">{tech.name}</span>
+                            <span className="text-xs text-gray-300 font-medium">{tech.name}</span>
                           </div>
                         );
                       })}
@@ -541,14 +541,14 @@ export const Projects = () => {
               onClick={() => setZoomedImage(null)}
             >
               <motion.div
-                className="relative w-full max-w-5xl bg-white dark:bg-[#0a0e1a] rounded-2xl overflow-hidden border border-purple-500/30 shadow-2xl"
+                className="relative w-full max-w-5xl bg-[#0d1b2e] rounded-2xl overflow-hidden border border-[#1e3a5f]/50 shadow-2xl"
                 initial={{ scale: 0.8, y: 50 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.8, y: 50 }}
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Header del modal */}
-                <div className="flex items-center justify-between p-6 border-b border-purple-500/20 bg-white/50 dark:bg-[#0a0e1a]/50 backdrop-blur-sm">
+                  className="flex items-center justify-between p-6 border-b border-[#1e3a5f]/50 bg-[#0a1628]/80 backdrop-blur-sm"
                   <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">
                     {zoomedImage.title}
                   </h3>
@@ -569,8 +569,8 @@ export const Projects = () => {
                 </div>
 
                 {/* Footer del modal */}
-                <div className="p-4 border-t border-purple-500/20 bg-white/50 dark:bg-[#0a0e1a]/50 backdrop-blur-sm text-center">
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                  className="p-4 border-t border-[#1e3a5f]/50 bg-[#0a1628]/80 backdrop-blur-sm text-center">
+                  <p className="text-sm text-gray-400">
                     {t({ es: 'Haz clic fuera de la imagen para cerrar', en: 'Click outside the image to close' })}
                   </p>
                 </div>

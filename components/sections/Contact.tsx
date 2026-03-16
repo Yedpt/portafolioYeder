@@ -71,7 +71,7 @@ export const Contact = () => {
               {t({ es: 'Contacto', en: 'Contact' })}
             </span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-4">
+          <p className="text-slate-800 dark:text-gray-400 max-w-2xl mx-auto mb-4">
             {t({ 
               es: '¿Tienes un proyecto en mente? ¡Hablemos!', 
               en: 'Have a project in mind? Let\'s talk!' 
@@ -85,7 +85,7 @@ export const Contact = () => {
           
           {/* Formulario de contacto */}
           <motion.div
-            className="bg-white dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-200 dark:border-purple-500/20 rounded-2xl p-8 shadow-xl shadow-blue-100/70 dark:shadow-purple-900/20"
+            className="bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-2xl p-8 shadow-xl shadow-black/30"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -104,7 +104,7 @@ export const Contact = () => {
                 <p className="text-xl font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">
                   {t({ es: '¡Mensaje enviado!', en: 'Message sent!' })}
                 </p>
-                <p className="text-slate-600 dark:text-gray-400">
+                <p className="text-gray-300">
                   {t({ es: 'Te contactaré lo antes posible.', en: "I'll get back to you as soon as possible." })}
                 </p>
                 <button
@@ -128,7 +128,7 @@ export const Contact = () => {
               <div>
                 <label 
                   htmlFor="name" 
-                  className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-sm font-semibold text-gray-300 mb-2"
                 >
                   {t({ es: 'Nombre', en: 'Name' })}
                 </label>
@@ -139,7 +139,7 @@ export const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white dark:bg-[#1a1f35]/50 border border-blue-200 dark:border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 dark:focus:ring-purple-500 transition-all duration-300 text-gray-800 dark:text-gray-200"
+                  className="w-full px-4 py-3 bg-[#162040] border border-[#1e3a5f]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300 text-gray-100"
                   placeholder={t({ es: 'Tu nombre completo', en: 'Your full name' })}
                 />
               </div>
@@ -148,7 +148,7 @@ export const Contact = () => {
               <div>
                 <label 
                   htmlFor="email" 
-                  className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-sm font-semibold text-gray-300 mb-2"
                 >
                   {t({ es: 'Dirección de correo', en: 'Email address' })}
                 </label>
@@ -159,7 +159,7 @@ export const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white dark:bg-[#1a1f35]/50 border border-blue-200 dark:border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 dark:focus:ring-purple-500 transition-all duration-300 text-gray-800 dark:text-gray-200"
+                  className="w-full px-4 py-3 bg-[#162040] border border-[#1e3a5f]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300 text-gray-100"
                   placeholder={t({ es: 'tu@email.com', en: 'you@email.com' })}
                 />
               </div>
@@ -168,7 +168,7 @@ export const Contact = () => {
               <div>
                 <label 
                   htmlFor="subject" 
-                  className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-sm font-semibold text-gray-300 mb-2"
                 >
                   {t({ es: 'Tema', en: 'Subject' })}
                 </label>
@@ -179,7 +179,7 @@ export const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white dark:bg-[#1a1f35]/50 border border-blue-200 dark:border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 dark:focus:ring-purple-500 transition-all duration-300 text-gray-800 dark:text-gray-200"
+                  className="w-full px-4 py-3 bg-[#162040] border border-[#1e3a5f]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300 text-gray-100"
                   placeholder={t({ es: '¿De qué quieres hablar?', en: 'What do you want to talk about?' })}
                 />
               </div>
@@ -188,7 +188,7 @@ export const Contact = () => {
               <div>
                 <label 
                   htmlFor="message" 
-                  className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-sm font-semibold text-gray-300 mb-2"
                 >
                   {t({ es: 'Mensaje', en: 'Message' })}
                 </label>
@@ -199,7 +199,7 @@ export const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-white dark:bg-[#1a1f35]/50 border border-blue-200 dark:border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 dark:focus:ring-purple-500 transition-all duration-300 resize-none text-gray-800 dark:text-gray-200"
+                  className="w-full px-4 py-3 bg-[#162040] border border-[#1e3a5f]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300 resize-none text-gray-100"
                   placeholder={t({ es: 'Cuéntame sobre tu proyecto...', en: 'Tell me about your project...' })}
                 />
               </div>
@@ -230,7 +230,7 @@ export const Contact = () => {
             transition={{ duration: 0.6 }}
           >
             {/* Mapa de Google Maps */}
-            <div className="bg-white dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-200 dark:border-purple-500/20 rounded-2xl overflow-hidden shadow-xl h-100">
+            className="bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-2xl overflow-hidden shadow-xl h-100">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194347.97374207795!2d-3.87936685!3d40.4378698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2sMadrid%2C%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1650000000000!5m2!1ses!2ses"
                 width="100%"
@@ -244,17 +244,17 @@ export const Contact = () => {
             </div>
 
             {/* Info de contacto */}
-            <div className="bg-white dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-200 dark:border-purple-500/20 rounded-2xl p-6 shadow-xl shadow-blue-100/70 dark:shadow-purple-900/20 space-y-4">
+            className="bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-2xl p-6 shadow-xl shadow-black/30 space-y-4">
               {/* Ubicación */}
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-linear-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center border border-cyan-500/30">
                   <FiMapPin className="text-cyan-400" size={20} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-1">
+                  <h4 className="font-bold text-gray-200 mb-1">
                     {t({ es: 'Ubicación', en: 'Location' })}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-400">Madrid, España</p>
+                  <p className="text-gray-400">Madrid, España</p>
                 </div>
               </div>
 
@@ -264,7 +264,7 @@ export const Contact = () => {
                   <FiMail className="text-purple-400" size={20} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-1">
+                  <h4 className="font-bold text-gray-200 mb-1">
                     {t({ es: 'Email', en: 'Email' })}
                   </h4>
                   <a 
@@ -278,7 +278,7 @@ export const Contact = () => {
 
               {/* Redes sociales */}
               <div className="pt-4 border-t border-blue-400/20 dark:border-purple-500/20">
-                <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-3">
+                  <h4 className="font-bold text-gray-200 mb-3">
                   {t({ es: 'Sígueme en', en: 'Follow me on' })}
                 </h4>
                 <div className="flex gap-3">
