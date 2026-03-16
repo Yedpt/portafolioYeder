@@ -38,7 +38,8 @@ const duplicatedTechs = [...technologies, ...technologies];
 export const TechCarousel = () => {
   return (
     <section className="relative py-8 overflow-hidden border-y border-purple-500/20">
-      <div className="absolute inset-0 bg-linear-to-r from-transparent via-purple-500/5 to-transparent"></div>
+    <section className="relative py-8 overflow-hidden border-y border-[#1e3a5f]/40 bg-[#060c18]">
+      <div className="absolute inset-0 bg-linear-to-r from-transparent via-purple-500/8 to-transparent pointer-events-none"></div>
       
       {/* Animación CSS pura: corre en el GPU compositor, no bloquea el JS thread */}
       <div className="flex gap-12 items-center w-max animate-marquee">
@@ -49,6 +50,7 @@ export const TechCarousel = () => {
           >
             <div 
               className="w-10 h-10 flex items-center justify-center rounded-lg bg-white dark:bg-[#0f1729] border border-blue-300/40 dark:border-purple-500/20 hover:border-cyan-400/50 transition-all duration-300 group-hover:scale-110"
+                            className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#0d1b2e] border border-[#1e3a5f]/60 hover:border-cyan-400/60 transition-all duration-300 group-hover:scale-110"
               style={{
                 boxShadow: `0 0 20px ${tech.color}30`
               }}
@@ -59,6 +61,7 @@ export const TechCarousel = () => {
               />
             </div>
             <span className="text-xs text-slate-600 dark:text-gray-400 font-medium whitespace-nowrap">
+                          <span className="text-xs text-gray-300 font-medium whitespace-nowrap">
               {tech.name}
             </span>
           </div>
@@ -66,8 +69,8 @@ export const TechCarousel = () => {
       </div>
 
       {/* Gradientes laterales para efecto fade */}
-      <div className="absolute top-0 left-0 w-32 h-full bg-linear-to-r from-white dark:from-[#0a0e1a] to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute top-0 right-0 w-32 h-full bg-linear-to-l from-white dark:from-[#0a0e1a] to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-32 h-full bg-linear-to-r from-[#060c18] to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-32 h-full bg-linear-to-l from-[#060c18] to-transparent z-10 pointer-events-none"></div>
     </section>
   );
 };

@@ -38,6 +38,7 @@ export const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className="text-slate-700 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-slate-900 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
               {t({
                 es: 'Soy Yeder Pimentel, desarrollador Full Stack especializado en IA enfocado en integrar soluciones con Inteligencia Artificial en aplicaciones web modernas.',
                 en: "I'm Yeder Pimentel, a Full Stack developer specialized in AI focused on integrating Artificial Intelligence solutions into modern web applications."
@@ -45,6 +46,7 @@ export const About = () => {
             </p>
             
             <p className="text-slate-700 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-slate-900 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
               {t({
                 es: 'Mi experiencia abarca el desarrollo completo: desde el frontend con ',
                 en: 'My experience covers full development: from frontend with '
@@ -61,6 +63,7 @@ export const About = () => {
             </p>
             
             <p className="text-slate-700 dark:text-gray-300 text-base md:text-lg leading-relaxed">
+              <p className="text-slate-900 dark:text-gray-300 text-base md:text-lg leading-relaxed">
               {t({
                 es: 'Busco colaborar en un equipo donde pueda aportar estas habilidades para resolver problemas reales, aprender continuamente y contribuir con soluciones técnicas que funcionen.',
                 en: 'I seek to collaborate in a team where I can contribute these skills to solve real problems, continuously learn, and contribute technical solutions that work.'
@@ -77,14 +80,14 @@ export const About = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             {/* Full Stack */}
-            <div className="p-5 md:p-6 bg-white dark:bg-[#0a0e1a]/60 border border-blue-200 dark:border-purple-500/30 rounded-xl hover:border-purple-400/60 transition-all duration-300 group shadow-md shadow-blue-100/60 dark:shadow-purple-900/20">
+            <div className="p-5 md:p-6 bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-xl hover:border-purple-400/60 transition-all duration-300 group shadow-lg shadow-black/20">
               <div className="flex items-start space-x-4">
                 <div className="p-3 bg-purple-500/20 rounded-lg group-hover:scale-110 transition-transform">
                   <FaCode className="text-purple-400 text-2xl" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-cyan-400 mb-2">Full Stack Development</h3>
-                  <p className="text-slate-600 dark:text-gray-400">
+                  <p className="text-gray-300">
                     {t({
                       es: 'Frontend & Backend con JavaScript, TypeScript, React, Node.js',
                       en: 'Frontend & Backend with JavaScript, TypeScript, React, Node.js'
@@ -95,7 +98,7 @@ export const About = () => {
             </div>
 
             {/* IA */}
-            <div className="p-5 md:p-6 bg-white dark:bg-[#0a0e1a]/60 border border-blue-200 dark:border-cyan-500/30 rounded-xl hover:border-cyan-500/60 transition-all duration-300 group shadow-md shadow-blue-100/60 dark:shadow-purple-900/20">
+            <div className="p-5 md:p-6 bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-xl hover:border-cyan-400/60 transition-all duration-300 group shadow-lg shadow-black/20">
               <div className="flex items-start space-x-4">
                 <div className="p-3 bg-cyan-500/20 rounded-lg group-hover:scale-110 transition-transform">
                   <FaRobot className="text-cyan-400 text-2xl" />
@@ -104,7 +107,7 @@ export const About = () => {
                   <h3 className="text-xl font-bold text-purple-400 mb-2">
                     {t({ es: 'Inteligencia Artificial', en: 'Artificial Intelligence' })}
                   </h3>
-                  <p className="text-slate-600 dark:text-gray-400">
+                  <p className="text-gray-300">
                     {t({
                       es: 'RAG, LangChain, LLMs, Computer Vision con PyTorch',
                       en: 'RAG, LangChain, LLMs, Computer Vision with PyTorch'
@@ -115,14 +118,14 @@ export const About = () => {
             </div>
 
             {/* Machine Learning */}
-            <div className="p-5 md:p-6 bg-white dark:bg-[#0a0e1a]/60 border border-blue-200 dark:border-purple-500/30 rounded-xl hover:border-purple-400/60 transition-all duration-300 group shadow-md shadow-blue-100/60 dark:shadow-purple-900/20">
+            <div className="p-5 md:p-6 bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-xl hover:border-purple-400/60 transition-all duration-300 group shadow-lg shadow-black/20">
               <div className="flex items-start space-x-4">
                 <div className="p-3 bg-purple-500/20 rounded-lg group-hover:scale-110 transition-transform">
                   <FaBrain className="text-purple-400 text-2xl" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-cyan-400 mb-2">Data Science & ML</h3>
-                  <p className="text-slate-600 dark:text-gray-400">Python, Pandas, NumPy, Machine Learning, Deep Learning</p>
+                  <p className="text-gray-300">Python, Pandas, NumPy, Machine Learning, Deep Learning</p>
                 </div>
               </div>
             </div>

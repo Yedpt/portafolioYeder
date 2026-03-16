@@ -25,7 +25,7 @@ const navItems = {
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, toggleTheme, lightFxIntensity, toggleLightFxIntensity } = useTheme();
+    const { theme, toggleTheme } = useTheme();
   const { lang, toggleLanguage } = useLanguage();
 
   return (
@@ -77,17 +77,6 @@ export const Navbar = () => {
               {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
             </button>
 
-            {/* Light FX Toggle */}
-            {theme === 'light' && (
-              <button
-                onClick={toggleLightFxIntensity}
-                className="px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 transition-all duration-300 text-blue-600 font-semibold border border-blue-300/40"
-                title="Intensidad visual del fondo"
-              >
-                FX {lightFxIntensity === 'soft' ? 'Suave' : 'Vivo'}
-              </button>
-            )}
-
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
@@ -133,14 +122,6 @@ export const Navbar = () => {
               >
                 {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
               </button>
-              {theme === 'light' && (
-                <button
-                  onClick={toggleLightFxIntensity}
-                  className="px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-blue-600 font-semibold border border-blue-300/40"
-                >
-                  FX {lightFxIntensity === 'soft' ? 'Suave' : 'Vivo'}
-                </button>
-              )}
               <button
                 onClick={toggleLanguage}
                 className="px-3 py-1.5 rounded-lg bg-linear-to-r from-cyan-500/10 to-purple-500/10 text-blue-600 dark:text-cyan-400 font-semibold"
