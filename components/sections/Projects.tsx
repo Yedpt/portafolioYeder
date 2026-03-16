@@ -309,7 +309,7 @@ export const Projects = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="absolute top-full mt-2 bg-slate-800 dark:bg-[#0a0e1a] border border-purple-500/20 rounded-lg shadow-xl z-50 w-64"
+                className="absolute top-full mt-2 bg-white dark:bg-[#0a0e1a] border border-blue-200 dark:border-purple-500/20 rounded-lg shadow-xl z-50 w-64"
               >
                 {filterOptions.map((option) => (
                   <button
@@ -319,7 +319,7 @@ export const Projects = () => {
                       setShowFilterDropdown(false);
                     }}
                     className={`w-full px-4 py-3 text-left hover:bg-purple-500/10 transition-colors first:rounded-t-lg last:rounded-b-lg ${
-                      filterCategory === option.value ? 'bg-purple-500/20 text-cyan-400' : 'text-gray-300'
+                      filterCategory === option.value ? 'bg-purple-500/20 text-cyan-500 dark:text-cyan-400' : 'text-slate-700 dark:text-gray-300'
                     }`}
                   >
                     {t(option.label)}
@@ -336,7 +336,7 @@ export const Projects = () => {
             return (
               <motion.div
                 key={project.id}
-                className="group relative bg-linear-to-br from-slate-700 to-slate-800 dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-400/30 dark:border-purple-500/20 rounded-xl overflow-hidden hover:border-blue-500/50 dark:hover:border-purple-500/40 transition-all duration-300 shadow-lg shadow-blue-900/20 dark:shadow-purple-900/20"
+                className="group relative bg-linear-to-br from-white to-slate-50 dark:from-[#0a0e1a] dark:to-[#121933] backdrop-blur-sm border border-blue-200 dark:border-purple-500/20 rounded-xl overflow-hidden hover:border-blue-400/60 dark:hover:border-purple-500/40 transition-all duration-300 shadow-lg shadow-blue-200/50 dark:shadow-purple-900/20"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -356,7 +356,7 @@ export const Projects = () => {
                 </div>
 
                 {/* Imagen del proyecto con botón de zoom */}
-                <div className="relative w-full h-48 overflow-hidden bg-[#1a1f35] group/image">
+                <div className="relative w-full h-48 overflow-hidden bg-slate-100 dark:bg-[#1a1f35] group/image">
                   {/* GIF/Imagen/Lottie del proyecto */}
                   <ProjectMedia
                     src={project.image}
@@ -380,12 +380,12 @@ export const Projects = () => {
                 {/* Contenido */}
                 <div className="p-6">
                   {/* Título */}
-                  <h3 className="text-xl font-bold mb-3 text-white dark:text-transparent dark:bg-clip-text dark:bg-linear-to-r dark:from-cyan-400 dark:to-purple-500">
+                  <h3 className="text-xl font-bold mb-3 text-slate-800 dark:text-transparent dark:bg-clip-text dark:bg-linear-to-r dark:from-cyan-400 dark:to-purple-500">
                     {project.title[lang]}
                   </h3>
 
                   {/* Descripción */}
-                  <p className="text-sm text-gray-200 dark:text-gray-400 mb-4 line-clamp-3 leading-relaxed">
+                  <p className="text-sm text-slate-600 dark:text-gray-400 mb-4 line-clamp-3 leading-relaxed">
                     {project.description[lang]}
                   </p>
 
@@ -396,11 +396,11 @@ export const Projects = () => {
                       return (
                         <div
                           key={tech.name}
-                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-600/50 dark:bg-[#1a1f35]/50 border border-blue-400/20 dark:border-purple-500/10"
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white dark:bg-[#1a1f35]/50 border border-blue-200 dark:border-purple-500/10"
                           title={tech.name}
                         >
                           <Icon style={{ color: tech.color }} className="text-sm" />
-                          <span className="text-xs text-gray-100 dark:text-gray-400 font-medium">{tech.name}</span>
+                          <span className="text-xs text-slate-700 dark:text-gray-400 font-medium">{tech.name}</span>
                         </div>
                       );
                     })}
@@ -434,7 +434,7 @@ export const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                      className="px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-500 dark:text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
                     >
                       <FiGithub size={16} />
                       {t({ es: 'Code', en: 'Code' })}
@@ -444,7 +444,7 @@ export const Projects = () => {
 
                 {/* Glow effect on hover */}
                 <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 to-purple-500/10 rounded-xl blur-xl" />
+                  <div className="absolute inset-0 bg-linear-to-br from-cyan-300/20 to-purple-400/20 dark:from-cyan-500/10 dark:to-purple-500/10 rounded-xl blur-xl" />
                 </div>
               </motion.div>
             );
@@ -499,8 +499,8 @@ export const Projects = () => {
 
                 {/* Footer del modal */}
                 <div className="p-6 border-t border-purple-500/20">
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-2">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div className="flex flex-wrap gap-2">
                       {selectedProject.technologies.map((tech) => {
                         const Icon = tech.icon;
                         return (

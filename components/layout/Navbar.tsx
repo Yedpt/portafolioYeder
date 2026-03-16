@@ -13,12 +13,12 @@ const navItems = {
     { name: 'Inicio', href: '#inicio' },
     { name: 'Sobre mí', href: '#sobre-mi' },
     { name: 'Proyectos', href: '#proyectos' },
-    { name: 'Contacto', href: '#contacto' }
+    { name: 'Contacto', href: '#contact' }
   ],
   en: [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
+    { name: 'Home', href: '#inicio' },
+    { name: 'About', href: '#sobre-mi' },
+    { name: 'Projects', href: '#proyectos' },
     { name: 'Contact', href: '#contact' }
   ]
 };

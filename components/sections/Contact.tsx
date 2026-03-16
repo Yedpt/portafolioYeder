@@ -85,7 +85,7 @@ export const Contact = () => {
           
           {/* Formulario de contacto */}
           <motion.div
-            className="bg-white/80 dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-400/30 dark:border-purple-500/20 rounded-2xl p-8 shadow-xl"
+            className="bg-white dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-200 dark:border-purple-500/20 rounded-2xl p-8 shadow-xl shadow-blue-100/70 dark:shadow-purple-900/20"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -104,7 +104,7 @@ export const Contact = () => {
                 <p className="text-xl font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">
                   {t({ es: '¡Mensaje enviado!', en: 'Message sent!' })}
                 </p>
-                <p className="text-gray-400">
+                <p className="text-slate-600 dark:text-gray-400">
                   {t({ es: 'Te contactaré lo antes posible.', en: "I'll get back to you as soon as possible." })}
                 </p>
                 <button
@@ -139,7 +139,7 @@ export const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/50 dark:bg-[#1a1f35]/50 border border-blue-400/30 dark:border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 dark:focus:ring-purple-500 transition-all duration-300 text-gray-800 dark:text-gray-200"
+                  className="w-full px-4 py-3 bg-white dark:bg-[#1a1f35]/50 border border-blue-200 dark:border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 dark:focus:ring-purple-500 transition-all duration-300 text-gray-800 dark:text-gray-200"
                   placeholder={t({ es: 'Tu nombre completo', en: 'Your full name' })}
                 />
               </div>
@@ -159,7 +159,7 @@ export const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/50 dark:bg-[#1a1f35]/50 border border-blue-400/30 dark:border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 dark:focus:ring-purple-500 transition-all duration-300 text-gray-800 dark:text-gray-200"
+                  className="w-full px-4 py-3 bg-white dark:bg-[#1a1f35]/50 border border-blue-200 dark:border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 dark:focus:ring-purple-500 transition-all duration-300 text-gray-800 dark:text-gray-200"
                   placeholder={t({ es: 'tu@email.com', en: 'you@email.com' })}
                 />
               </div>
@@ -179,7 +179,7 @@ export const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/50 dark:bg-[#1a1f35]/50 border border-blue-400/30 dark:border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 dark:focus:ring-purple-500 transition-all duration-300 text-gray-800 dark:text-gray-200"
+                  className="w-full px-4 py-3 bg-white dark:bg-[#1a1f35]/50 border border-blue-200 dark:border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 dark:focus:ring-purple-500 transition-all duration-300 text-gray-800 dark:text-gray-200"
                   placeholder={t({ es: '¿De qué quieres hablar?', en: 'What do you want to talk about?' })}
                 />
               </div>
@@ -199,7 +199,7 @@ export const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-white/50 dark:bg-[#1a1f35]/50 border border-blue-400/30 dark:border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 dark:focus:ring-purple-500 transition-all duration-300 resize-none text-gray-800 dark:text-gray-200"
+                  className="w-full px-4 py-3 bg-white dark:bg-[#1a1f35]/50 border border-blue-200 dark:border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 dark:focus:ring-purple-500 transition-all duration-300 resize-none text-gray-800 dark:text-gray-200"
                   placeholder={t({ es: 'Cuéntame sobre tu proyecto...', en: 'Tell me about your project...' })}
                 />
               </div>
@@ -229,50 +229,22 @@ export const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {/* Tarjeta de ubicación — sin iframe pesado de Google Maps */}
-            <a
-              href="https://www.google.com/maps/place/Madrid,+Spain"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block bg-white/80 dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-400/30 dark:border-purple-500/20 rounded-2xl overflow-hidden shadow-xl hover:border-cyan-400/50 transition-all duration-300"
-            >
-              {/* Pseudo-mapa visual con CSS */}
-              <div className="relative h-44 bg-linear-to-br from-slate-800 to-slate-900 overflow-hidden">
-                {/* Grid de calles simulado */}
-                <div className="absolute inset-0 opacity-20"
-                  style={{
-                    backgroundImage: 'linear-gradient(#06b6d4 1px, transparent 1px), linear-gradient(90deg, #06b6d4 1px, transparent 1px)',
-                    backgroundSize: '40px 40px'
-                  }}
-                />
-                {/* Calles diagonales */}
-                <div className="absolute inset-0 opacity-10"
-                  style={{
-                    backgroundImage: 'linear-gradient(45deg, #8b5cf6 1px, transparent 1px), linear-gradient(-45deg, #8b5cf6 1px, transparent 1px)',
-                    backgroundSize: '80px 80px'
-                  }}
-                />
-                {/* Pin central */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    <div className="w-8 h-8 rounded-full bg-linear-to-br from-cyan-400 to-purple-500 flex items-center justify-center shadow-lg shadow-cyan-500/50">
-                      <FiMapPin className="text-white" size={16} />
-                    </div>
-                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-purple-500 rotate-45" />
-                  </div>
-                </div>
-                {/* Overlay con texto */}
-                <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-slate-900/80 to-transparent p-3 flex items-center justify-between">
-                  <span className="text-white text-sm font-semibold">Madrid, España</span>
-                  <span className="text-cyan-400 text-xs group-hover:underline">
-                    {t({ es: 'Ver en Maps →', en: 'View on Maps →' })}
-                  </span>
-                </div>
-              </div>
-            </a>
+            {/* Mapa de Google Maps */}
+            <div className="bg-white dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-200 dark:border-purple-500/20 rounded-2xl overflow-hidden shadow-xl h-100">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194347.97374207795!2d-3.87936685!3d40.4378698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2sMadrid%2C%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1650000000000!5m2!1ses!2ses"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Location Madrid"
+              />
+            </div>
 
             {/* Info de contacto */}
-            <div className="bg-white/80 dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-400/30 dark:border-purple-500/20 rounded-2xl p-6 shadow-xl space-y-4">
+            <div className="bg-white dark:bg-[#0a0e1a]/70 backdrop-blur-sm border border-blue-200 dark:border-purple-500/20 rounded-2xl p-6 shadow-xl shadow-blue-100/70 dark:shadow-purple-900/20 space-y-4">
               {/* Ubicación */}
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-linear-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center border border-cyan-500/30">

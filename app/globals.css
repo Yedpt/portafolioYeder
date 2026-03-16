@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f9fbff;
   --foreground: #0f172a;
   --card-bg: rgba(255, 255, 255, 0.95);
   --border-color: rgba(59, 130, 246, 0.2);
@@ -26,6 +26,17 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Evita que el navbar fijo tape títulos al navegar con anchors */
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+/* Mejora contraste de placeholders en modo claro */
+input::placeholder,
+textarea::placeholder {
+  color: #64748b;
 }
 
 /* Animaciones personalizadas */
