@@ -37,7 +37,6 @@ const duplicatedTechs = [...technologies, ...technologies];
 
 export const TechCarousel = () => {
   return (
-    <section className="relative py-8 overflow-hidden border-y border-purple-500/20">
     <section className="relative py-8 overflow-hidden border-y border-[#1e3a5f]/40 bg-[#060c18]">
       <div className="absolute inset-0 bg-linear-to-r from-transparent via-purple-500/8 to-transparent pointer-events-none"></div>
       
@@ -49,8 +48,7 @@ export const TechCarousel = () => {
             className="shrink-0 flex flex-col items-center gap-2 min-w-20 group cursor-default"
           >
             <div 
-              className="w-10 h-10 flex items-center justify-center rounded-lg bg-white dark:bg-[#0f1729] border border-blue-300/40 dark:border-purple-500/20 hover:border-cyan-400/50 transition-all duration-300 group-hover:scale-110"
-                            className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#0d1b2e] border border-[#1e3a5f]/60 hover:border-cyan-400/60 transition-all duration-300 group-hover:scale-110"
+              className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#0d1b2e] border border-[#1e3a5f]/60 hover:border-cyan-400/60 transition-all duration-300 group-hover:scale-110"
               style={{
                 boxShadow: `0 0 20px ${tech.color}30`
               }}
@@ -60,8 +58,7 @@ export const TechCarousel = () => {
                 style={{ color: tech.color }}
               />
             </div>
-            <span className="text-xs text-slate-600 dark:text-gray-400 font-medium whitespace-nowrap">
-                          <span className="text-xs text-gray-300 font-medium whitespace-nowrap">
+            <span className="text-xs text-gray-300 font-medium whitespace-nowrap">
               {tech.name}
             </span>
           </div>

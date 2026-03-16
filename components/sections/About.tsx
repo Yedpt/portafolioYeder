@@ -37,16 +37,14 @@ export const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="text-slate-700 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-              <p className="text-slate-900 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+            <p className="text-slate-900 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
               {t({
                 es: 'Soy Yeder Pimentel, desarrollador Full Stack especializado en IA enfocado en integrar soluciones con Inteligencia Artificial en aplicaciones web modernas.',
                 en: "I'm Yeder Pimentel, a Full Stack developer specialized in AI focused on integrating Artificial Intelligence solutions into modern web applications."
               })} <span className="text-cyan-400 font-semibold">Yeder Pimentel</span>
             </p>
             
-            <p className="text-slate-700 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-              <p className="text-slate-900 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+            <p className="text-slate-900 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
               {t({
                 es: 'Mi experiencia abarca el desarrollo completo: desde el frontend con ',
                 en: 'My experience covers full development: from frontend with '
@@ -62,8 +60,7 @@ export const About = () => {
               })}<span className="text-cyan-400">LangChain</span> {t({ es: 'y aplicaciones de', en: 'and' })} <span className="text-cyan-400">Computer Vision</span> {t({ es: 'con PyTorch y YOLO', en: 'applications with PyTorch and YOLO' })}.
             </p>
             
-            <p className="text-slate-700 dark:text-gray-300 text-base md:text-lg leading-relaxed">
-              <p className="text-slate-900 dark:text-gray-300 text-base md:text-lg leading-relaxed">
+            <p className="text-slate-900 dark:text-gray-300 text-base md:text-lg leading-relaxed">
               {t({
                 es: 'Busco colaborar en un equipo donde pueda aportar estas habilidades para resolver problemas reales, aprender continuamente y contribuir con soluciones técnicas que funcionen.',
                 en: 'I seek to collaborate in a team where I can contribute these skills to solve real problems, continuously learn, and contribute technical solutions that work.'

@@ -125,8 +125,7 @@ export const TechSkills = () => {
           {techCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
-              className="bg-white dark:bg-[#0a0e1a]/60 backdrop-blur-sm border border-blue-200 dark:border-purple-500/20 rounded-xl p-5 md:p-6 hover:border-purple-500/40 transition-all duration-300 min-h-70 flex flex-col shadow-md shadow-blue-100/70 dark:shadow-purple-900/20"
-                            className="bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-xl p-5 md:p-6 hover:border-purple-500/50 transition-all duration-300 min-h-70 flex flex-col shadow-lg shadow-black/25"
+              className="bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-xl p-5 md:p-6 hover:border-purple-500/50 transition-all duration-300 min-h-70 flex flex-col shadow-lg shadow-black/25"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -144,16 +143,14 @@ export const TechSkills = () => {
                   return (
                     <motion.div
                       key={tech.name}
-                      className="flex flex-col items-center justify-center p-2 bg-slate-50 dark:bg-[#1a1f35]/50 rounded-lg hover:bg-white dark:hover:bg-[#1a1f35] border border-blue-100 dark:border-transparent transition-all duration-300 group cursor-pointer"
-                                          className="flex flex-col items-center justify-center p-2 bg-[#162040] rounded-lg hover:bg-[#1e2e50] border border-[#1e3a5f]/40 transition-all duration-300 group cursor-pointer"
+                      className="flex flex-col items-center justify-center p-2 bg-[#162040] rounded-lg hover:bg-[#1e2e50] border border-[#1e3a5f]/40 transition-all duration-300 group cursor-pointer"
                       whileHover={{ scale: 1.1 }}
                     >
                       <Icon 
                         className="text-2xl mb-1.5 group-hover:scale-110 transition-transform" 
                         style={{ color: tech.color }}
                       />
-                      <span className="text-[10px] text-slate-600 dark:text-gray-400 text-center font-medium leading-tight">{tech.name}</span>
-                                          <span className="text-[10px] text-gray-300 text-center font-medium leading-tight">{tech.name}</span>
+                      <span className="text-[10px] text-gray-300 text-center font-medium leading-tight">{tech.name}</span>
                     </motion.div>
                   );
                 })}
