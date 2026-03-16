@@ -41,7 +41,7 @@ const stars = generateStars();
 
 export const StarryBackground = () => {
   const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
+  const { theme, lightFxIntensity } = useTheme();
 
   useEffect(() => {
     // Usar setTimeout para evitar el warning de setState sincrono
@@ -53,12 +53,15 @@ export const StarryBackground = () => {
 
   // Colores según el tema
   const isDark = theme === 'dark';
+  const isVividLight = !isDark && lightFxIntensity === 'vivid';
   const bgGradient = isDark 
     ? 'bg-linear-to-br from-[#0a0e1a] via-[#1a1f35] to-[#0a0e1a]'
-    : 'bg-linear-to-br from-white via-sky-50/80 to-white';
+    : isVividLight
+      ? 'bg-linear-to-br from-white via-sky-100/90 to-cyan-50/80'
+      : 'bg-linear-to-br from-white via-sky-50/80 to-white';
   
-  const orbColor1 = isDark ? 'bg-purple-500/10' : 'bg-sky-300/20';
-  const orbColor2 = isDark ? 'bg-cyan-500/10' : 'bg-cyan-300/20';
+  const orbColor1 = isDark ? 'bg-purple-500/10' : isVividLight ? 'bg-sky-300/30' : 'bg-sky-300/18';
+  const orbColor2 = isDark ? 'bg-cyan-500/10' : isVividLight ? 'bg-cyan-300/30' : 'bg-cyan-300/18';
   
   const starGradient = isDark 
     ? 'from-cyan-400 to-purple-400' 
@@ -71,7 +74,7 @@ export const StarryBackground = () => {
   const shootingStarShadow = isDark ? 'shadow-cyan-400/50' : 'shadow-blue-500/40';
   
   const gridColor = isDark ? '#06b6d4' : '#3b82f6';
-  const gridOpacity = isDark ? 0.02 : 0.03;
+  const gridOpacity = isDark ? 0.02 : isVividLight ? 0.05 : 0.025;
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">

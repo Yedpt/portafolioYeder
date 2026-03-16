@@ -3,15 +3,24 @@
 :root {
   --background: #f9fbff;
   --foreground: #0f172a;
-  --card-bg: rgba(255, 255, 255, 0.95);
-  --border-color: rgba(59, 130, 246, 0.2);
+  --card-bg: #ffffff;
+  --border-color: rgba(148, 163, 184, 0.35);
 }
 
 .dark {
   --background: #0a0e1a;
   --foreground: #ffffff;
-  --card-bg: rgba(10, 14, 26, 0.5);
+  --card-bg: rgba(10, 14, 26, 0.62);
   --border-color: rgba(139, 92, 246, 0.2);
+}
+
+/* Control de intensidad visual del fondo en modo claro */
+:root[data-light-fx='soft'] {
+  --light-fx-opacity: 0.18;
+}
+
+:root[data-light-fx='vivid'] {
+  --light-fx-opacity: 0.32;
 }
 
 @theme inline {
@@ -33,10 +42,21 @@ section[id] {
   scroll-margin-top: 90px;
 }
 
+@media (max-width: 768px) {
+  section[id] {
+    scroll-margin-top: 78px;
+  }
+}
+
 /* Mejora contraste de placeholders en modo claro */
 input::placeholder,
 textarea::placeholder {
   color: #64748b;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #94a3b8;
 }
 
 /* Animaciones personalizadas */

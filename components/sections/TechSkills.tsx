@@ -125,7 +125,7 @@ export const TechSkills = () => {
           {techCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
-              className="bg-white/70 dark:bg-[#0a0e1a]/50 backdrop-blur-sm border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300 min-h-70 flex flex-col"
+              className="bg-white dark:bg-[#0a0e1a]/60 backdrop-blur-sm border border-blue-200 dark:border-purple-500/20 rounded-xl p-5 md:p-6 hover:border-purple-500/40 transition-all duration-300 min-h-70 flex flex-col shadow-md shadow-blue-100/70 dark:shadow-purple-900/20"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -137,20 +137,20 @@ export const TechSkills = () => {
               </h3>
 
               {/* Grid de tecnologías */}
-              <div className="grid grid-cols-3 gap-3 flex-1">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 flex-1">
                 {category.techs.map((tech) => {
                   const Icon = tech.icon;
                   return (
                     <motion.div
                       key={tech.name}
-                      className="flex flex-col items-center justify-center p-2 bg-white/60 dark:bg-[#1a1f35]/50 rounded-lg hover:bg-white/90 dark:hover:bg-[#1a1f35] transition-all duration-300 group cursor-pointer"
+                      className="flex flex-col items-center justify-center p-2 bg-slate-50 dark:bg-[#1a1f35]/50 rounded-lg hover:bg-white dark:hover:bg-[#1a1f35] border border-blue-100 dark:border-transparent transition-all duration-300 group cursor-pointer"
                       whileHover={{ scale: 1.1 }}
                     >
                       <Icon 
                         className="text-2xl mb-1.5 group-hover:scale-110 transition-transform" 
                         style={{ color: tech.color }}
                       />
-                      <span className="text-[10px] text-gray-400 text-center font-medium leading-tight">{tech.name}</span>
+                      <span className="text-[10px] text-slate-600 dark:text-gray-400 text-center font-medium leading-tight">{tech.name}</span>
                     </motion.div>
                   );
                 })}
