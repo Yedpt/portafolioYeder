@@ -54,10 +54,10 @@ export const About = () => {
                 es: ', hasta el backend con ',
                 en: ', to backend with '
               })}<span className="text-purple-400">Python {t({ es: 'y', en: 'and' })} Node.js</span>{t({
-                es: ', donde implemento soluciones de IA como sistemas ',
-                en: ', where I implement AI solutions such as '
+                es: ', donde implemento soluciones de IA como ',
+                en: ', where I implement AI solutions like '
               })}<span className="text-cyan-400">RAG</span>{t({
-                es: ', ',
+                es: ', aplicaciones con ',
                 en: ', '
               })}<span className="text-cyan-400">LLMs</span>{t({
                 es: ', agentes con ',
