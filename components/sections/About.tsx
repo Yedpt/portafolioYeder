@@ -38,10 +38,12 @@ export const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className="text-slate-900 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+              {t({ es: 'Soy ', en: "I'm " })}
+              <span className="text-cyan-400 font-semibold">Yeder Pimentel</span>
               {t({
-                es: 'Soy Yeder Pimentel, desarrollador Full Stack especializado en IA enfocado en integrar soluciones con Inteligencia Artificial en aplicaciones web modernas.',
-                en: "I'm Yeder Pimentel, a Full Stack developer specialized in AI focused on integrating Artificial Intelligence solutions into modern web applications."
-              })} <span className="text-cyan-400 font-semibold">Yeder Pimentel</span>
+                es: ', desarrollador Full Stack especializado en IA enfocado en integrar soluciones con Inteligencia Artificial en aplicaciones web modernas.',
+                en: ', a Full Stack developer specialized in AI focused on integrating Artificial Intelligence solutions into modern web applications.'
+              })}
             </p>
             
             <p className="text-slate-900 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-6">
@@ -51,12 +53,15 @@ export const About = () => {
               })}<span className="text-purple-400">JavaScript, TypeScript {t({ es: 'y', en: 'and' })} React</span>{t({
                 es: ', hasta el backend con ',
                 en: ', to backend with '
-              })}<span className="text-purple-400">Node.js {t({ es: 'y', en: 'and' })} Python</span>{t({
-                es: ', donde diseño e implemento soluciones de IA como sistemas ',
-                en: ', where I design and implement AI solutions such as '
+              })}<span className="text-purple-400">Python {t({ es: 'y', en: 'and' })} Node.js</span>{t({
+                es: ', donde implemento soluciones de IA como sistemas ',
+                en: ', where I implement AI solutions such as '
               })}<span className="text-cyan-400">RAG</span>{t({
+                es: ', ',
+                en: ', '
+              })}<span className="text-cyan-400">LLMs</span>{t({
                 es: ', agentes con ',
-                en: ' systems, agents with '
+                en: ', agents with '
               })}<span className="text-cyan-400">LangChain</span> {t({ es: 'y aplicaciones de', en: 'and' })} <span className="text-cyan-400">Computer Vision</span> {t({ es: 'con PyTorch y YOLO', en: 'applications with PyTorch and YOLO' })}.
             </p>
             
