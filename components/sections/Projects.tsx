@@ -548,7 +548,7 @@ export const Projects = () => {
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Header del modal */}
-                  className="flex items-center justify-between p-6 border-b border-[#1e3a5f]/50 bg-[#0a1628]/80 backdrop-blur-sm"
+                <div className="flex items-center justify-between p-6 border-b border-[#1e3a5f]/50 bg-[#0a1628]/80 backdrop-blur-sm">
                   <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">
                     {zoomedImage.title}
                   </h3>
@@ -569,7 +569,7 @@ export const Projects = () => {
                 </div>
 
                 {/* Footer del modal */}
-                  className="p-4 border-t border-[#1e3a5f]/50 bg-[#0a1628]/80 backdrop-blur-sm text-center">
+                <div className="p-4 border-t border-[#1e3a5f]/50 bg-[#0a1628]/80 backdrop-blur-sm text-center">
                   <p className="text-sm text-gray-400">
                     {t({ es: 'Haz clic fuera de la imagen para cerrar', en: 'Click outside the image to close' })}
                   </p>

@@ -230,7 +230,7 @@ export const Contact = () => {
             transition={{ duration: 0.6 }}
           >
             {/* Mapa de Google Maps */}
-            className="bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-2xl overflow-hidden shadow-xl h-100">
+            <div className="bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-2xl overflow-hidden shadow-xl h-100">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194347.97374207795!2d-3.87936685!3d40.4378698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2sMadrid%2C%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1650000000000!5m2!1ses!2ses"
                 width="100%"
@@ -244,7 +244,7 @@ export const Contact = () => {
             </div>
 
             {/* Info de contacto */}
-            className="bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-2xl p-6 shadow-xl shadow-black/30 space-y-4">
+            <div className="bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-2xl p-6 shadow-xl shadow-black/30 space-y-4">
               {/* Ubicación */}
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-linear-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center border border-cyan-500/30">
