@@ -11,22 +11,140 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 // En Vercel: Settings > Environment Variables
 const FORMSPREE_URL = `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`;
 
+type ContactFormData = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
+type ContactFormErrors = Partial<Record<keyof ContactFormData, string>>;
+
+const NAME_REGEX = /^[A-Za-zÀ-ÿ' -]{2,60}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const SUBJECT_REGEX = /^[A-Za-zÀ-ÿ0-9.,:;!?()'"\- ]{4,100}$/;
+
 export const Contact = () => {
   const { t } = useLanguage();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
+  const [errors, setErrors] = useState<ContactFormErrors>({});
+  const [touched, setTouched] = useState<Record<keyof ContactFormData, boolean>>({
+    name: false,
+    email: false,
+    subject: false,
+    message: false,
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const validateField = (field: keyof ContactFormData, value: string): string => {
+    const trimmedValue = value.trim();
+
+    switch (field) {
+      case 'name':
+        if (!trimmedValue) {
+          return t({ es: 'El nombre es obligatorio.', en: 'Name is required.' });
+        }
+        if (!NAME_REGEX.test(trimmedValue)) {
+          return t({
+            es: 'Usa 2-60 caracteres, solo letras, espacios, apóstrofe o guion.',
+            en: 'Use 2-60 characters: letters, spaces, apostrophe or hyphen only.'
+          });
+        }
+        return '';
+
+      case 'email':
+        if (!trimmedValue) {
+          return t({ es: 'El correo es obligatorio.', en: 'Email is required.' });
+        }
+        if (!EMAIL_REGEX.test(trimmedValue)) {
+          return t({
+            es: 'Introduce un correo válido, por ejemplo: nombre@dominio.com',
+            en: 'Enter a valid email, e.g. name@domain.com'
+          });
+        }
+        return '';
+
+      case 'subject':
+        if (!trimmedValue) {
+          return t({ es: 'El tema es obligatorio.', en: 'Subject is required.' });
+        }
+        if (!SUBJECT_REGEX.test(trimmedValue)) {
+          return t({
+            es: 'El tema debe tener 4-100 caracteres y formato válido.',
+            en: 'Subject must have 4-100 characters and valid format.'
+          });
+        }
+        return '';
+
+      case 'message':
+        if (!trimmedValue) {
+          return t({ es: 'El mensaje es obligatorio.', en: 'Message is required.' });
+        }
+        if (trimmedValue.length < 20) {
+          return t({
+            es: 'El mensaje debe tener al menos 20 caracteres.',
+            en: 'Message must be at least 20 characters.'
+          });
+        }
+        if (trimmedValue.length > 1200) {
+          return t({
+            es: 'El mensaje no puede superar 1200 caracteres.',
+            en: 'Message cannot exceed 1200 characters.'
+          });
+        }
+        return '';
+
+      default:
+        return '';
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const nextErrors: ContactFormErrors = {};
+
+    (Object.keys(formData) as Array<keyof ContactFormData>).forEach((field) => {
+      const error = validateField(field, formData[field]);
+      if (error) nextErrors[field] = error;
+    });
+
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  };
+
+  const getInputClassName = (field: keyof ContactFormData) => {
+    const hasError = touched[field] && errors[field];
+    return `w-full px-4 py-3 bg-[#162040] border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 text-gray-100 ${
+      hasError
+        ? 'border-red-500/80 focus:ring-red-500'
+        : 'border-[#1e3a5f]/50 focus:ring-cyan-400'
+    }`;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setTouched({ name: true, email: true, subject: true, message: true });
+    setSubmitError(null);
+
+    if (!validateForm()) {
+      return;
+    }
+
+    if (!process.env.NEXT_PUBLIC_FORMSPREE_ID) {
+      setSubmitError(t({
+        es: 'Falta configurar NEXT_PUBLIC_FORMSPREE_ID en Vercel para habilitar el envío.',
+        en: 'NEXT_PUBLIC_FORMSPREE_ID is missing in Vercel. Configure it to enable sending.'
+      }));
+      return;
+    }
+
     setIsSubmitting(true);
-    setSubmitError(false);
 
     try {
       const res = await fetch(FORMSPREE_URL, {
@@ -38,21 +156,53 @@ export const Contact = () => {
       if (res.ok) {
         setSubmitted(true);
         setFormData({ name: '', email: '', subject: '', message: '' });
+        setErrors({});
+        setTouched({ name: false, email: false, subject: false, message: false });
       } else {
-        setSubmitError(true);
+        setSubmitError(t({
+          es: 'Error al enviar. Inténtalo de nuevo o escríbeme directamente.',
+          en: 'Error sending. Try again or email me directly.'
+        }));
       }
     } catch {
-      setSubmitError(true);
+      setSubmitError(t({
+        es: 'Error de red al enviar. Inténtalo de nuevo en unos minutos.',
+        en: 'Network error while sending. Please try again in a few minutes.'
+      }));
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    const field = name as keyof ContactFormData;
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [field]: value
     });
+
+    if (touched[field]) {
+      const error = validateField(field, value);
+      setErrors((prev) => ({
+        ...prev,
+        [field]: error || undefined,
+      }));
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const field = e.target.name as keyof ContactFormData;
+    const value = e.target.value;
+
+    setTouched((prev) => ({ ...prev, [field]: true }));
+
+    const error = validateField(field, value);
+    setErrors((prev) => ({
+      ...prev,
+      [field]: error || undefined,
+    }));
   };
 
   return (
@@ -119,11 +269,11 @@ export const Contact = () => {
             {/* Mensaje de error */}
             {submitError && (
               <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm text-center mb-4">
-                {t({ es: 'Error al enviar. Inténtalo de nuevo o escríbeme directamente.', en: 'Error sending. Try again or email me directly.' })}
+                {submitError}
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className={`space-y-6 ${submitted ? 'hidden' : ''}`}>
+            <form onSubmit={handleSubmit} noValidate className={`space-y-6 ${submitted ? 'hidden' : ''}`}>
               {/* Nombre */}
               <div>
                 <label 
@@ -138,10 +288,13 @@ export const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-[#162040] border border-[#1e3a5f]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300 text-gray-100"
+                  onBlur={handleBlur}
+                  className={getInputClassName('name')}
                   placeholder={t({ es: 'Tu nombre completo', en: 'Your full name' })}
                 />
+                {touched.name && errors.name && (
+                  <p className="mt-2 text-sm text-red-400">{errors.name}</p>
+                )}
               </div>
 
               {/* Email */}
@@ -158,10 +311,13 @@ export const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-[#162040] border border-[#1e3a5f]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300 text-gray-100"
+                  onBlur={handleBlur}
+                  className={getInputClassName('email')}
                   placeholder={t({ es: 'tu@email.com', en: 'you@email.com' })}
                 />
+                {touched.email && errors.email && (
+                  <p className="mt-2 text-sm text-red-400">{errors.email}</p>
+                )}
               </div>
 
               {/* Tema */}
@@ -178,10 +334,13 @@ export const Contact = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-[#162040] border border-[#1e3a5f]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300 text-gray-100"
+                  onBlur={handleBlur}
+                  className={getInputClassName('subject')}
                   placeholder={t({ es: '¿De qué quieres hablar?', en: 'What do you want to talk about?' })}
                 />
+                {touched.subject && errors.subject && (
+                  <p className="mt-2 text-sm text-red-400">{errors.subject}</p>
+                )}
               </div>
 
               {/* Mensaje */}
@@ -197,11 +356,14 @@ export const Contact = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  required
+                  onBlur={handleBlur}
                   rows={5}
-                  className="w-full px-4 py-3 bg-[#162040] border border-[#1e3a5f]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300 resize-none text-gray-100"
+                  className={`${getInputClassName('message')} resize-none`}
                   placeholder={t({ es: 'Cuéntame sobre tu proyecto...', en: 'Tell me about your project...' })}
                 />
+                {touched.message && errors.message && (
+                  <p className="mt-2 text-sm text-red-400">{errors.message}</p>
+                )}
               </div>
 
               {/* Botón enviar */}
