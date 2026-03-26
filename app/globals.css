@@ -28,6 +28,11 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 /* Evita que el navbar fijo tape títulos al navegar con anchors */
 section[id] {
   scroll-margin-top: 90px;
