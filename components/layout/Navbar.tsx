@@ -53,7 +53,7 @@ export const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             {navItems[lang].map((item) => (
               <a
                 key={item.name}
@@ -67,7 +67,7 @@ export const Navbar = () => {
           </div>
 
           {/* Actions */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
@@ -89,7 +89,8 @@ export const Navbar = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg text-blue-600 dark:text-cyan-400 hover:bg-purple-500/10 transition-colors"
+            className="lg:hidden p-2.5 rounded-xl border border-cyan-400/40 bg-[#0d1b2e]/80 text-cyan-300 hover:bg-[#132844] transition-all duration-300 shadow-[0_0_12px_rgba(34,211,238,0.25)]"
+            aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
             {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
@@ -99,7 +100,7 @@ export const Navbar = () => {
       {/* Mobile Navigation */}
       {isOpen && (
         <motion.div
-          className="md:hidden bg-white dark:bg-[#0a0e1a] border-t border-purple-500/20"
+          className="lg:hidden bg-white dark:bg-[#0a0e1a] border-t border-purple-500/20"
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
