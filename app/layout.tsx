@@ -36,6 +36,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://github.com" />
       </head>
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>

@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { FiExternalLink, FiGithub, FiX, FiPlay, FiMaximize2 } from 'react-icons/fi';
+import { FiExternalLink, FiGithub, FiX, FiPlay, FiMaximize2, FiCpu } from 'react-icons/fi';
 import Image from 'next/image';
 import Lottie from 'lottie-react';
 import { 
@@ -43,6 +43,9 @@ const getProjects = (): Project[] => [
       { name: 'Python', icon: SiPython, color: '#3776AB' },
       { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
       { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+      { name: 'LangChain', icon: FiCpu, color: '#22D3EE' },
+      { name: 'RAG', icon: FiCpu, color: '#A78BFA' },
+      { name: 'LLM', icon: FiCpu, color: '#F59E0B' },
     ],
     demoType: 'live',
     demoUrl: 'https://ai-repo-evaluator.vercel.app',
@@ -65,6 +68,10 @@ const getProjects = (): Project[] => [
       { name: 'Python', icon: SiPython, color: '#3776AB' },
       { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
       { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+      { name: 'LangGraph', icon: FiCpu, color: '#22D3EE' },
+      { name: 'RAG', icon: FiCpu, color: '#A78BFA' },
+      { name: 'LLM', icon: FiCpu, color: '#F59E0B' },
+      { name: 'ChromaDB', icon: FiCpu, color: '#34D399' },
     ],
     demoType: 'video',
     videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
@@ -88,6 +95,7 @@ const getProjects = (): Project[] => [
       { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
       { name: 'Docker', icon: SiDocker, color: '#2496ED' },
       { name: 'OpenCV', icon: SiOpencv, color: '#5C3EE8' },
+      { name: 'YOLOv8', icon: FiCpu, color: '#F59E0B' },
     ],
     demoType: 'video',
     videoUrl: 'https://www.youtube.com/embed/XWhtPLFnb5A',
@@ -110,6 +118,9 @@ const getProjects = (): Project[] => [
       { name: 'React', icon: SiReact, color: '#61DAFB' },
       { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
       { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
+      { name: 'LangChain', icon: FiCpu, color: '#22D3EE' },
+      { name: 'RAG', icon: FiCpu, color: '#A78BFA' },
+      { name: 'LLM', icon: FiCpu, color: '#F59E0B' },
     ],
     demoType: 'video',
     videoUrl: 'https://www.youtube.com/embed/MyOb_GqMVaU',
@@ -154,6 +165,8 @@ const getProjects = (): Project[] => [
       { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
       { name: 'React', icon: SiReact, color: '#61DAFB' },
       { name: 'OpenCV', icon: SiOpencv, color: '#5C3EE8' },
+      { name: 'Computer Vision', icon: FiCpu, color: '#22D3EE' },
+      { name: 'Transfer Learning', icon: FiCpu, color: '#A78BFA' },
     ],
     demoType: 'video',
     videoUrl: 'https://www.youtube.com/embed/rsJhxqRUhTY',
