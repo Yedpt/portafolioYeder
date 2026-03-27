@@ -13,6 +13,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>('dark');
+  const [mounted, setMounted] = useState(false);
 
   // Cargar tema guardado al montar
   useEffect(() => {
@@ -20,9 +21,11 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     if (saved === 'light' || saved === 'dark') {
       setTheme(saved);
     }
+    setMounted(true);
   }, []);
 
   useEffect(() => {
+    if (!mounted) return;
     // Aplicar tema al DOM y persistir
     const root = document.documentElement;
     if (theme === 'dark') {
@@ -31,7 +34,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
       root.classList.remove('dark');
     }
     localStorage.setItem('theme', theme);
-  }, [theme]);
+  }, [theme, mounted]);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
