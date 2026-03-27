@@ -162,6 +162,50 @@ const getProjects = (): Project[] => [
     statusColor: '#8B5CF6',
     category: 'ai',
   },
+  {
+    id: 7,
+    title: { es: 'EvaluAI - Evaluador de Repositorios', en: 'EvaluAI - Repository Evaluator' },
+    description: { 
+      es: 'Herramienta IA para evaluar repositorios de GitHub usando análisis avanzado. Next.js 16 + React 19, FastAPI backend, PostgreSQL, LangChain, búsqueda vectorial FAISS. Analiza código contra rúbricas personalizables y archivos PDF briefing para evaluar proyectos.', 
+      en: 'AI-powered tool to evaluate GitHub repositories with advanced analysis. Next.js 16 + React 19, FastAPI backend, PostgreSQL, LangChain, FAISS vector search. Analyzes code against customizable rubrics and PDF briefings for comprehensive evaluation.' 
+    },
+    image: '/images/projects/evaluAI.json',
+    technologies: [
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'Next.js', icon: SiReact, color: '#000000' },
+      { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+    ],
+    demoType: 'live',
+    demoUrl: 'https://ai-repo-evaluator.vercel.app',
+    githubUrl: 'https://github.com/Yedpt/EvaluAI',
+    status: { es: 'Live', en: 'Live' },
+    statusColor: '#10B981',
+    category: 'ai',
+  },
+  {
+    id: 8,
+    title: { es: 'Nation-Mind AI - Simulador Geopolítico', en: 'Nation-Mind AI - Geopolitical Simulator' },
+    description: { 
+      es: 'Simulador de estrategia por turnos donde 7 naciones IA toman decisiones autónomas usando LLaMA 3 + RAG. Next.js 16 + React 19, FastAPI backend, PostgreSQL + ChromaDB vectorial, Groq API, LangGraph. Agentes con memoria, personalidad y objetivos propios que negocian, declaran guerra y compiten por dominación.', 
+      en: 'Turn-based strategy simulator where 7 AI nations make autonomous decisions using LLaMA 3 + RAG. Next.js 16 + React 19, FastAPI backend, PostgreSQL + ChromaDB vector DB, Groq API, LangGraph. Agents with memory, unique personalities and objectives that negotiate, declare wars and compete for domination.' 
+    },
+    image: '/images/projects/nation-mind-AI.json',
+    technologies: [
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'Next.js', icon: SiReact, color: '#000000' },
+      { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+    ],
+    demoType: 'video',
+    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
+    githubUrl: 'https://github.com/Yedpt/Nation-Mind-AI',
+    status: { es: 'Proyecto', en: 'Project' },
+    statusColor: '#8B5CF6',
+    category: 'ai',
+  },
 ];
 
 // Componente para renderizar imagen normal o Lottie JSON
