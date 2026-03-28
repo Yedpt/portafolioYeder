@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { FiExternalLink, FiGithub, FiX, FiPlay, FiMaximize2, FiCpu } from 'react-icons/fi';
 import Image from 'next/image';
+import Link from 'next/link';
 import Lottie from 'lottie-react';
 import { 
   SiReact, SiTailwindcss, 
@@ -279,13 +280,18 @@ const ProjectMedia = ({
   );
 };
 
-export const Projects = () => {
+interface ProjectsProps {
+  variant?: 'primary' | 'secondary';
+}
+
+export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
   const { t, lang } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [zoomedImage, setZoomedImage] = useState<{ image: string; title: string } | null>(null);
   const [filterCategory, setFilterCategory] = useState<'all' | 'web' | 'ai'>('all');
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const isSecondaryPage = variant === 'secondary';
   
   // Cerrar dropdown al hacer clic fuera
   useEffect(() => {
@@ -304,7 +310,19 @@ export const Projects = () => {
     };
   }, [showFilterDropdown]);
   
-  const allProjects = getProjects();
+  const projectsData = getProjects();
+  const primaryProjectIds = [1, 2, 3, 4, 6, 5];
+  const secondaryProjectIds = [7, 8];
+
+  const mapById = new Map(projectsData.map((project) => [project.id, project]));
+  const primaryProjects = primaryProjectIds
+    .map((id) => mapById.get(id))
+    .filter((project): project is Project => Boolean(project));
+  const secondaryProjects = secondaryProjectIds
+    .map((id) => mapById.get(id))
+    .filter((project): project is Project => Boolean(project));
+
+  const allProjects = isSecondaryPage ? secondaryProjects : primaryProjects;
   const projects = filterCategory === 'all' 
     ? allProjects 
     : allProjects.filter(p => p.category === filterCategory);
@@ -329,13 +347,20 @@ export const Projects = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-purple-500 to-pink-500">
-              {t({ es: 'Mis Proyectos', en: 'My Projects' })}
+              {t({
+                es: isSecondaryPage ? 'Proyectos Secundarios' : 'Mis Proyectos',
+                en: isSecondaryPage ? 'Secondary Projects' : 'My Projects',
+              })}
             </span>
           </h2>
           <p className="text-slate-800 dark:text-gray-400 max-w-2xl mx-auto mb-4">
             {t({ 
-              es: 'Una colección de mi trabajo reciente y proyectos personales', 
-              en: 'A collection of my recent work and personal projects' 
+              es: isSecondaryPage
+                ? 'Otros proyectos y experimentos que complementan mi portfolio principal'
+                : 'Una colección de mi trabajo reciente y proyectos personales', 
+              en: isSecondaryPage
+                ? 'Additional projects and experiments that complement my main portfolio'
+                : 'A collection of my recent work and personal projects', 
             })}
           </p>
           <div className="w-24 h-1 bg-linear-to-r from-cyan-400 to-purple-500 mx-auto rounded-full"></div>
@@ -507,6 +532,49 @@ export const Projects = () => {
             );
           })}
         </div>
+
+        {projects.length === 0 && (
+          <div className="mt-10 text-center text-gray-400">
+            {t({
+              es: 'No hay proyectos en esta categoría por ahora.',
+              en: 'There are no projects in this category yet.',
+            })}
+          </div>
+        )}
+
+        {!isSecondaryPage && secondaryProjects.length > 0 && (
+          <motion.div
+            className="mt-12 flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link
+              href="/proyectos-secundarios"
+              className="px-8 py-3 rounded-xl bg-[#0d1b2e] border border-purple-500/40 text-cyan-400 font-semibold hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300"
+            >
+              {t({ es: 'Ver otros proyectos', en: 'View Other Projects' })}
+            </Link>
+          </motion.div>
+        )}
+
+        {isSecondaryPage && (
+          <motion.div
+            className="mt-12 flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link
+              href="/#proyectos"
+              className="px-8 py-3 rounded-xl bg-[#0d1b2e] border border-cyan-500/40 text-cyan-400 font-semibold hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-300"
+            >
+              {t({ es: 'Volver a proyectos principales', en: 'Back to Main Projects' })}
+            </Link>
+          </motion.div>
+        )}
 
         {/* Modal de Video */}
         <AnimatePresence>
