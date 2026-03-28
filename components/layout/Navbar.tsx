@@ -45,6 +45,7 @@ export const Navbar = () => {
                 src="/images/YP_logo.webp"
                 alt="YP Logo"
                 fill
+                sizes="44px"
                 className="object-contain"
                 priority
               />
@@ -107,12 +108,12 @@ export const Navbar = () => {
         >
           <div className="h-full px-6 py-8 flex flex-col justify-between">
             <div className="flex-1 flex items-center justify-center">
-              <div className="w-full max-w-xs rounded-2xl border border-cyan-400/20 bg-[#0b1730]/70 backdrop-blur-md shadow-[0_0_30px_rgba(34,211,238,0.10)] p-4">
+              <div className="w-full max-w-xs rounded-2xl border border-cyan-400/20 bg-[#0b1730]/70 backdrop-blur-md shadow-[0_0_30px_rgba(34,211,238,0.10)] p-4 space-y-2">
               {navItems[lang].map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block text-center text-gray-100 hover:text-cyan-300 transition-colors duration-300 py-3 text-[2rem] font-bold leading-tight"
+                  className="block text-center text-gray-100 hover:text-cyan-300 transition-all duration-300 py-3 px-4 rounded-xl border border-white/10 bg-white/5 hover:border-cyan-400/40 hover:bg-cyan-500/10 text-3xl font-bold leading-tight"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
