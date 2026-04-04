@@ -420,7 +420,7 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
             return (
               <motion.div
                 key={project.id}
-                className="group relative bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all duration-300 shadow-lg shadow-black/30"
+                className="group relative h-full flex flex-col bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all duration-300 shadow-lg shadow-black/30"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -462,14 +462,14 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                 </div>
 
                 {/* Contenido */}
-                <div className="p-6">
+                <div className="p-6 flex-1 flex flex-col">
                   {/* Título */}
                   <h3 className="text-xl font-bold mb-3 text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">
                     {project.title[lang]}
                   </h3>
 
                   {/* Descripción */}
-                  <p className="text-sm text-gray-300 mb-4 line-clamp-3 leading-relaxed">
+                  <p className="text-sm text-gray-300 mb-4 line-clamp-3 leading-relaxed min-h-18">
                     {project.description[lang]}
                   </p>
 
@@ -491,45 +491,33 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                   </div>
 
                   {/* Botones */}
-                  {project.demoUrl && project.videoUrl ? (
-                    <div className="flex flex-col gap-2">
-                      <div className="flex gap-2">
+                  <div className="mt-auto flex flex-col gap-2">
+                    <div className="flex gap-2">
+                      {project.demoUrl && project.videoUrl ? (
+                        <>
+                          <a
+                            href={project.demoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                          >
+                            <FiExternalLink size={16} />
+                            {t({ es: 'View Demo', en: 'View Demo' })}
+                          </a>
+                          <button
+                            onClick={() => setSelectedProject(project)}
+                            className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                          >
+                            <FiPlay size={16} />
+                            {t({ es: 'Ver Video', en: 'Watch Video' })}
+                          </button>
+                        </>
+                      ) : project.demoType === 'live' ? (
                         <a
                           href={project.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
-                        >
-                          <FiExternalLink size={16} />
-                          {t({ es: 'View Demo', en: 'View Demo' })}
-                        </a>
-                        <button
-                          onClick={() => setSelectedProject(project)}
-                          className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
-                        >
-                          <FiPlay size={16} />
-                          {t({ es: 'Ver Video', en: 'Watch Video' })}
-                        </button>
-                      </div>
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-500 dark:text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
-                      >
-                        <FiGithub size={16} />
-                        {t({ es: 'Code', en: 'Code' })}
-                      </a>
-                    </div>
-                  ) : (
-                    <div className="flex gap-3">
-                      {/* Botón View Demo */}
-                      {project.demoType === 'live' ? (
-                        <a
-                          href={project.demoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                          className="w-full px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
                         >
                           <FiExternalLink size={16} />
                           {t({ es: 'View Demo', en: 'View Demo' })}
@@ -537,25 +525,24 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                       ) : (
                         <button
                           onClick={() => setSelectedProject(project)}
-                          className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                          className="w-full px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
                         >
                           <FiPlay size={16} />
                           {t({ es: 'Ver Video', en: 'Watch Video' })}
                         </button>
                       )}
-
-                      {/* Botón Code */}
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-500 dark:text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
-                      >
-                        <FiGithub size={16} />
-                        {t({ es: 'Code', en: 'Code' })}
-                      </a>
                     </div>
-                  )}
+
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-500 dark:text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                    >
+                      <FiGithub size={16} />
+                      {t({ es: 'Code', en: 'Code' })}
+                    </a>
+                  </div>
                 </div>
 
                 {/* Glow effect on hover */}
