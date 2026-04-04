@@ -474,7 +474,7 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                   </p>
 
                   {/* Tecnologías */}
-                  <div className="flex h-30 flex-wrap content-start gap-2 mb-4 overflow-y-auto pr-1">
+                  <div className="flex h-28 md:h-32 flex-wrap content-start gap-2 mb-4 overflow-y-auto pr-1">
                     {project.technologies.map((tech) => {
                       const Icon = tech.icon;
                       return (
