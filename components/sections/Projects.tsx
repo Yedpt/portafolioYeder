@@ -50,6 +50,7 @@ const getProjects = (): Project[] => [
     ],
     demoType: 'live',
     demoUrl: 'https://ai-repo-evaluator.vercel.app',
+    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID_EVALAI',
     githubUrl: 'https://github.com/Yedpt/EvaluAI',
     status: { es: 'Live', en: 'Live' },
     statusColor: '#10B981',
@@ -76,6 +77,7 @@ const getProjects = (): Project[] => [
     ],
     demoType: 'live',
     demoUrl: 'https://nation-mind-ai.vercel.app',
+    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID_NATION_MIND_AI',
     githubUrl: 'https://github.com/Yedpt/Nation-Mind-AI',
     status: { es: 'Proyecto', en: 'Project' },
     statusColor: '#8B5CF6',
@@ -489,39 +491,71 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                   </div>
 
                   {/* Botones */}
-                  <div className="flex gap-3">
-                    {/* Botón View Demo */}
-                    {project.demoType === 'live' ? (
+                  {project.demoUrl && project.videoUrl ? (
+                    <div className="flex flex-col gap-2">
+                      <div className="flex gap-2">
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                        >
+                          <FiExternalLink size={16} />
+                          {t({ es: 'View Demo', en: 'View Demo' })}
+                        </a>
+                        <button
+                          onClick={() => setSelectedProject(project)}
+                          className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                        >
+                          <FiPlay size={16} />
+                          {t({ es: 'Ver Video', en: 'Watch Video' })}
+                        </button>
+                      </div>
                       <a
-                        href={project.demoUrl}
+                        href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                        className="w-full px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-500 dark:text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
                       >
-                        <FiExternalLink size={16} />
-                        {t({ es: 'View Demo', en: 'View Demo' })}
+                        <FiGithub size={16} />
+                        {t({ es: 'Code', en: 'Code' })}
                       </a>
-                    ) : (
-                      <button
-                        onClick={() => setSelectedProject(project)}
-                        className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
-                      >
-                        <FiPlay size={16} />
-                        {t({ es: 'Ver Video', en: 'Watch Video' })}
-                      </button>
-                    )}
+                    </div>
+                  ) : (
+                    <div className="flex gap-3">
+                      {/* Botón View Demo */}
+                      {project.demoType === 'live' ? (
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                        >
+                          <FiExternalLink size={16} />
+                          {t({ es: 'View Demo', en: 'View Demo' })}
+                        </a>
+                      ) : (
+                        <button
+                          onClick={() => setSelectedProject(project)}
+                          className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                        >
+                          <FiPlay size={16} />
+                          {t({ es: 'Ver Video', en: 'Watch Video' })}
+                        </button>
+                      )}
 
-                    {/* Botón Code */}
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-500 dark:text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
-                    >
-                      <FiGithub size={16} />
-                      {t({ es: 'Code', en: 'Code' })}
-                    </a>
-                  </div>
+                      {/* Botón Code */}
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-500 dark:text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                      >
+                        <FiGithub size={16} />
+                        {t({ es: 'Code', en: 'Code' })}
+                      </a>
+                    </div>
+                  )}
                 </div>
 
                 {/* Glow effect on hover */}
@@ -578,7 +612,7 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
 
         {/* Modal de Video */}
         <AnimatePresence>
-          {selectedProject && selectedProject.demoType === 'video' && (
+          {selectedProject?.videoUrl && (
             <motion.div
               className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
               initial={{ opacity: 0 }}
