@@ -52,7 +52,7 @@ const getProjects = (): Project[] => [
     demoUrl: 'https://ai-repo-evaluator.vercel.app',
     videoUrl: 'https://www.youtube.com/embed/VIDEO_ID_EVALAI',
     githubUrl: 'https://github.com/Yedpt/EvaluAI',
-    status: { es: 'Live', en: 'Live' },
+    status: { es: 'En vivo', en: 'Live' },
     statusColor: '#10B981',
     category: 'ai',
   },
@@ -79,7 +79,7 @@ const getProjects = (): Project[] => [
     demoUrl: 'https://nation-mind-ai.vercel.app',
     videoUrl: 'https://www.youtube.com/embed/VIDEO_ID_NATION_MIND_AI',
     githubUrl: 'https://github.com/Yedpt/Nation-Mind-AI',
-    status: { es: 'Live', en: 'Live' },
+    status: { es: 'En vivo', en: 'Live' },
     statusColor: '#10B981',
     category: 'ai',
   },
@@ -196,7 +196,7 @@ const getProjects = (): Project[] => [
     demoType: 'live',
     demoUrl: 'https://petland-f5.vercel.app',
     githubUrl: 'https://github.com/Yedpt/Petland_F5',
-    status: { es: 'Live', en: 'Live' },
+    status: { es: 'En vivo', en: 'Live' },
     statusColor: '#10B981',
     category: 'web',
   },
@@ -218,7 +218,7 @@ const getProjects = (): Project[] => [
     demoType: 'live',
     demoUrl: 'https://gitgame.vercel.app',
     githubUrl: 'https://github.com/Yedpt/gitGame',
-    status: { es: 'Live', en: 'Live' },
+    status: { es: 'En vivo', en: 'Live' },
     statusColor: '#10B981',
     category: 'web',
   },
@@ -474,7 +474,7 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                   </p>
 
                   {/* Tecnologías */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex h-30 flex-wrap content-start gap-2 mb-4 overflow-y-auto pr-1">
                     {project.technologies.map((tech) => {
                       const Icon = tech.icon;
                       return (
@@ -502,7 +502,7 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                             className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
                           >
                             <FiExternalLink size={16} />
-                            {t({ es: 'View Demo', en: 'View Demo' })}
+                            {t({ es: 'Ver demo', en: 'View Demo' })}
                           </a>
                           <button
                             onClick={() => setSelectedProject(project)}
@@ -520,7 +520,7 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                           className="w-full px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
                         >
                           <FiExternalLink size={16} />
-                          {t({ es: 'View Demo', en: 'View Demo' })}
+                          {t({ es: 'Ver demo', en: 'View Demo' })}
                         </a>
                       ) : (
                         <button
@@ -540,7 +540,7 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                       className="w-full px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-500 dark:text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
                     >
                       <FiGithub size={16} />
-                      {t({ es: 'Code', en: 'Code' })}
+                      {t({ es: 'Código', en: 'Code' })}
                     </a>
                   </div>
                 </div>
