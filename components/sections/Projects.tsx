@@ -474,13 +474,13 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                   </p>
 
                   {/* Tecnologías */}
-                  <div className="flex h-28 md:h-32 flex-wrap content-start gap-2 mb-4 overflow-y-auto pr-1">
+                  <div className="flex min-h-28 md:min-h-32 flex-wrap content-start gap-2 mb-4">
                     {project.technologies.map((tech) => {
                       const Icon = tech.icon;
                       return (
                         <div
                           key={tech.name}
-                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#162040] border border-[#1e3a5f]/40"
+                          className="flex h-8 items-center gap-1.5 px-2.5 rounded-lg bg-[#162040] border border-[#1e3a5f]/40"
                           title={tech.name}
                         >
                           <Icon style={{ color: tech.color }} className="text-sm" />
