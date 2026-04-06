@@ -224,6 +224,39 @@ const getProjects = (): Project[] => [
   },
 ];
 
+const getSafeExternalUrl = (url?: string): string | undefined => {
+  if (!url) return undefined;
+
+  try {
+    const parsedUrl = new URL(url);
+    if (parsedUrl.protocol !== 'https:') {
+      return undefined;
+    }
+    return parsedUrl.toString();
+  } catch {
+    return undefined;
+  }
+};
+
+const getSafeYoutubeEmbedUrl = (url?: string): string | undefined => {
+  const safeUrl = getSafeExternalUrl(url);
+  if (!safeUrl) return undefined;
+
+  const parsedUrl = new URL(safeUrl);
+  const host = parsedUrl.hostname.toLowerCase();
+  const isTrustedYoutubeHost =
+    host === 'www.youtube.com' ||
+    host === 'youtube.com' ||
+    host === 'www.youtube-nocookie.com' ||
+    host === 'youtube-nocookie.com';
+
+  if (!isTrustedYoutubeHost || !parsedUrl.pathname.startsWith('/embed/')) {
+    return undefined;
+  }
+
+  return parsedUrl.toString();
+};
+
 // Componente para renderizar imagen normal o Lottie JSON
 const ProjectMedia = ({ 
   src, 
@@ -294,6 +327,12 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const isSecondaryPage = variant === 'secondary';
+  const safeSelectedProjectVideoUrl = selectedProject
+    ? getSafeYoutubeEmbedUrl(selectedProject.videoUrl)
+    : undefined;
+  const safeSelectedProjectGithubUrl = selectedProject
+    ? getSafeExternalUrl(selectedProject.githubUrl)
+    : undefined;
   
   // Cerrar dropdown al hacer clic fuera
   useEffect(() => {
@@ -417,6 +456,9 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
         {/* Grid de proyectos */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => {
+            const safeDemoUrl = getSafeExternalUrl(project.demoUrl);
+            const safeGithubUrl = getSafeExternalUrl(project.githubUrl);
+
             return (
               <motion.div
                 key={project.id}
@@ -493,12 +535,13 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                   {/* Botones */}
                   <div className="mt-auto flex flex-col gap-2">
                     <div className="flex gap-2">
-                      {project.demoUrl && project.videoUrl ? (
+                      {safeDemoUrl && project.videoUrl ? (
                         <>
                           <a
-                            href={project.demoUrl}
+                            href={safeDemoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            referrerPolicy="no-referrer"
                             className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
                           >
                             <FiExternalLink size={16} />
@@ -512,16 +555,26 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                             {t({ es: 'Ver Video', en: 'Watch Video' })}
                           </button>
                         </>
-                      ) : project.demoType === 'live' ? (
+                      ) : project.demoType === 'live' && safeDemoUrl ? (
                         <a
-                          href={project.demoUrl}
+                          href={safeDemoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          referrerPolicy="no-referrer"
                           className="w-full px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
                         >
                           <FiExternalLink size={16} />
                           {t({ es: 'Ver demo', en: 'View Demo' })}
                         </a>
+                      ) : project.demoType === 'live' ? (
+                        <button
+                          type="button"
+                          disabled
+                          className="w-full px-4 py-2 rounded-lg bg-gray-600/50 text-gray-300 font-semibold text-sm flex items-center justify-center gap-2 cursor-not-allowed"
+                        >
+                          <FiExternalLink size={16} />
+                          {t({ es: 'Demo no disponible', en: 'Demo unavailable' })}
+                        </button>
                       ) : (
                         <button
                           onClick={() => setSelectedProject(project)}
@@ -533,15 +586,27 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                       )}
                     </div>
 
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-500 dark:text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
-                    >
-                      <FiGithub size={16} />
-                      {t({ es: 'Código', en: 'Code' })}
-                    </a>
+                    {safeGithubUrl ? (
+                      <a
+                        href={safeGithubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        referrerPolicy="no-referrer"
+                        className="w-full px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-500 dark:text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                      >
+                        <FiGithub size={16} />
+                        {t({ es: 'Código', en: 'Code' })}
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        disabled
+                        className="w-full px-4 py-2 rounded-lg bg-gray-600/50 text-gray-300 font-semibold text-sm flex items-center justify-center gap-2 cursor-not-allowed"
+                      >
+                        <FiGithub size={16} />
+                        {t({ es: 'Código no disponible', en: 'Code unavailable' })}
+                      </button>
+                    )}
                   </div>
                 </div>
 
@@ -599,7 +664,7 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
 
         {/* Modal de Video */}
         <AnimatePresence>
-          {selectedProject?.videoUrl && (
+          {selectedProject && safeSelectedProjectVideoUrl && (
             <motion.div
               className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
               initial={{ opacity: 0 }}
@@ -635,10 +700,12 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                 {/* Video */}
                 <div className="relative w-full aspect-video bg-black">
                   <iframe
-                    src={selectedProject.videoUrl}
+                    src={safeSelectedProjectVideoUrl}
                     title={selectedProject.title[lang]}
                     className="w-full h-full"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"
+                    referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
                   />
                 </div>
@@ -660,15 +727,27 @@ export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
                         );
                       })}
                     </div>
-                    <a
-                      href={selectedProject.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-6 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center gap-2 transition-all duration-300"
-                    >
-                      <FiGithub size={16} />
-                      {t({ es: 'Ver Código', en: 'View Code' })}
-                    </a>
+                    {safeSelectedProjectGithubUrl ? (
+                      <a
+                        href={safeSelectedProjectGithubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        referrerPolicy="no-referrer"
+                        className="px-6 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center gap-2 transition-all duration-300"
+                      >
+                        <FiGithub size={16} />
+                        {t({ es: 'Ver Código', en: 'View Code' })}
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        disabled
+                        className="px-6 py-2 rounded-lg bg-gray-600/50 text-gray-300 font-semibold text-sm flex items-center gap-2 cursor-not-allowed"
+                      >
+                        <FiGithub size={16} />
+                        {t({ es: 'Código no disponible', en: 'Code unavailable' })}
+                      </button>
+                    )}
                   </div>
                 </div>
               </motion.div>

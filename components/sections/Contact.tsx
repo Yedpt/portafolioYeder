@@ -9,7 +9,8 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 // Para activar el formulario: crea una cuenta gratuita en https://formspree.io,
 // crea un form, y pon tu Form ID en .env.local -> NEXT_PUBLIC_FORMSPREE_ID=xxxxxxxx
 // En Vercel: Settings > Environment Variables
-const FORMSPREE_URL = `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`;
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+const FORMSPREE_URL = FORMSPREE_ID ? `https://formspree.io/f/${FORMSPREE_ID}` : null;
 
 type ContactFormData = {
   name: string;
@@ -159,7 +160,7 @@ export const Contact = () => {
       return;
     }
 
-    if (!process.env.NEXT_PUBLIC_FORMSPREE_ID) {
+    if (!FORMSPREE_URL) {
       setSubmitError(t({
         es: 'Falta configurar NEXT_PUBLIC_FORMSPREE_ID en Vercel para habilitar el envío.',
         en: 'NEXT_PUBLIC_FORMSPREE_ID is missing in Vercel. Configure it to enable sending.'
@@ -444,7 +445,8 @@ export const Contact = () => {
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                referrerPolicy="strict-origin-when-cross-origin"
                 title="Location Madrid"
               />
             </div>
@@ -492,6 +494,7 @@ export const Contact = () => {
                     href="https://github.com/Yedpt"
                     target="_blank"
                     rel="noopener noreferrer"
+                    referrerPolicy="no-referrer"
                     className="w-12 h-12 rounded-full bg-linear-to-br from-slate-600 to-slate-700 flex items-center justify-center text-white hover:scale-110 transition-transform"
                   >
                     <FaGithub size={20} />
@@ -500,6 +503,7 @@ export const Contact = () => {
                     href="https://www.linkedin.com/in/yeder-pimentel"
                     target="_blank"
                     rel="noopener noreferrer"
+                    referrerPolicy="no-referrer"
                     className="w-12 h-12 rounded-full bg-linear-to-br from-blue-600 to-blue-700 flex items-center justify-center text-white hover:scale-110 transition-transform"
                   >
                     <FaLinkedin size={20} />

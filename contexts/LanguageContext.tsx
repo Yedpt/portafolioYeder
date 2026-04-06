@@ -13,22 +13,18 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<Language>('es');
+  const [lang, setLang] = useState<Language>(() => {
+    if (typeof window === 'undefined') return 'es';
+    const saved = localStorage.getItem('lang');
+    return saved === 'es' || saved === 'en' ? saved : 'es';
+  });
 
-  // Cargar idioma guardado al montar
   useEffect(() => {
-    const saved = localStorage.getItem('lang') as Language | null;
-    if (saved === 'es' || saved === 'en') {
-      setLang(saved);
-    }
-  }, []);
+    localStorage.setItem('lang', lang);
+  }, [lang]);
 
   const toggleLanguage = () => {
-    setLang(prev => {
-      const next = prev === 'es' ? 'en' : 'es';
-      localStorage.setItem('lang', next);
-      return next;
-    });
+    setLang(prev => (prev === 'es' ? 'en' : 'es'));
   };
 
   const t = (translations: { es: string; en: string }) => {

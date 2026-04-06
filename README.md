@@ -11,7 +11,7 @@
 
 **Portfolio personal Full Stack Developer con diseño neon, animaciones fluidas y sistema de proyectos avanzado** ✨
 
-[Demo en Vivo](https://tu-portfolio.vercel.app) • [Características](#-características-destacadas) • [Proyectos](#-proyectos-destacados)
+[Demo en Vivo](https://tu-portfolio.vercel.app) • [Características](#-características-destacadas) • [Proyectos](#-proyectos-destacados) • [Seguridad](SECURITY.md)
 
 </div>
 
