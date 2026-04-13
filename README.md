@@ -1,153 +1,119 @@
-# Portfolio v2 - Yeder Pimentel
+# Portfolio v2 | Yeder Pimentel
 
 <div align="center">
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Tailwind](https://img.shields.io/badge/Tailwind-4-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-FF0080?style=for-the-badge&logo=framer)
-![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)
 
-Portfolio profesional bilingue (ES/EN) con enfoque en Full Stack + IA, interfaz neon, animaciones fluidas y seccion de proyectos con demos, videos y filtros por categoria.
+Portfolio personal para mostrar proyectos de Full Stack e IA, con una interfaz visual y facil de navegar.
 
-[Demo](https://tu-portfolio.vercel.app) • [Tecnologias](#tecnologias-principales) • [Proyectos](#proyectos-destacados) • [Instalacion](#instalacion-local)
+[Ver demo](https://tu-portfolio.vercel.app) • [Proyectos](#-proyectos) • [Instalacion](#-instalacion-rapida) • [Contacto](#-contacto)
 
 </div>
 
 ---
 
-## Vista general
+## 👋 Sobre este portfolio
 
-- App desarrollada con Next.js App Router y React 19.
-- UI responsive con modo dark/light.
-- Fondo animado y carrusel de tecnologias.
-- Secciones: Hero, About, Tech Skills, Soft Skills, Projects y Contact.
-- Integraciones externas: Formspree, YouTube, Google Maps, GitHub, LinkedIn.
+Este proyecto esta pensado para recruiters, clientes y equipos tecnicos que quieran ver mi trabajo de forma rapida.
 
-## Caracteristicas destacadas
+- 🌐 Version bilingue: espanol / ingles
+- 🌓 Tema dark/light
+- ⚡ Carga rapida y experiencia fluida
+- 📱 Responsive en movil, tablet y desktop
 
-### Experiencia visual
+## 🎨 Lo visual
 
-- Diseno neon con gradientes, blur effects y microinteracciones.
-- Animaciones con Framer Motion y entrada escalonada por seccion.
-- Fondo dinamico con estrellas y efectos atmosfericos.
-- Componentes optimizados para desktop, tablet y movil.
+- ✨ Fondo animado con estrellas
+- 🧩 Tarjetas de proyecto con hover
+- 🎬 Modales para video
+- 🔍 Zoom de imagen/GIF/Lottie
+- 🧭 Filtros por categoria para encontrar proyectos rapido
 
-### Experiencia funcional
+## ⚙️ Lo funcional
 
-- Selector de idioma ES/EN global.
-- Selector de tema dark/light persistente.
-- Seccion de proyectos con:
-  - Filtro por categoria: Todos, Full Stack Web, IA/ML.
-  - Soporte multimedia: imagen, GIF y Lottie JSON.
-  - Modal de video con embed de YouTube.
-  - Zoom de imagen a pantalla grande.
-- Formulario de contacto con validacion de campos en tiempo real.
+- 🌍 Cambio de idioma global (ES/EN)
+- 🌓 Cambio de tema con persistencia
+- 📨 Formulario de contacto con validacion
+- 🔗 Integraciones externas (Formspree, YouTube, Google Maps)
 
-## Tecnologias principales
+## 🛠️ Stack principal
 
-| Area | Stack |
+| Area | Tecnologias |
 |---|---|
-| Frontend | Next.js 16, React 19, TypeScript, Tailwind CSS 4 |
+| Frontend | Next.js 16, React 19, TypeScript |
+| Estilos | Tailwind CSS 4 |
 | Animaciones | Framer Motion, Lottie React |
-| UI Icons | React Icons |
-| Build/Deploy | npm, Vercel |
-| Buenas practicas | ESlint, CSP y cabeceras de seguridad |
+| UI | React Icons |
+| Deploy | Vercel |
 
-## Proyectos destacados
+## 🚀 Proyectos
 
-### IA / Machine Learning
+### 🤖 IA / Machine Learning
 
-1. EvaluAI - Repository Evaluator
-- Stack: Next.js, React, FastAPI, PostgreSQL, LangChain, FAISS.
-- Objetivo: evaluacion automatizada de repositorios de GitHub con rubricas.
+1. **EvaluAI**
 - Demo: https://ai-repo-evaluator.vercel.app
 - Codigo: https://github.com/Yedpt/EvaluAI
+- Resumen: evaluador de repositorios con IA y rubricas.
 
-2. Nation-Mind AI - Geopolitical Simulator
-- Stack: Next.js, React, FastAPI, PostgreSQL, ChromaDB, LangGraph.
-- Objetivo: simulador por turnos con naciones IA autonomas.
+2. **Nation-Mind AI**
 - Demo: https://nation-mind-ai.vercel.app
 - Codigo: https://github.com/Yedpt/Nation-Mind-AI
+- Resumen: simulador geopolitico con agentes autonomos.
 
-3. Computer Vision - Deteccion de Objetos
-- Stack: Python, FastAPI, React, PostgreSQL, Docker, OpenCV.
-- Objetivo: deteccion de objetos en tiempo real con enfoque productivo.
+3. **Computer Vision - Deteccion de Objetos**
 - Video: https://www.youtube.com/embed/XWhtPLFnb5A
 - Codigo: https://github.com/Yedpt/PROYECTO-COMPUTER-VISION---Deteccion-de-Objetos
+- Resumen: deteccion en tiempo real con enfoque full stack.
 
-4. LLM Generador de Contenido
-- Stack: Python, FastAPI, React, JavaScript, LangChain.
-- Objetivo: sistema multiagente para generacion de contenido.
+4. **LLM Generador de Contenido**
 - Video: https://www.youtube.com/embed/MyOb_GqMVaU
 - Codigo: https://github.com/Yedpt/proyecto-LLMs-generador-de-contenido
+- Resumen: sistema multiagente para generar contenido.
 
-5. Dog Breed Identifier - ML
-- Stack: PyTorch, FastAPI, React, OpenCV.
-- Objetivo: clasificador de razas de perros con transfer learning.
+5. **Dog Breed Identifier ML**
 - Video: https://www.youtube.com/embed/rsJhxqRUhTY
 - Codigo: https://github.com/Yedpt/Dog_Breed_Identifier_ML
+- Resumen: clasificador de razas con deep learning.
 
-### Desarrollo Web Full Stack
+### 💻 Full Stack Web
 
-6. Petland F5 - Tienda de Mascotas
-- Stack: React, FastAPI, PostgreSQL, Redis, Tailwind.
-- Objetivo: e-commerce completo con panel de administracion.
+6. **Petland F5**
 - Demo: https://petland-f5.vercel.app
 - Codigo: https://github.com/Yedpt/Petland_F5
+- Resumen: e-commerce con panel de administracion.
 
-7. GitGame - Aprender Git Jugando
-- Stack: React, Node.js, Express, MySQL, Tailwind.
-- Objetivo: portal gaming con noticias, reviews y roles.
+7. **GitGame**
 - Demo: https://gitgame.vercel.app
 - Codigo: https://github.com/Yedpt/gitGame
+- Resumen: plataforma gaming con roles y contenido.
 
-8. CleanCode - Blog para Programadores
-- Stack: React, Node.js, Express, MySQL, Tailwind.
-- Objetivo: plataforma de contenido tecnico con enfoque SOLID.
+8. **CleanCode**
 - Video: https://www.youtube.com/embed/H1gd_J-h3pA
 - Codigo: https://github.com/Yedpt/cleanCode
+- Resumen: blog tecnico para programadores.
 
-## Estructura del proyecto
-
-```text
-app/
-  layout.tsx
-  page.tsx
-  proyectos-secundarios/page.tsx
-components/
-  layout/
-  sections/
-  ui/
-contexts/
-  LanguageContext.tsx
-  ThemeContext.tsx
-public/
-  images/
-```
-
-## Instalacion local
-
-1. Clona el repositorio.
-2. Instala dependencias.
-3. Crea variables de entorno.
-4. Ejecuta en desarrollo.
+## 🧪 Instalacion rapida
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Variables de entorno
+Abrir en navegador: http://localhost:3000
 
-Crea un archivo .env.local con:
+## 🔐 Variables de entorno
+
+Crear archivo `.env.local`:
 
 ```env
 NEXT_PUBLIC_FORMSPREE_ID=tu_form_id
 ```
 
-## Scripts disponibles
+## 📜 Scripts
 
 ```bash
 npm run dev
@@ -156,23 +122,17 @@ npm run start
 npm run lint
 ```
 
-## Seguridad y calidad
+## 📁 Estructura base
 
-- CSP y cabeceras de seguridad en produccion.
-- Validacion de URLs externas en seccion de proyectos.
-- Endurecimiento de iframes con sandbox y referrer policy.
-- Linting activo con ESLint.
+```text
+app/
+components/
+contexts/
+lib/
+public/
+```
 
-## Roadmap sugerido
-
-- Añadir screenshots o GIFs reales por seccion.
-- Integrar analitica privacy-friendly.
-- Añadir tests de interfaz para flujos criticos.
-- Publicar changelog de releases.
-
-## Autor
-
-Yeder Pimentel
+## 📫 Contacto
 
 - GitHub: https://github.com/Yedpt
 - LinkedIn: https://www.linkedin.com/in/yeder-pimentel/
@@ -180,4 +140,4 @@ Yeder Pimentel
 
 ---
 
-Hecho por Yeder Pimentel.
+Gracias por pasar por aqui.
