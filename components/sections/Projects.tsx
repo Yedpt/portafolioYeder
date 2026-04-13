@@ -76,7 +76,7 @@ const getProjects = (): Project[] => [
       { name: 'ChromaDB', icon: FiCpu, color: '#34D399' },
     ],
     demoType: 'live',
-    demoUrl: 'https://nation-mind-ai.vercel.app',
+    demoUrl: 'https://nation-mind-ai.vercel.app/',
     videoUrl: 'https://www.youtube.com/embed/1539SblWZag',
     githubUrl: 'https://github.com/Yedpt/Nation-Mind-AI',
     status: { es: 'En vivo', en: 'Live' },
