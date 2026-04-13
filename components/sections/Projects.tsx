@@ -77,7 +77,7 @@ const getProjects = (): Project[] => [
     ],
     demoType: 'live',
     demoUrl: 'https://nation-mind-ai.vercel.app',
-    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID_NATION_MIND_AI',
+    videoUrl: 'https://www.youtube.com/embed/1539SblWZag',
     githubUrl: 'https://github.com/Yedpt/Nation-Mind-AI',
     status: { es: 'En vivo', en: 'Live' },
     statusColor: '#10B981',
