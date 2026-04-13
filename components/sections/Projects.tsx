@@ -3,8 +3,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { FiExternalLink, FiGithub, FiX, FiPlay, FiMaximize2 } from 'react-icons/fi';
+import { FiExternalLink, FiGithub, FiX, FiPlay, FiMaximize2, FiCpu } from 'react-icons/fi';
 import Image from 'next/image';
+import Link from 'next/link';
 import Lottie from 'lottie-react';
 import { 
   SiReact, SiTailwindcss, 
@@ -31,6 +32,59 @@ interface Project {
 const getProjects = (): Project[] => [
   {
     id: 1,
+    title: { es: 'EvaluAI - Evaluador de Repositorios', en: 'EvaluAI - Repository Evaluator' },
+    description: { 
+      es: 'Herramienta IA para evaluar repositorios de GitHub usando análisis avanzado. Next.js 16 + React 19, FastAPI backend, PostgreSQL, LangChain, búsqueda vectorial FAISS. Analiza código contra rúbricas personalizables y archivos PDF briefing para evaluar proyectos.', 
+      en: 'AI-powered tool to evaluate GitHub repositories with advanced analysis. Next.js 16 + React 19, FastAPI backend, PostgreSQL, LangChain, FAISS vector search. Analyzes code against customizable rubrics and PDF briefings for comprehensive evaluation.' 
+    },
+    image: '/images/projects/evaluAI.json',
+    technologies: [
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'Next.js', icon: SiReact, color: '#000000' },
+      { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+      { name: 'LangChain', icon: FiCpu, color: '#22D3EE' },
+      { name: 'RAG', icon: FiCpu, color: '#A78BFA' },
+      { name: 'LLM', icon: FiCpu, color: '#F59E0B' },
+    ],
+    demoType: 'live',
+    demoUrl: 'https://evaluai-pi.vercel.app/',
+    videoUrl: 'https://www.youtube.com/embed/W6xUvUuJrUg',
+    githubUrl: 'https://github.com/Yedpt/EvaluAI',
+    status: { es: 'En vivo', en: 'Live' },
+    statusColor: '#10B981',
+    category: 'ai',
+  },
+  {
+    id: 2,
+    title: { es: 'Nation-Mind AI - Simulador Geopolítico', en: 'Nation-Mind AI - Geopolitical Simulator' },
+    description: { 
+      es: 'Simulador de estrategia por turnos donde 7 naciones IA toman decisiones autónomas usando LLaMA 3 + RAG. Next.js 16 + React 19, FastAPI backend, PostgreSQL + ChromaDB vectorial, Groq API, LangGraph. Agentes con memoria, personalidad y objetivos propios que negocian, declaran guerra y compiten por dominación.', 
+      en: 'Turn-based strategy simulator where 7 AI nations make autonomous decisions using LLaMA 3 + RAG. Next.js 16 + React 19, FastAPI backend, PostgreSQL + ChromaDB vector DB, Groq API, LangGraph. Agents with memory, unique personalities and objectives that negotiate, declare wars and compete for domination.' 
+    },
+    image: '/images/projects/nation-mind-AI.json',
+    technologies: [
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'Next.js', icon: SiReact, color: '#000000' },
+      { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+      { name: 'LangGraph', icon: FiCpu, color: '#22D3EE' },
+      { name: 'RAG', icon: FiCpu, color: '#A78BFA' },
+      { name: 'LLM', icon: FiCpu, color: '#F59E0B' },
+      { name: 'ChromaDB', icon: FiCpu, color: '#34D399' },
+    ],
+    demoType: 'live',
+    demoUrl: 'https://nation-mind-ai.vercel.app/',
+    videoUrl: 'https://www.youtube.com/embed/1539SblWZag',
+    githubUrl: 'https://github.com/Yedpt/Nation-Mind-AI',
+    status: { es: 'En vivo', en: 'Live' },
+    statusColor: '#10B981',
+    category: 'ai',
+  },
+  {
+    id: 3,
     title: { es: 'Computer Vision - Detección de Objetos', en: 'Computer Vision - Object Detection' },
     description: { 
       es: 'Sistema full-stack de detección de objetos con YOLOv8 personalizado. Backend FastAPI + frontend React, Base de datos PostgreSQL, tiempo real con WebSockets y despliegue Docker. Precisión de detección 90%+ (mAP@0.5: 0.94).', 
@@ -44,6 +98,7 @@ const getProjects = (): Project[] => [
       { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
       { name: 'Docker', icon: SiDocker, color: '#2496ED' },
       { name: 'OpenCV', icon: SiOpencv, color: '#5C3EE8' },
+      { name: 'YOLOv8', icon: FiCpu, color: '#F59E0B' },
     ],
     demoType: 'video',
     videoUrl: 'https://www.youtube.com/embed/XWhtPLFnb5A',
@@ -53,7 +108,7 @@ const getProjects = (): Project[] => [
     category: 'ai',
   },
   {
-    id: 2,
+    id: 4,
     title: { es: 'LLM Generador de Contenido', en: 'LLM Content Generator' },
     description: { 
       es: 'Sistema multiagente IA con FastAPI + React 19. Usa Groq API (LLaMA), LangChain y RAG científico con arXiv. Genera contenido, imágenes (HuggingFace) y análisis avanzados con arquitectura modular.', 
@@ -66,6 +121,9 @@ const getProjects = (): Project[] => [
       { name: 'React', icon: SiReact, color: '#61DAFB' },
       { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
       { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
+      { name: 'LangChain', icon: FiCpu, color: '#22D3EE' },
+      { name: 'RAG', icon: FiCpu, color: '#A78BFA' },
+      { name: 'LLM', icon: FiCpu, color: '#F59E0B' },
     ],
     demoType: 'video',
     videoUrl: 'https://www.youtube.com/embed/MyOb_GqMVaU',
@@ -75,29 +133,7 @@ const getProjects = (): Project[] => [
     category: 'ai',
   },
   {
-    id: 3,
-    title: { es: 'Petland F5 - Tienda de Mascotas', en: 'Petland F5 - Pet Store' },
-    description: { 
-      es: 'E-commerce full-stack con React 18 + FastAPI. Base de datos PostgreSQL, autenticación JWT, caché Redis, WebSockets en tiempo real, migraciones Alembic y arquitectura MVC. Panel admin integrado.', 
-      en: 'Full-stack e-commerce with React 18 + FastAPI. PostgreSQL database, JWT authentication, Redis cache, real-time WebSockets, Alembic migrations and MVC architecture. Integrated admin panel.' 
-    },
-    image: '/images/projects/petland.json',
-    technologies: [
-      { name: 'React', icon: SiReact, color: '#61DAFB' },
-      { name: 'Python', icon: SiPython, color: '#3776AB' },
-      { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
-      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
-      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
-    ],
-    demoType: 'live',
-    demoUrl: 'https://petland-f5.vercel.app',
-    githubUrl: 'https://github.com/Yedpt/Petland_F5',
-    status: { es: 'Live', en: 'Live' },
-    statusColor: '#10B981',
-    category: 'web',
-  },
-  {
-    id: 4,
+    id: 5,
     title: { es: 'CleanCode - Principios SOLID', en: 'CleanCode - SOLID Principles' },
     description: { 
       es: 'Blog para programadores con React + Vite y backend TypeScript. Express + Node.js, MySQL con Sequelize ORM, autenticación JWT, Bcrypt para contraseñas, Multer para archivos y Tailwind CSS.', 
@@ -112,32 +148,10 @@ const getProjects = (): Project[] => [
       { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
     ],
     demoType: 'video',
-    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
+    videoUrl: 'https://www.youtube.com/embed/H1gd_J-h3pA',
     githubUrl: 'https://github.com/Yedpt/cleanCode',
     status: { es: 'Proyecto', en: 'Project' },
     statusColor: '#8B5CF6',
-    category: 'web',
-  },
-  {
-    id: 5,
-    title: { es: 'GitGame - Aprender Git Jugando', en: 'GitGame - Learn Git by Playing' },
-    description: { 
-      es: 'Plataforma de noticias gaming con React + Vite y backend TypeScript. Express + Node.js, MySQL + Sequelize, autenticación JWT, sistema de roles (admin/usuario), noticias, videos, reviews y lanzamientos con Tailwind CSS.', 
-      en: 'Gaming news platform with React + Vite and TypeScript backend. Express + Node.js, MySQL + Sequelize, JWT authentication, role-based system (admin/user), news, videos, reviews and releases with Tailwind CSS.' 
-    },
-    image: '/images/projects/gitgame.json',
-    technologies: [
-      { name: 'React', icon: SiReact, color: '#61DAFB' },
-      { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
-      { name: 'Express', icon: SiExpress, color: '#FFFFFF' },
-      { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
-      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
-    ],
-    demoType: 'live',
-    demoUrl: 'https://gitgame.vercel.app',
-    githubUrl: 'https://github.com/Yedpt/gitGame',
-    status: { es: 'Live', en: 'Live' },
-    statusColor: '#10B981',
     category: 'web',
   },
   {
@@ -154,6 +168,8 @@ const getProjects = (): Project[] => [
       { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
       { name: 'React', icon: SiReact, color: '#61DAFB' },
       { name: 'OpenCV', icon: SiOpencv, color: '#5C3EE8' },
+      { name: 'Computer Vision', icon: FiCpu, color: '#22D3EE' },
+      { name: 'Transfer Learning', icon: FiCpu, color: '#A78BFA' },
     ],
     demoType: 'video',
     videoUrl: 'https://www.youtube.com/embed/rsJhxqRUhTY',
@@ -162,7 +178,84 @@ const getProjects = (): Project[] => [
     statusColor: '#8B5CF6',
     category: 'ai',
   },
+  {
+    id: 7,
+    title: { es: 'Petland F5 - Tienda de Mascotas', en: 'Petland F5 - Pet Store' },
+    description: { 
+      es: 'E-commerce full-stack con React 18 + FastAPI. Base de datos PostgreSQL, autenticación JWT, caché Redis, WebSockets en tiempo real, migraciones Alembic y arquitectura MVC. Panel admin integrado.', 
+      en: 'Full-stack e-commerce with React 18 + FastAPI. PostgreSQL database, JWT authentication, Redis cache, real-time WebSockets, Alembic migrations and MVC architecture. Integrated admin panel.' 
+    },
+    image: '/images/projects/petland.json',
+    technologies: [
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
+    ],
+    demoType: 'live',
+    demoUrl: 'https://petland-f5.vercel.app',
+    githubUrl: 'https://github.com/Yedpt/Petland_F5',
+    status: { es: 'En vivo', en: 'Live' },
+    statusColor: '#10B981',
+    category: 'web',
+  },
+  {
+    id: 8,
+    title: { es: 'GitGame - Aprender Git Jugando', en: 'GitGame - Learn Git by Playing' },
+    description: { 
+      es: 'Plataforma de noticias gaming con React + Vite y backend TypeScript. Express + Node.js, MySQL + Sequelize, autenticación JWT, sistema de roles (admin/usuario), noticias, videos, reviews y lanzamientos con Tailwind CSS.', 
+      en: 'Gaming news platform with React + Vite and TypeScript backend. Express + Node.js, MySQL + Sequelize, JWT authentication, role-based system (admin/user), news, videos, reviews and releases with Tailwind CSS.' 
+    },
+    image: '/images/projects/gitgame.json',
+    technologies: [
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+      { name: 'Express', icon: SiExpress, color: '#FFFFFF' },
+      { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
+    ],
+    demoType: 'live',
+    demoUrl: 'https://gitgame.vercel.app',
+    githubUrl: 'https://github.com/Yedpt/gitGame',
+    status: { es: 'En vivo', en: 'Live' },
+    statusColor: '#10B981',
+    category: 'web',
+  },
 ];
+
+const getSafeExternalUrl = (url?: string): string | undefined => {
+  if (!url) return undefined;
+
+  try {
+    const parsedUrl = new URL(url);
+    if (parsedUrl.protocol !== 'https:') {
+      return undefined;
+    }
+    return parsedUrl.toString();
+  } catch {
+    return undefined;
+  }
+};
+
+const getSafeYoutubeEmbedUrl = (url?: string): string | undefined => {
+  const safeUrl = getSafeExternalUrl(url);
+  if (!safeUrl) return undefined;
+
+  const parsedUrl = new URL(safeUrl);
+  const host = parsedUrl.hostname.toLowerCase();
+  const isTrustedYoutubeHost =
+    host === 'www.youtube.com' ||
+    host === 'youtube.com' ||
+    host === 'www.youtube-nocookie.com' ||
+    host === 'youtube-nocookie.com';
+
+  if (!isTrustedYoutubeHost || !parsedUrl.pathname.startsWith('/embed/')) {
+    return undefined;
+  }
+
+  return parsedUrl.toString();
+};
 
 // Componente para renderizar imagen normal o Lottie JSON
 const ProjectMedia = ({ 
@@ -222,13 +315,24 @@ const ProjectMedia = ({
   );
 };
 
-export const Projects = () => {
+interface ProjectsProps {
+  variant?: 'primary' | 'secondary';
+}
+
+export const Projects = ({ variant = 'primary' }: ProjectsProps) => {
   const { t, lang } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [zoomedImage, setZoomedImage] = useState<{ image: string; title: string } | null>(null);
   const [filterCategory, setFilterCategory] = useState<'all' | 'web' | 'ai'>('all');
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const isSecondaryPage = variant === 'secondary';
+  const safeSelectedProjectVideoUrl = selectedProject
+    ? getSafeYoutubeEmbedUrl(selectedProject.videoUrl)
+    : undefined;
+  const safeSelectedProjectGithubUrl = selectedProject
+    ? getSafeExternalUrl(selectedProject.githubUrl)
+    : undefined;
   
   // Cerrar dropdown al hacer clic fuera
   useEffect(() => {
@@ -247,7 +351,19 @@ export const Projects = () => {
     };
   }, [showFilterDropdown]);
   
-  const allProjects = getProjects();
+  const projectsData = getProjects();
+  const primaryProjectIds = [1, 2, 3, 4, 6, 5];
+  const secondaryProjectIds = [7, 8];
+
+  const mapById = new Map(projectsData.map((project) => [project.id, project]));
+  const primaryProjects = primaryProjectIds
+    .map((id) => mapById.get(id))
+    .filter((project): project is Project => Boolean(project));
+  const secondaryProjects = secondaryProjectIds
+    .map((id) => mapById.get(id))
+    .filter((project): project is Project => Boolean(project));
+
+  const allProjects = isSecondaryPage ? secondaryProjects : primaryProjects;
   const projects = filterCategory === 'all' 
     ? allProjects 
     : allProjects.filter(p => p.category === filterCategory);
@@ -272,13 +388,20 @@ export const Projects = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-purple-500 to-pink-500">
-              {t({ es: 'Mis Proyectos', en: 'My Projects' })}
+              {t({
+                es: isSecondaryPage ? 'Proyectos Secundarios' : 'Mis Proyectos',
+                en: isSecondaryPage ? 'Secondary Projects' : 'My Projects',
+              })}
             </span>
           </h2>
           <p className="text-slate-800 dark:text-gray-400 max-w-2xl mx-auto mb-4">
             {t({ 
-              es: 'Una colección de mi trabajo reciente y proyectos personales', 
-              en: 'A collection of my recent work and personal projects' 
+              es: isSecondaryPage
+                ? 'Otros proyectos y experimentos que complementan mi portfolio principal'
+                : 'Una colección de mi trabajo reciente y proyectos personales', 
+              en: isSecondaryPage
+                ? 'Additional projects and experiments that complement my main portfolio'
+                : 'A collection of my recent work and personal projects', 
             })}
           </p>
           <div className="w-24 h-1 bg-linear-to-r from-cyan-400 to-purple-500 mx-auto rounded-full"></div>
@@ -333,10 +456,13 @@ export const Projects = () => {
         {/* Grid de proyectos */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => {
+            const safeDemoUrl = getSafeExternalUrl(project.demoUrl);
+            const safeGithubUrl = getSafeExternalUrl(project.githubUrl);
+
             return (
               <motion.div
                 key={project.id}
-                className="group relative bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all duration-300 shadow-lg shadow-black/30"
+                className="group relative h-full flex flex-col bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all duration-300 shadow-lg shadow-black/30"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -378,25 +504,25 @@ export const Projects = () => {
                 </div>
 
                 {/* Contenido */}
-                <div className="p-6">
+                <div className="p-6 flex-1 flex flex-col">
                   {/* Título */}
                   <h3 className="text-xl font-bold mb-3 text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">
                     {project.title[lang]}
                   </h3>
 
                   {/* Descripción */}
-                  <p className="text-sm text-gray-300 mb-4 line-clamp-3 leading-relaxed">
+                  <p className="text-sm text-gray-300 mb-4 line-clamp-3 leading-relaxed min-h-18">
                     {project.description[lang]}
                   </p>
 
                   {/* Tecnologías */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex min-h-28 md:min-h-32 flex-wrap content-start gap-2 mb-4">
                     {project.technologies.map((tech) => {
                       const Icon = tech.icon;
                       return (
                         <div
                           key={tech.name}
-                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#162040] border border-[#1e3a5f]/40"
+                          className="flex h-8 items-center gap-1.5 px-2.5 rounded-lg bg-[#162040] border border-[#1e3a5f]/40"
                           title={tech.name}
                         >
                           <Icon style={{ color: tech.color }} className="text-sm" />
@@ -407,38 +533,80 @@ export const Projects = () => {
                   </div>
 
                   {/* Botones */}
-                  <div className="flex gap-3">
-                    {/* Botón View Demo */}
-                    {project.demoType === 'live' ? (
+                  <div className="mt-auto flex flex-col gap-2">
+                    <div className="flex gap-2">
+                      {safeDemoUrl && project.videoUrl ? (
+                        <>
+                          <a
+                            href={safeDemoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            referrerPolicy="no-referrer"
+                            className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                          >
+                            <FiExternalLink size={16} />
+                            {t({ es: 'Ver demo', en: 'View Demo' })}
+                          </a>
+                          <button
+                            onClick={() => setSelectedProject(project)}
+                            className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                          >
+                            <FiPlay size={16} />
+                            {t({ es: 'Ver Video', en: 'Watch Video' })}
+                          </button>
+                        </>
+                      ) : project.demoType === 'live' && safeDemoUrl ? (
+                        <a
+                          href={safeDemoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          referrerPolicy="no-referrer"
+                          className="w-full px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                        >
+                          <FiExternalLink size={16} />
+                          {t({ es: 'Ver demo', en: 'View Demo' })}
+                        </a>
+                      ) : project.demoType === 'live' ? (
+                        <button
+                          type="button"
+                          disabled
+                          className="w-full px-4 py-2 rounded-lg bg-gray-600/50 text-gray-300 font-semibold text-sm flex items-center justify-center gap-2 cursor-not-allowed"
+                        >
+                          <FiExternalLink size={16} />
+                          {t({ es: 'Demo no disponible', en: 'Demo unavailable' })}
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => setSelectedProject(project)}
+                          className="w-full px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                        >
+                          <FiPlay size={16} />
+                          {t({ es: 'Ver Video', en: 'Watch Video' })}
+                        </button>
+                      )}
+                    </div>
+
+                    {safeGithubUrl ? (
                       <a
-                        href={project.demoUrl}
+                        href={safeGithubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                        referrerPolicy="no-referrer"
+                        className="w-full px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-500 dark:text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
                       >
-                        <FiExternalLink size={16} />
-                        {t({ es: 'View Demo', en: 'View Demo' })}
+                        <FiGithub size={16} />
+                        {t({ es: 'Código', en: 'Code' })}
                       </a>
                     ) : (
                       <button
-                        onClick={() => setSelectedProject(project)}
-                        className="flex-1 px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                        type="button"
+                        disabled
+                        className="w-full px-4 py-2 rounded-lg bg-gray-600/50 text-gray-300 font-semibold text-sm flex items-center justify-center gap-2 cursor-not-allowed"
                       >
-                        <FiPlay size={16} />
-                        {t({ es: 'Ver Video', en: 'Watch Video' })}
+                        <FiGithub size={16} />
+                        {t({ es: 'Código no disponible', en: 'Code unavailable' })}
                       </button>
                     )}
-
-                    {/* Botón Code */}
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-cyan-500 dark:text-cyan-400 font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
-                    >
-                      <FiGithub size={16} />
-                      {t({ es: 'Code', en: 'Code' })}
-                    </a>
                   </div>
                 </div>
 
@@ -451,9 +619,52 @@ export const Projects = () => {
           })}
         </div>
 
+        {projects.length === 0 && (
+          <div className="mt-10 text-center text-gray-400">
+            {t({
+              es: 'No hay proyectos en esta categoría por ahora.',
+              en: 'There are no projects in this category yet.',
+            })}
+          </div>
+        )}
+
+        {!isSecondaryPage && secondaryProjects.length > 0 && (
+          <motion.div
+            className="mt-12 flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link
+              href="/proyectos-secundarios"
+              className="px-8 py-3 rounded-xl bg-[#0d1b2e] border border-purple-500/40 text-cyan-400 font-semibold hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300"
+            >
+              {t({ es: 'Ver otros proyectos', en: 'View Other Projects' })}
+            </Link>
+          </motion.div>
+        )}
+
+        {isSecondaryPage && (
+          <motion.div
+            className="mt-12 flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link
+              href="/#proyectos"
+              className="px-8 py-3 rounded-xl bg-[#0d1b2e] border border-cyan-500/40 text-cyan-400 font-semibold hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-300"
+            >
+              {t({ es: 'Volver a proyectos principales', en: 'Back to Main Projects' })}
+            </Link>
+          </motion.div>
+        )}
+
         {/* Modal de Video */}
         <AnimatePresence>
-          {selectedProject && selectedProject.demoType === 'video' && (
+          {selectedProject && safeSelectedProjectVideoUrl && (
             <motion.div
               className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
               initial={{ opacity: 0 }}
@@ -489,10 +700,12 @@ export const Projects = () => {
                 {/* Video */}
                 <div className="relative w-full aspect-video bg-black">
                   <iframe
-                    src={selectedProject.videoUrl}
+                    src={safeSelectedProjectVideoUrl}
                     title={selectedProject.title[lang]}
                     className="w-full h-full"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"
+                    referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
                   />
                 </div>
@@ -514,15 +727,27 @@ export const Projects = () => {
                         );
                       })}
                     </div>
-                    <a
-                      href={selectedProject.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-6 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center gap-2 transition-all duration-300"
-                    >
-                      <FiGithub size={16} />
-                      {t({ es: 'Ver Código', en: 'View Code' })}
-                    </a>
+                    {safeSelectedProjectGithubUrl ? (
+                      <a
+                        href={safeSelectedProjectGithubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        referrerPolicy="no-referrer"
+                        className="px-6 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold text-sm flex items-center gap-2 transition-all duration-300"
+                      >
+                        <FiGithub size={16} />
+                        {t({ es: 'Ver Código', en: 'View Code' })}
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        disabled
+                        className="px-6 py-2 rounded-lg bg-gray-600/50 text-gray-300 font-semibold text-sm flex items-center gap-2 cursor-not-allowed"
+                      >
+                        <FiGithub size={16} />
+                        {t({ es: 'Código no disponible', en: 'Code unavailable' })}
+                      </button>
+                    )}
                   </div>
                 </div>
               </motion.div>

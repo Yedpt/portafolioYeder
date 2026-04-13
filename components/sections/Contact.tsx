@@ -9,7 +9,8 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 // Para activar el formulario: crea una cuenta gratuita en https://formspree.io,
 // crea un form, y pon tu Form ID en .env.local -> NEXT_PUBLIC_FORMSPREE_ID=xxxxxxxx
 // En Vercel: Settings > Environment Variables
-const FORMSPREE_URL = `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`;
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+const FORMSPREE_URL = FORMSPREE_ID ? `https://formspree.io/f/${FORMSPREE_ID}` : null;
 
 type ContactFormData = {
   name: string;
@@ -23,6 +24,8 @@ type ContactFormErrors = Partial<Record<keyof ContactFormData, string>>;
 const NAME_REGEX = /^[A-Za-zÀ-ÿ' -]{2,60}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const SUBJECT_REGEX = /^[A-Za-zÀ-ÿ0-9.,:;!?()'"\- ]{4,100}$/;
+const CONTACT_RATE_LIMIT_WINDOW_MS = 60_000;
+const CONTACT_RATE_LIMIT_KEY = 'contact:last-submit-ms';
 
 export const Contact = () => {
   const { t } = useLanguage();
@@ -42,6 +45,7 @@ export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState('');
 
   const validateField = (field: keyof ContactFormData, value: string): string => {
     const trimmedValue = value.trim();
@@ -132,11 +136,31 @@ export const Contact = () => {
     setTouched({ name: true, email: true, subject: true, message: true });
     setSubmitError(null);
 
+    // Honeypot: los bots suelen rellenar campos ocultos.
+    if (honeypot.trim().length > 0) {
+      setSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      return;
+    }
+
+    if (typeof window !== 'undefined') {
+      const lastSubmitAt = Number(localStorage.getItem(CONTACT_RATE_LIMIT_KEY) || '0');
+      const elapsed = Date.now() - lastSubmitAt;
+      if (lastSubmitAt > 0 && elapsed < CONTACT_RATE_LIMIT_WINDOW_MS) {
+        const remaining = Math.ceil((CONTACT_RATE_LIMIT_WINDOW_MS - elapsed) / 1000);
+        setSubmitError(t({
+          es: `Espera ${remaining}s antes de enviar otro mensaje.`,
+          en: `Please wait ${remaining}s before sending another message.`
+        }));
+        return;
+      }
+    }
+
     if (!validateForm()) {
       return;
     }
 
-    if (!process.env.NEXT_PUBLIC_FORMSPREE_ID) {
+    if (!FORMSPREE_URL) {
       setSubmitError(t({
         es: 'Falta configurar NEXT_PUBLIC_FORMSPREE_ID en Vercel para habilitar el envío.',
         en: 'NEXT_PUBLIC_FORMSPREE_ID is missing in Vercel. Configure it to enable sending.'
@@ -150,14 +174,21 @@ export const Contact = () => {
       const res = await fetch(FORMSPREE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          _gotcha: honeypot,
+        }),
       });
 
       if (res.ok) {
+        if (typeof window !== 'undefined') {
+          localStorage.setItem(CONTACT_RATE_LIMIT_KEY, String(Date.now()));
+        }
         setSubmitted(true);
         setFormData({ name: '', email: '', subject: '', message: '' });
         setErrors({});
         setTouched({ name: false, email: false, subject: false, message: false });
+        setHoneypot('');
       } else {
         setSubmitError(t({
           es: 'Error al enviar. Inténtalo de nuevo o escríbeme directamente.',
@@ -235,7 +266,7 @@ export const Contact = () => {
           
           {/* Formulario de contacto */}
           <motion.div
-            className="bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-2xl p-8 shadow-xl shadow-black/30"
+            className="min-w-0 bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-2xl p-8 shadow-xl shadow-black/30"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -274,6 +305,19 @@ export const Contact = () => {
             )}
 
             <form onSubmit={handleSubmit} noValidate className={`space-y-6 ${submitted ? 'hidden' : ''}`}>
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
+              </div>
+
               {/* Nombre */}
               <div>
                 <label 
@@ -385,22 +429,24 @@ export const Contact = () => {
 
           {/* Mapa + Info de contacto */}
           <motion.div
-            className="space-y-6"
+            className="min-w-0 space-y-6"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             {/* Mapa de Google Maps */}
-            <div className="bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-2xl overflow-hidden shadow-xl h-100">
+            <div className="w-full max-w-full bg-[#0d1b2e] border border-[#1e3a5f]/50 rounded-2xl overflow-hidden shadow-xl h-90 sm:h-100">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194347.97374207795!2d-3.87936685!3d40.4378698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2sMadrid%2C%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1650000000000!5m2!1ses!2ses"
                 width="100%"
                 height="100%"
+                className="block w-full h-full"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                referrerPolicy="strict-origin-when-cross-origin"
                 title="Location Madrid"
               />
             </div>
@@ -431,7 +477,7 @@ export const Contact = () => {
                   </h4>
                   <a 
                     href="mailto:ypimentel.tapia@gmail.com"
-                    className="text-cyan-500 hover:text-cyan-400 transition-colors"
+                    className="text-cyan-500 hover:text-cyan-400 transition-colors break-all"
                   >
                     ypimentel.tapia@gmail.com
                   </a>
@@ -448,6 +494,7 @@ export const Contact = () => {
                     href="https://github.com/Yedpt"
                     target="_blank"
                     rel="noopener noreferrer"
+                    referrerPolicy="no-referrer"
                     className="w-12 h-12 rounded-full bg-linear-to-br from-slate-600 to-slate-700 flex items-center justify-center text-white hover:scale-110 transition-transform"
                   >
                     <FaGithub size={20} />
@@ -456,6 +503,7 @@ export const Contact = () => {
                     href="https://www.linkedin.com/in/yeder-pimentel"
                     target="_blank"
                     rel="noopener noreferrer"
+                    referrerPolicy="no-referrer"
                     className="w-12 h-12 rounded-full bg-linear-to-br from-blue-600 to-blue-700 flex items-center justify-center text-white hover:scale-110 transition-transform"
                   >
                     <FaLinkedin size={20} />
