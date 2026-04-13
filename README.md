@@ -55,7 +55,8 @@ Este proyecto esta pensado para recruiters, clientes y equipos tecnicos que quie
 ### 🤖 IA / Machine Learning
 
 1. **EvaluAI**
-- Demo: https://ai-repo-evaluator.vercel.app
+- Demo: https://evaluai-pi.vercel.app/
+- Video: https://www.youtube.com/watch?v=W6xUvUuJrUg
 - Codigo: https://github.com/Yedpt/EvaluAI
 - Resumen: evaluador de repositorios con IA y rubricas.
 
