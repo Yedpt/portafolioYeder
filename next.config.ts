@@ -25,9 +25,13 @@ const nextConfig: NextConfig = {
 
     const contentSecurityPolicy = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",
+      // Lottie en algunas animaciones usa evaluación dinámica de expresiones.
+      // Se permite unsafe-eval solo con scripts propios y manteniendo el resto de la CSP estricta.
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'report-sample'",
+      "script-src-elem 'self' 'unsafe-inline'",
       "script-src-attr 'none'",
       "style-src 'self' 'unsafe-inline'",
+      "style-src-elem 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
       "connect-src 'self' https://formspree.io https://*.formspree.io",
