@@ -54,7 +54,7 @@ export const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          {t({ es: 'Desarrollador web full stack | Desarrollador IA', en: 'Full Stack Web Developer | AI Developer' })}
+          {t({ es: 'Desarrollador IA | Desarrollador Web Full Stack', en: 'AI Developer | Full Stack Web Developer' })}
         </motion.p>
 
         {/* Botones principales */}
