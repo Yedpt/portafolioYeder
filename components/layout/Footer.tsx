@@ -65,7 +65,10 @@ export const Footer = () => {
 
           {/* Copyright */}
           <div className="text-gray-500 text-sm text-center md:text-right">
-            © {currentYear} {t({ es: 'Todos los derechos reservados', en: 'All rights reserved' })}
+            © {currentYear} {t({
+              es: 'Yeder Pimentel Tapia - Desarrollador IA & Full Stack',
+              en: 'Yeder Pimentel Tapia - AI & Full Stack Developer'
+            })}
           </div>
         </div>
       </div>
