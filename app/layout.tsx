@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yeder Pimentel | Full Stack Developer",
+  title: "Yeder Pimentel | IA & Full Stack developer",
   description: "Portfolio de Yeder Pimentel Tapia - Desarrollador web full stack especializado en crear experiencias digitales modernas y elegantes.",
   icons: {
     icon: "/images/YP_logo.webp",
